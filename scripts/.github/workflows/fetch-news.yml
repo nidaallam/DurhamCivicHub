@@ -1,0 +1,38 @@
+name: Fetch Durham News
+
+on:
+  schedule:
+    # Runs every day at 8:00 AM Eastern (12:00 UTC)
+    - cron: '0 12 * * *'
+  # Also lets you trigger it manually from the GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit news.json back to the repo
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install feedparser requests
+
+      - name: Fetch news
+        run: python scripts/fetch_news.py
+
+      - name: Commit updated news.json
+        run: |
+          git config user.name  "Durham Civic Bot"
+          git config user.email "bot@noreply.github.com"
+          git add news.json
+          # Only commit if news.json actually changed
+          git diff --staged --quiet || git commit -m "chore: update news feed $(date -u +'%Y-%m-%d')"
+          git push
