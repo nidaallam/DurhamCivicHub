@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meeting Agendas & Minutes – Durham County Civic Hub</title>
+  <meta name="description" content="Official agendas, minutes, and recordings from Durham County Board of Commissioners meetings and public hearings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Meetings-page styles ── */
+    .meetings-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 760px) { .meetings-layout { grid-template-columns: 1fr; } }
+
+    /* Sidebar nav */
+    .meetings-sidenav {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 82px;
+    }
+    .sidenav-header {
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      padding: .65rem 1rem;
+    }
+    .sidenav-link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-2);
+      padding: .65rem 1rem;
+      border-bottom: 1px solid var(--border-lt);
+      transition: background .12s, color .12s;
+      text-decoration: none;
+    }
+    .sidenav-link:last-child { border-bottom: none; }
+    .sidenav-link:hover { background: #FFF8F2; color: var(--orange); text-decoration: none; }
+    .sidenav-link.active { background: #FFF8F2; color: var(--orange); border-left: 3px solid var(--orange); }
+
+    /* Body */
+    .meetings-body { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .board-section { scroll-margin-top: 90px; }
+
+    .board-section-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+    .board-section-sub {
+      font-family: var(--font-body);
+      font-size: .82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    /* Meeting row */
+    .agenda-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      font-family: var(--font-body);
+      font-size: .875rem;
+    }
+    .agenda-table thead tr { background: var(--navy); }
+    .agenda-table th {
+      text-align: left;
+      padding: .72rem 1rem;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: rgba(255,255,255,.75);
+    }
+    .agenda-table td {
+      padding: .8rem 1rem;
+      border-bottom: 1px solid var(--border-lt);
+      color: var(--text-2);
+      vertical-align: middle;
+    }
+    .agenda-table tr:last-child td { border-bottom: none; }
+    .agenda-table tr:hover td { background: #FFF8F2; }
+    .agenda-table td:first-child { font-weight: 700; color: var(--text); white-space: nowrap; }
+
+    /* Status badges */
+    .status-badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .18rem .55rem;
+      border-radius: 999px;
+    }
+    .status-upcoming  { background: #EBF4F6; color: var(--teal); }
+    .status-minutes   { background: #e8f5ee; color: #2d6a4f; }
+    .status-cancelled { background: #fdeee8; color: var(--red-orange); }
+
+    /* Doc links */
+    .doc-links { display: flex; gap: .45rem; flex-wrap: wrap; }
+    .doc-link {
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--teal);
+      border: 1.5px solid var(--teal);
+      padding: .15rem .5rem;
+      border-radius: var(--radius-sm);
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .doc-link:hover { background: var(--teal); color: #fff; text-decoration: none; }
+    .doc-link.primary { background: var(--teal); color: #fff; }
+    .doc-link.primary:hover { background: var(--navy); border-color: var(--navy); }
+
+    /* How to speak callout */
+    .how-to-box {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 600px) { .how-to-box { grid-template-columns: 1fr; } }
+    .how-to-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: .75rem;
+      color: #fff;
+    }
+    .how-to-steps { display: flex; flex-direction: column; gap: .6rem; list-style: none; }
+    .how-to-steps li {
+      display: flex;
+      gap: .7rem;
+      font-family: var(--font-body);
+      font-size: .85rem;
+      color: rgba(255,255,255,.82);
+      line-height: 1.5;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50%;
+      font-size: .72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: .1rem;
+    }
+
+    /* Info cards */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .info-card-icon { font-size: 1.5rem; margin-bottom: .5rem; }
+    .info-card-label {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--navy);
+      margin-bottom: .3rem;
+    }
+    .info-card-val {
+      font-family: var(--font-body);
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-seal">🐂</div>
+        <div>
+          <div class="brand-name">Durham County Civic Hub</div>
+          <div class="brand-tagline">Durham County, North Carolina</div>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html#news">News</a>
+        <a href="budget.html">Budget</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="meetings.html" class="active">Meetings</a>
+        <a href="index.html#districts">Districts</a>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#about">About</a>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <button class="close-btn" onclick="toggleNav()">✕ Close</button>
+      <a href="index.html#news">📰 News</a>
+      <a href="budget.html">💰 Budget</a>
+      <a href="calendar.html">📅 Calendar</a>
+      <a href="meetings.html">🏛️ Meetings</a>
+      <a href="index.html#districts">🗺️ Districts</a>
+      <a href="index.html#tools">🔧 Tools</a>
+      <a href="index.html#about">ℹ️ About</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="budget-page-hero">
+    <h1>🏛️ Meeting Agendas & Minutes</h1>
+    <p>Official documents and recordings from Durham County Board of Commissioners, DPS Board, Planning Commission, and other public bodies.</p>
+  </div>
+
+  <main id="main" class="budget-page-main">
+
+    <!-- Quick info cards -->
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-icon">📅</div>
+        <div class="info-card-label">Regular Meetings</div>
+        <div class="info-card-val">2nd &amp; 4th Monday of each month · 9:00 AM</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <div class="info-card-label">Location</div>
+        <div class="info-card-val">200 E. Main St., Durham — Commissioners Chambers, Room 2A</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📺</div>
+        <div class="info-card-label">Live Stream</div>
+        <div class="info-card-val">All meetings streamed on Durham County's YouTube channel and website</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🎤</div>
+        <div class="info-card-label">Public Comment</div>
+        <div class="info-card-val">Sign up online or in person by 8:45 AM. 3 minutes per speaker.</div>
+      </div>
+    </div>
+
+    <div class="meetings-layout">
+
+      <!-- Sidebar nav -->
+      <nav class="meetings-sidenav" aria-label="Meeting bodies">
+        <div class="sidenav-header">Meeting Bodies</div>
+        <a href="#commissioners"  class="sidenav-link active">Board of Commissioners</a>
+        <a href="#dps"            class="sidenav-link">DPS Board of Education</a>
+        <a href="#planning"       class="sidenav-link">Planning Commission</a>
+        <a href="#mental-health"  class="sidenav-link">Mental Health Advisory</a>
+        <a href="#other"          class="sidenav-link">Other Boards</a>
+      </nav>
+
+      <div class="meetings-body" id="meetingsBody">
+
+        <!-- Filled by meetings.json via JS below -->
+        <section class="board-section" id="commissioners">
+          <div class="board-section-title">Board of Commissioners</div>
+          <div class="board-section-sub">
+            Official body that adopts the county budget, sets the tax rate, and governs Durham County. Five elected commissioners. Meets regularly twice per month.
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table class="agenda-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Meeting Type</th>
+                  <th>Status</th>
+                  <th>Documents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Apr 28, 2026</td>
+                  <td>Budget Work Session</td>
+                  <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Agenda (when posted)</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Live Stream</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Apr 21, 2026</td>
+                  <td>Work Session</td>
+                  <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Agenda</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Live Stream</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Apr 14, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Agenda</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Live Stream</a>
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" class="doc-link">Public Comment</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Mar 24, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link">Agenda</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Recording</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Mar 10, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link">Agenda</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Recording</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Feb 24, 2026</td>
+                  <td>Work Session + Regular Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link">Agenda</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Recording</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Feb 10, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="doc-link">Agenda</a>
+                    <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="doc-link">Recording</a>
+                  </div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:.75rem;color:var(--text-muted);margin-top:.6rem;font-family:var(--font-body);">
+            Full archive: <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" style="color:var(--teal);">dconc.gov — Agendas &amp; Minutes →</a>
+          </p>
+        </section>
+
+        <!-- DPS BOARD -->
+        <section class="board-section" id="dps">
+          <div class="board-section-title">Durham Public Schools Board of Education</div>
+          <div class="board-section-sub">
+            Governs Durham Public Schools — 56 schools, 33,000+ students. Sets district policy, approves the budget, and hires the superintendent. Meets monthly.
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="agenda-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Meeting Type</th>
+                  <th>Status</th>
+                  <th>Documents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Apr 17, 2026</td>
+                  <td>Regular Board Meeting</td>
+                  <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dpsnc.net/domain/133" target="_blank" class="doc-link primary">Agenda</a>
+                    <a href="https://www.dpsnc.net" target="_blank" class="doc-link">Watch Online</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Mar 20, 2026</td>
+                  <td>Regular Board Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dpsnc.net/domain/133" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.dpsnc.net/domain/133" target="_blank" class="doc-link">Agenda</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Feb 20, 2026</td>
+                  <td>Regular Board Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dpsnc.net/domain/133" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.dpsnc.net/domain/133" target="_blank" class="doc-link">Agenda</a>
+                  </div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:.75rem;color:var(--text-muted);margin-top:.6rem;font-family:var(--font-body);">
+            Full archive: <a href="https://www.dpsnc.net/domain/133" target="_blank" style="color:var(--teal);">dpsnc.net — Board Meeting Documents →</a>
+          </p>
+        </section>
+
+        <!-- PLANNING COMMISSION -->
+        <section class="board-section" id="planning">
+          <div class="board-section-title">Durham City-County Planning Commission</div>
+          <div class="board-section-sub">
+            Reviews land use applications, rezoning requests, and long-range planning for both the City and County. Meets the 4th Wednesday of each month at 5:00 PM.
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="agenda-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Meeting Type</th>
+                  <th>Status</th>
+                  <th>Documents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Apr 23, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.durhamnc.gov/579/Planning-Commission" target="_blank" class="doc-link primary">Agenda</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Mar 26, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.durhamnc.gov/579/Planning-Commission" target="_blank" class="doc-link primary">Minutes</a>
+                    <a href="https://www.durhamnc.gov/579/Planning-Commission" target="_blank" class="doc-link">Agenda</a>
+                  </div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:.75rem;color:var(--text-muted);margin-top:.6rem;font-family:var(--font-body);">
+            Full archive: <a href="https://www.durhamnc.gov/579/Planning-Commission" target="_blank" style="color:var(--teal);">durhamnc.gov — Planning Commission →</a>
+          </p>
+        </section>
+
+        <!-- MENTAL HEALTH ADVISORY -->
+        <section class="board-section" id="mental-health">
+          <div class="board-section-title">Durham County Mental Health &amp; Substance Abuse Advisory Board</div>
+          <div class="board-section-sub">
+            Advises the Board of Commissioners on behavioral health policy, services, and funding. Meets the first Tuesday of each month at 4:00 PM.
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="agenda-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Meeting Type</th>
+                  <th>Status</th>
+                  <th>Documents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>May 5, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov" target="_blank" class="doc-link primary">Details</a>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>Apr 1, 2026</td>
+                  <td>Regular Meeting</td>
+                  <td><span class="status-badge status-minutes">Minutes Available</span></td>
+                  <td><div class="doc-links">
+                    <a href="https://www.dconc.gov" target="_blank" class="doc-link primary">Minutes</a>
+                  </div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- OTHER BOARDS -->
+        <section class="board-section" id="other">
+          <div class="board-section-title">Other Durham County Boards &amp; Committees</div>
+          <div class="board-section-sub">Additional appointed bodies that advise the Board of Commissioners.</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;">
+
+            <a href="https://www.dconc.gov/Social-Services" target="_blank" class="tool-card">
+              <div class="tool-icon">🤝</div>
+              <div class="tool-name">Social Services Board</div>
+              <div class="tool-desc">Oversees Durham County Department of Social Services programs and policy</div>
+            </a>
+
+            <a href="https://durhamcountylibrary.org/about/board-of-trustees/" target="_blank" class="tool-card">
+              <div class="tool-icon">📚</div>
+              <div class="tool-name">Library Board of Trustees</div>
+              <div class="tool-desc">Governs Durham County Library system and branch operations</div>
+            </a>
+
+            <a href="https://www.dconc.gov" target="_blank" class="tool-card">
+              <div class="tool-icon">♻️</div>
+              <div class="tool-name">Environmental Affairs Board</div>
+              <div class="tool-desc">Advises on stormwater, open space, and environmental programs</div>
+            </a>
+
+            <a href="https://www.dcovotes.dconc.gov/" target="_blank" class="tool-card">
+              <div class="tool-icon">🗳️</div>
+              <div class="tool-name">Board of Elections</div>
+              <div class="tool-desc">Administers Durham County elections and voter registration</div>
+            </a>
+
+            <a href="https://www.dconc.gov" target="_blank" class="tool-card">
+              <div class="tool-icon">🏘️</div>
+              <div class="tool-name">Housing Advisory Board</div>
+              <div class="tool-desc">Advises on affordable housing programs and bond spending</div>
+            </a>
+
+            <a href="https://www.dconc.gov" target="_blank" class="tool-card">
+              <div class="tool-icon">👮</div>
+              <div class="tool-name">Sheriff's Advisory Committee</div>
+              <div class="tool-desc">Community advisory group for Durham County Sheriff's Office</div>
+            </a>
+
+          </div>
+          <p style="font-size:.75rem;color:var(--text-muted);margin-top:1rem;font-family:var(--font-body);">
+            Full list of boards and committees: <a href="https://www.dconc.gov/Board-of-Commissioners/Boards-and-Commissions" target="_blank" style="color:var(--teal);">dconc.gov — Boards &amp; Committees →</a>
+          </p>
+        </section>
+
+        <!-- HOW TO SPEAK -->
+        <div class="how-to-box">
+          <div>
+            <h3>How to Speak at a Meeting</h3>
+            <ul class="how-to-steps">
+              <li><span class="step-num">1</span>Sign up online at dconc.gov or arrive at 200 E. Main St. by 8:45 AM to sign in person.</li>
+              <li><span class="step-num">2</span>Each speaker gets <strong>3 minutes</strong>. You may speak on any agenda item or on general county business.</li>
+              <li><span class="step-num">3</span>Written comments submitted before 5:00 PM the day before the meeting are also entered into the record.</li>
+              <li><span class="step-num">4</span>Meetings are broadcast live on Durham County's YouTube channel and website.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Useful Links</h3>
+            <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.25rem;">
+              <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" class="btn btn-primary btn-sm">🎤 Sign Up for Public Comment</a>
+              <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="btn btn-ghost btn-sm">📺 Watch Live Stream</a>
+              <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" class="btn btn-ghost btn-sm">▶️ Past Meeting Recordings</a>
+              <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" class="btn btn-ghost btn-sm">📄 All Agendas &amp; Minutes</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.meetings-body -->
+    </div><!-- /.meetings-layout -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="index.html" class="footer-brand" style="text-decoration:none;">
+          <span class="brand-seal-sm">🐂</span>
+          <div>
+            <div class="footer-brand-name">Durham County Civic Hub</div>
+            <div class="footer-brand-sub">Durham County, North Carolina</div>
+          </div>
+        </a>
+        <nav class="footer-nav">
+          <a href="index.html#news">News</a>
+          <a href="budget.html">Budget</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="meetings.html">Meetings</a>
+          <a href="index.html#tools">Tools</a>
+          <a href="index.html#about">About</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>Meeting documents sourced from official Durham County and DPS websites. Not an official government website.</span>
+        <span>Built with ♥ for the Bull City</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+
+    /* ── Load meetings from meetings.json ──────────────────── */
+    var STATUS_MAP = {
+      upcoming:  { cls: 'status-upcoming',  label: 'Upcoming' },
+      minutes:   { cls: 'status-minutes',   label: 'Minutes Available' },
+      cancelled: { cls: 'status-cancelled', label: 'Cancelled' },
+    };
+
+    function fmtDate(iso) {
+      var d = new Date(iso + 'T12:00:00');
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function renderMeetingTable(meetings, archiveUrl) {
+      var rows = meetings.map(function(m) {
+        var st    = STATUS_MAP[m.status] || STATUS_MAP.upcoming;
+        var links = (m.links || []).map(function(l, i) {
+          return '<a href="' + l.url + '" target="_blank" rel="noopener" class="doc-link' + (i === 0 ? ' primary' : '') + '">' + l.label + '</a>';
+        }).join('');
+        return '<tr><td>' + fmtDate(m.date) + '</td><td>' + m.type + '</td>' +
+          '<td><span class="status-badge ' + st.cls + '">' + st.label + '</span></td>' +
+          '<td><div class="doc-links">' + links + '</div></td></tr>';
+      }).join('');
+
+      return '<div style="overflow-x:auto;"><table class="agenda-table">' +
+        '<thead><tr><th>Date</th><th>Meeting Type</th><th>Status</th><th>Documents</th></tr></thead>' +
+        '<tbody>' + rows + '</tbody></table></div>' +
+        (archiveUrl ? '<p style="font-size:.75rem;color:var(--text-muted);margin-top:.6rem;font-family:var(--font-body);">Full archive: <a href="' + archiveUrl + '" target="_blank" style="color:var(--teal);">Official archive →</a></p>' : '');
+    }
+
+    function renderBodies(bodies) {
+      var container = document.getElementById('meetingsBody');
+      if (!container) return;
+
+      // Keep the "other boards" section (last child) — only replace the first 4
+      var otherSection = document.getElementById('other');
+      var howToBox     = container.querySelector('.how-to-box');
+
+      // Clear dynamic sections
+      Array.from(container.querySelectorAll('.board-section:not(#other)')).forEach(function(s) {
+        s.remove();
+      });
+
+      var html = '';
+      bodies.forEach(function(b) {
+        html += '<section class="board-section" id="' + b.id + '">' +
+          '<div class="board-section-title">' + b.name + '</div>' +
+          '<div class="board-section-sub">' + b.description + '</div>' +
+          renderMeetingTable(b.meetings || [], b.archiveUrl) +
+          '</section>';
+      });
+
+      // Insert before "other boards"
+      if (otherSection) {
+        otherSection.insertAdjacentHTML('beforebegin', html);
+      } else if (howToBox) {
+        howToBox.insertAdjacentHTML('beforebegin', html);
+      } else {
+        container.innerHTML = html + container.innerHTML;
+      }
+
+      // Re-attach scroll listener with updated sections
+      sections = document.querySelectorAll('.board-section');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('meetings.json?t=' + Date.now())
+        .then(function(r) { return r.json(); })
+        .then(function(data) { renderBodies(data.bodies || []); })
+        .catch(function() { /* fallback: keep existing hardcoded HTML */ });
+    });
+
+    // Highlight active sidenav item on scroll
+    var sections = document.querySelectorAll('.board-section');
+    var sideLinks = document.querySelectorAll('.sidenav-link');
+    window.addEventListener('scroll', function() {
+      var cur = '';
+      sections.forEach(function(s) {
+        if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+      });
+      sideLinks.forEach(function(l) {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>

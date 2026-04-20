@@ -1,0 +1,165 @@
+{
+  "updated": "2026-04-20",
+  "note": "Edit this file to add, remove, or update meetings. Date format: YYYY-MM-DD. Status: 'upcoming', 'minutes', or 'cancelled'.",
+  "bodies": [
+    {
+      "id": "commissioners",
+      "name": "Board of Commissioners",
+      "description": "Official body that adopts the county budget, sets the tax rate, and governs Durham County. Five elected commissioners. Meets regularly twice per month.",
+      "schedule": "2nd & 4th Monday of each month · 9:00 AM",
+      "location": "200 E. Main St., Durham — Commissioners Chambers, Room 2A",
+      "archiveUrl": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+      "meetings": [
+        {
+          "date": "2026-04-28",
+          "type": "Budget Work Session",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda (when posted)", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
+            { "label": "Live Stream", "url": "https://www.youtube.com/user/DCoWebmaster/videos" },
+            { "label": "Public Comment", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" }
+          ]
+        },
+        {
+          "date": "2026-04-21",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
+            { "label": "Live Stream", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+          ]
+        },
+        {
+          "date": "2026-04-14",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
+            { "label": "Live Stream", "url": "https://www.youtube.com/user/DCoWebmaster/videos" },
+            { "label": "Public Comment", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" }
+          ]
+        },
+        {
+          "date": "2026-03-24",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Archived-Agendas-and-Minutes", "primary": true },
+            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" },
+            { "label": "Recording", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+          ]
+        },
+        {
+          "date": "2026-03-10",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Archived-Agendas-and-Minutes", "primary": true },
+            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" },
+            { "label": "Recording", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+          ]
+        },
+        {
+          "date": "2026-02-24",
+          "type": "Work Session + Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Archived-Agendas-and-Minutes", "primary": true },
+            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" },
+            { "label": "Recording", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dps",
+      "name": "Durham Public Schools Board of Education",
+      "description": "Governs Durham Public Schools — 56 schools, 33,000+ students. Sets district policy, approves the budget, and hires the superintendent. Meets monthly.",
+      "schedule": "Monthly — typically 3rd Thursday · 5:30 PM",
+      "location": "511 Cleveland St., Durham",
+      "archiveUrl": "https://www.dpsnc.net/domain/133",
+      "meetings": [
+        {
+          "date": "2026-04-17",
+          "type": "Regular Board Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda", "url": "https://www.dpsnc.net/domain/133", "primary": true },
+            { "label": "Watch Online", "url": "https://www.dpsnc.net" }
+          ]
+        },
+        {
+          "date": "2026-03-20",
+          "type": "Regular Board Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.dpsnc.net/domain/133", "primary": true },
+            { "label": "Agenda", "url": "https://www.dpsnc.net/domain/133" }
+          ]
+        },
+        {
+          "date": "2026-02-20",
+          "type": "Regular Board Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.dpsnc.net/domain/133", "primary": true },
+            { "label": "Agenda", "url": "https://www.dpsnc.net/domain/133" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "planning",
+      "name": "Durham City-County Planning Commission",
+      "description": "Reviews land use applications, rezoning requests, and long-range planning for both the City and County. Meets the 4th Wednesday of each month at 5:00 PM.",
+      "schedule": "4th Wednesday of each month · 5:00 PM",
+      "location": "Durham City Hall, 101 City Hall Plaza",
+      "archiveUrl": "https://www.durhamnc.gov/579/Planning-Commission",
+      "meetings": [
+        {
+          "date": "2026-04-23",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda", "url": "https://www.durhamnc.gov/579/Planning-Commission", "primary": true }
+          ]
+        },
+        {
+          "date": "2026-03-26",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.durhamnc.gov/579/Planning-Commission", "primary": true },
+            { "label": "Agenda", "url": "https://www.durhamnc.gov/579/Planning-Commission" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mental-health",
+      "name": "Durham County Mental Health & Substance Abuse Advisory Board",
+      "description": "Advises the Board of Commissioners on behavioral health policy, services, and funding. Meets the first Tuesday of each month at 4:00 PM.",
+      "schedule": "1st Tuesday of each month · 4:00 PM",
+      "location": "414 E. Main St., Durham",
+      "archiveUrl": "https://www.dconc.gov",
+      "meetings": [
+        {
+          "date": "2026-05-05",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Details", "url": "https://www.dconc.gov", "primary": true }
+          ]
+        },
+        {
+          "date": "2026-04-01",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.dconc.gov", "primary": true }
+          ]
+        }
+      ]
+    }
+  ]
+}
