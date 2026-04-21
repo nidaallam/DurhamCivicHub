@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect – Durham Civic Hub</title>
+  <meta name="description" content="Follow Commissioner Nida Allam on social media — Reddit, Twitter/X, Instagram, Facebook, and Bluesky." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=margin@700,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Connect page ─────────────────────────────────── */
+    .connect-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      color: #fff;
+      padding: 3.5rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .connect-hero-eyebrow {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: .5rem;
+    }
+    .connect-hero h1 {
+      font-family: 'Margin', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin: 0 0 .75rem;
+    }
+    .connect-hero p {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,.8);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .connect-main {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      text-decoration: none;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 8px rgba(38,46,79,.08);
+      transition: border-color .18s, box-shadow .18s, transform .18s;
+    }
+    .social-card:hover {
+      box-shadow: 0 6px 20px rgba(38,46,79,.14);
+      transform: translateY(-2px);
+    }
+
+    .social-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .social-card--twitter  { border-color: #1d9bf0; }
+    .social-card--twitter  .social-icon { background: #1d9bf0; }
+    .social-card--twitter:hover  { border-color: #1d9bf0; }
+
+    .social-card--instagram { border-color: #e1306c; }
+    .social-card--instagram .social-icon {
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    }
+    .social-card--instagram:hover { border-color: #e1306c; }
+
+    .social-card--facebook { border-color: #1877f2; }
+    .social-card--facebook .social-icon { background: #1877f2; }
+    .social-card--facebook:hover { border-color: #1877f2; }
+
+    .social-card--reddit   { border-color: #ff4500; }
+    .social-card--reddit   .social-icon { background: #ff4500; }
+    .social-card--reddit:hover   { border-color: #ff4500; }
+
+    .social-card--bluesky  { border-color: #0085ff; }
+    .social-card--bluesky  .social-icon { background: #0085ff; }
+    .social-card--bluesky:hover  { border-color: #0085ff; }
+
+    .social-card-body {
+      flex: 1;
+    }
+    .social-card-platform {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted, #888);
+      margin-bottom: .18rem;
+    }
+    .social-card-handle {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .social-card-desc {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .85rem;
+      color: #666;
+      margin-top: .2rem;
+    }
+
+    .social-card-arrow {
+      font-size: 1.1rem;
+      color: #bbb;
+      flex-shrink: 0;
+    }
+
+    .connect-newsletter {
+      margin-top: 2.5rem;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 1.75rem 1.75rem;
+      text-align: center;
+    }
+    .connect-newsletter h2 {
+      font-family: 'Margin', serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      margin: 0 0 .5rem;
+    }
+    .connect-newsletter p {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .9rem;
+      color: rgba(255,255,255,.8);
+      margin: 0 0 1.25rem;
+      line-height: 1.6;
+    }
+    .connect-newsletter a {
+      display: inline-block;
+      background: var(--peach);
+      color: var(--navy);
+      font-family: 'Libre Franklin', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      padding: .65rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .18s;
+    }
+    .connect-newsletter a:hover { background: var(--gold); }
+
+    @media (min-width: 540px) {
+      .connect-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body data-page="connect">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="logo-bull">🐂</span>
+        <span class="logo-text">Durham<strong>Civic</strong>Hub</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">News</a>
+        <a href="meetings.html" class="nav-link">Meetings</a>
+        <a href="calendar.html" class="nav-link">Calendar</a>
+        <a href="budget.html" class="nav-link">Budget</a>
+        <a href="voting.html" class="nav-link">Voting</a>
+        <a href="connect.html" class="nav-link active">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="connect-hero">
+    <p class="connect-hero-eyebrow">Commissioner Nida Allam</p>
+    <h1>Stay Connected</h1>
+    <p>Follow Commissioner Allam on social media for updates on Durham County government, community events, and civic news.</p>
+  </section>
+
+  <!-- ── Social Cards ── -->
+  <main class="connect-main">
+    <div class="connect-grid">
+
+      <a class="social-card social-card--twitter"
+         href="https://x.com/NidaAllam"
+         target="_blank" rel="noopener">
+        <div class="social-icon">𝕏</div>
+        <div class="social-card-body">
+          <div class="social-card-platform">Twitter / X</div>
+          <div class="social-card-handle">@NidaAllam</div>
+          <div class="social-card-desc">Real-time updates &amp; civic commentary</div>
+        </div>
+        <span class="social-card-arrow">→</span>
+      </a>
+
+      <a class="social-card social-card--instagram"
+         href="https://www.instagram.com/nidaallam/"
+         target="_blank" rel="noopener">
+        <div class="social-icon">📷</div>
+        <div class="social-card-body">
+          <div class="social-card-platform">Instagram</div>
+          <div class="social-card-handle">@nidaallam</div>
+          <div class="social-card-desc">Photos from the community &amp; events</div>
+        </div>
+        <span class="social-card-arrow">→</span>
+      </a>
+
+      <a class="social-card social-card--facebook"
+         href="https://www.facebook.com/NidaAllamNC"
+         target="_blank" rel="noopener">
+        <div class="social-icon">f</div>
+        <div class="social-card-body">
+          <div class="social-card-platform">Facebook</div>
+          <div class="social-card-handle">NidaAllamNC</div>
+          <div class="social-card-desc">Community news &amp; announcements</div>
+        </div>
+        <span class="social-card-arrow">→</span>
+      </a>
+
+      <a class="social-card social-card--reddit"
+         href="https://www.reddit.com/user/NidaAllamNC/"
+         target="_blank" rel="noopener">
+        <div class="social-icon">🤖</div>
+        <div class="social-card-body">
+          <div class="social-card-platform">Reddit</div>
+          <div class="social-card-handle">u/NidaAllamNC</div>
+          <div class="social-card-desc">Durham community discussions</div>
+        </div>
+        <span class="social-card-arrow">→</span>
+      </a>
+
+      <a class="social-card social-card--bluesky"
+         href="https://bsky.app/profile/nidaallam.bsky.social"
+         target="_blank" rel="noopener">
+        <div class="social-icon">🦋</div>
+        <div class="social-card-body">
+          <div class="social-card-platform">Bluesky</div>
+          <div class="social-card-handle">@NidaAllam</div>
+          <div class="social-card-desc">Decentralized social updates</div>
+        </div>
+        <span class="social-card-arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- ── Newsletter / Contact callout ── -->
+    <div class="connect-newsletter">
+      <h2>Contact the Commissioner</h2>
+      <p>Have a question or concern about Durham County? Reach Commissioner Allam directly through the Durham County Board of Commissioners.</p>
+      <a href="https://www.dconc.gov/Board-of-Commissioners/Contact-the-Board" target="_blank" rel="noopener">Send a Message →</a>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bull">🐂</span>
+        <span>Durham Civic Hub</span>
+      </div>
+      <p class="footer-note">Created by Durham County Commissioner <strong style="color:#fff;">Nida Allam</strong> as a community resource hub to help residents find information about local government in one centralized space. Not an official government website. All links go to official sources.</p>
+      <p class="footer-note" style="margin-top:.5rem;">Inspired by Apex Town Councilmember Terry Mahaffey's <a href="https://peaknewsnetwork.org/" target="_blank" rel="noopener" style="color:var(--peach);">Peak News Network</a>.</p>
+      <nav class="footer-nav">
+        <a href="index.html">News</a>
+        <a href="meetings.html">Meetings</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
+        <a href="connect.html">Connect</a>
+        <a href="https://www.dconc.gov" target="_blank" rel="noopener">Durham County</a>
+        <a href="https://www.durhamnc.gov" target="_blank" rel="noopener">City of Durham</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
