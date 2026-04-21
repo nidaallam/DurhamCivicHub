@@ -1,11 +1,11 @@
 {
-  "updated": "2026-04-20",
+  "updated": "2026-04-21",
   "note": "Edit this file to add or update meetings. Status values: upcoming, minutes, cancelled.",
   "bodies": [
     {
       "id": "commissioners",
       "name": "Board of Commissioners",
-      "description": "Official body that adopts the county budget, sets the tax rate, and governs Durham County. Five elected commissioners. Meets regularly twice per month.",
+      "description": "Durham County's five elected commissioners set the property tax rate and adopt the county's annual operating budget. All meetings are open to the public.",
       "schedule": "2nd & 4th Monday of each month · 9:00 AM",
       "location": "200 E. Main St., Durham — Commissioners Chambers, Room 2A",
       "archiveUrl": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
@@ -67,9 +67,47 @@
       ]
     },
     {
+      "id": "city-council",
+      "name": "Durham City Council",
+      "description": "Durham's seven-member city council governs city operations, sets the city tax rate, and adopts the city budget. The mayor and six council members are elected at large. Meetings are livestreamed and archived on the city website.",
+      "schedule": "1st & 3rd Monday of each month · 7:00 PM",
+      "location": "Durham City Hall, 101 City Hall Plaza",
+      "archiveUrl": "https://www.durhamnc.gov/1338/City-Council",
+      "meetings": [
+        {
+          "date": "2026-05-04",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda", "url": "https://www.durhamnc.gov/1338/City-Council", "primary": true },
+            { "label": "Live Stream", "url": "https://www.youtube.com/user/CityofDurhamNC" },
+            { "label": "Public Comment", "url": "https://www.durhamnc.gov/1338/City-Council" }
+          ]
+        },
+        {
+          "date": "2026-04-20",
+          "type": "Work Session",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.durhamnc.gov/1338/City-Council", "primary": true },
+            { "label": "Video", "url": "https://www.youtube.com/user/CityofDurhamNC" }
+          ]
+        },
+        {
+          "date": "2026-04-07",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.durhamnc.gov/1338/City-Council", "primary": true },
+            { "label": "Video", "url": "https://www.youtube.com/user/CityofDurhamNC" }
+          ]
+        }
+      ]
+    },
+    {
       "id": "dps",
       "name": "DPS Board of Education",
-      "description": "Elected board governing Durham Public Schools — 33,000+ students, 56 campuses. Sets school policy, approves the DPS budget, and hires the superintendent.",
+      "description": "Seven elected board members who govern Durham Public Schools. DPS serves about 32,000 students at 53 schools countywide. The board sets district policy, approves the annual budget, and selects the superintendent.",
       "schedule": "3rd Thursday of each month · 5:30 PM",
       "location": "511 Cleveland St., Durham",
       "archiveUrl": "https://www.dpsnc.net/domain/133",
@@ -104,7 +142,7 @@
     {
       "id": "planning",
       "name": "City-County Planning Commission",
-      "description": "Joint city-county body that reviews land use, zoning, and development applications. Makes recommendations to city council and county commissioners.",
+      "description": "A joint city-county body that reviews land use changes, rezonings, and development applications. It forwards recommendations to both Durham City Council and the Board of Commissioners.",
       "schedule": "4th Wednesday of each month · 5:00 PM",
       "location": "Durham City Hall, 101 City Hall Plaza",
       "archiveUrl": "https://www.durhamnc.gov/579/Planning-Commission",
@@ -128,19 +166,45 @@
       ]
     },
     {
+      "id": "board-of-adjustment",
+      "name": "Board of Adjustment",
+      "description": "Hears appeals of zoning decisions and grants variances from zoning requirements. Decisions are quasi-judicial and final unless appealed to Superior Court.",
+      "schedule": "3rd Tuesday of each month · 5:30 PM",
+      "location": "Durham City Hall, 101 City Hall Plaza",
+      "archiveUrl": "https://www.durhamnc.gov/580/Board-of-Adjustment",
+      "meetings": [
+        {
+          "date": "2026-05-19",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Agenda", "url": "https://www.durhamnc.gov/580/Board-of-Adjustment", "primary": true }
+          ]
+        },
+        {
+          "date": "2026-04-15",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Minutes", "url": "https://www.durhamnc.gov/580/Board-of-Adjustment", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
       "id": "mental-health",
       "name": "Mental Health Advisory Board",
-      "description": "County advisory board that provides guidance on mental health, substance use, and developmental disability services delivered through DHHS.",
+      "description": "A county advisory board that guides Durham DHHS on mental health, substance use disorder, and intellectual and developmental disability services.",
       "schedule": "1st Tuesday of each month · 4:00 PM",
       "location": "414 E. Main St., Durham",
-      "archiveUrl": "https://www.dconc.gov",
+      "archiveUrl": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
       "meetings": [
         {
           "date": "2026-05-05",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Details", "url": "https://www.dconc.gov", "primary": true }
+            { "label": "Details", "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees", "primary": true }
           ]
         },
         {
@@ -148,7 +212,33 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Details", "url": "https://www.dconc.gov", "primary": true }
+            { "label": "Details", "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "housing-authority",
+      "name": "Durham Housing Authority Board",
+      "description": "Governs the Durham Housing Authority, which owns and manages public housing and administers federal housing assistance programs for low-income residents.",
+      "schedule": "4th Thursday of each month · 4:00 PM",
+      "location": "330 E. Main St., Durham",
+      "archiveUrl": "https://www.durhamhousingauthority.org",
+      "meetings": [
+        {
+          "date": "2026-04-23",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            { "label": "Details", "url": "https://www.durhamhousingauthority.org", "primary": true }
+          ]
+        },
+        {
+          "date": "2026-03-26",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            { "label": "Details", "url": "https://www.durhamhousingauthority.org", "primary": true }
           ]
         }
       ]

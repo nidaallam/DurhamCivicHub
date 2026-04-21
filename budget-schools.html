@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Durham Public Schools Budget – Durham Civic Hub</title>
+  <meta name="description" content="Durham Public Schools FY2026-27 recommended budget — funding sources, department spending, the $7M+ state funding gap, and how residents can participate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .budget-breadcrumb {
+      font-size: .85rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    .budget-breadcrumb a { color: var(--teal, #207C91); text-decoration: none; }
+    .budget-breadcrumb a:hover { text-decoration: underline; }
+    .funding-source-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    .funding-source-card {
+      background: #fff;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+    }
+    .funding-source-card-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--teal, #207C91);
+      margin-bottom: .4rem;
+    }
+    .funding-source-card-amount {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy, #262E4F);
+      line-height: 1.1;
+      margin-bottom: .35rem;
+    }
+    .funding-source-card-pct {
+      font-size: .85rem;
+      color: #6b7280;
+      margin-bottom: .6rem;
+    }
+    .funding-source-card-desc {
+      font-size: .85rem;
+      color: #374151;
+      line-height: 1.55;
+    }
+    .alert-budget {
+      background: #fef9ec;
+      border: 1.5px solid #f5c842;
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+    .alert-budget strong { color: var(--navy, #262E4F); }
+    .doc-download-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: #fff;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: box-shadow .18s;
+    }
+    .doc-download-card:hover { box-shadow: 0 4px 16px rgba(38,46,79,.09); }
+    .doc-download-icon { font-size: 2rem; flex-shrink: 0; margin-top: .1rem; }
+    .doc-download-info h3 { margin: 0 0 .25rem; font-size: 1rem; font-weight: 600; color: var(--navy, #262E4F); }
+    .doc-download-info p { margin: 0 0 .5rem; font-size: .875rem; color: #4b5563; }
+    .doc-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--teal, #207C91);
+      text-decoration: none;
+    }
+    .doc-download-btn:hover { text-decoration: underline; }
+  </style>
+</head>
+<body data-page="budget">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="logo-bull">🐂</span>
+        <span class="logo-text">Durham<strong>Civic</strong>Hub</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">News</a>
+        <a href="meetings.html" class="nav-link">Meetings</a>
+        <a href="calendar.html" class="nav-link">Calendar</a>
+        <a href="budget.html" class="nav-link active">Budget</a>
+        <a href="voting.html" class="nav-link">Voting</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero budget-page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Durham Public Schools · Fiscal Year 2026–27</p>
+      <h1 class="page-hero-title">DPS Budget</h1>
+      <p class="page-hero-sub">$412.2M county funding request · $7M+ state funding gap · 32,000 students · 53 schools</p>
+      <div class="hero-cta-row">
+        <a href="https://www.dpsnc.net/domain/133" target="_blank" rel="noopener" class="hero-btn hero-btn--primary">Board of Education</a>
+        <a href="https://go.boarddocs.com/nc/dpsnc/Board.nsf/files/DSJR666B4007/$file/Corrected_2026-2027%20Recommended%20Budget.pdf" target="_blank" rel="noopener" class="hero-btn hero-btn--outline">FY2027 Budget PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main ── -->
+  <main class="site-main site-main--full">
+    <div class="inner-content">
+
+      <p class="budget-breadcrumb"><a href="budget.html">← All Budgets</a> / Durham Public Schools</p>
+
+      <!-- State Funding Alert -->
+      <div class="alert-budget">
+        <strong>⚠️ State Funding Gap:</strong> The NC state budget for FY2026–27 includes a projected shortfall of more than <strong>$7 million</strong> for DPS — the gap between what the state allocates and what it costs to maintain current staffing. Without county or federal backfill, roughly <strong>61 positions</strong> could be at risk. The DPS Board of Education voted to request $412.2M from Durham County to help cover the gap and avoid layoffs.
+      </div>
+
+      <!-- At-a-Glance Stats -->
+      <section class="budget-stats">
+        <div class="budget-stat">
+          <span class="budget-stat-num">$412.2M</span>
+          <span class="budget-stat-label">FY2027 County Funding Request</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">+6.2%</span>
+          <span class="budget-stat-label">Increase from FY2026</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">$7M+</span>
+          <span class="budget-stat-label">State Funding Shortfall</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">61</span>
+          <span class="budget-stat-label">Positions at Risk</span>
+        </div>
+      </section>
+
+      <!-- How DPS is Funded -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">How DPS Gets Funded</h2>
+        <p class="budget-section-sub">Durham Public Schools receives funding from three separate sources. Each has its own rules for what the money can pay for.</p>
+        <div class="funding-source-grid">
+          <div class="funding-source-card">
+            <div class="funding-source-card-label">State of North Carolina</div>
+            <div class="funding-source-card-amount">~61%</div>
+            <div class="funding-source-card-pct">Largest single source</div>
+            <div class="funding-source-card-desc">State funds pay for most teacher salaries, using a student allotment formula. The NC General Assembly sets the amount. When the state underfunds or cuts allocations, local taxpayers are often asked to make up the difference.</div>
+          </div>
+          <div class="funding-source-card">
+            <div class="funding-source-card-label">Durham County</div>
+            <div class="funding-source-card-amount">$412.2M</div>
+            <div class="funding-source-card-pct">FY2027 request · ~33% of total</div>
+            <div class="funding-source-card-desc">County funds supplement state allocations and pay for many local priorities: additional teachers, mental health staff, facilities maintenance, and programs the state doesn't cover. The Board of Commissioners approves this amount each June.</div>
+          </div>
+          <div class="funding-source-card">
+            <div class="funding-source-card-label">Federal Grants</div>
+            <div class="funding-source-card-amount">~6%</div>
+            <div class="funding-source-card-pct">Title I, IDEA, and others</div>
+            <div class="funding-source-card-desc">Federal funds primarily support students with disabilities (IDEA), low-income schools (Title I), and school nutrition. These grants are tied to specific uses and cannot replace state or county funding.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Budget Documents -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Budget Documents</h2>
+
+        <div class="doc-download-card">
+          <div class="doc-download-icon">📘</div>
+          <div class="doc-download-info">
+            <h3>FY2026–27 Recommended Budget</h3>
+            <p>Superintendent's recommended budget presented to the DPS Board of Education. Includes staffing plan, revenue projections by source, and program priorities.</p>
+            <a class="doc-download-btn" href="https://go.boarddocs.com/nc/dpsnc/Board.nsf/files/DSJR666B4007/$file/Corrected_2026-2027%20Recommended%20Budget.pdf" target="_blank" rel="noopener">Download PDF →</a>
+          </div>
+        </div>
+
+        <div class="doc-download-card">
+          <div class="doc-download-icon">📋</div>
+          <div class="doc-download-info">
+            <h3>Board of Education Meeting Records</h3>
+            <p>All DPS Board agendas, minutes, and supporting documents are posted through BoardDocs.</p>
+            <a class="doc-download-btn" href="https://www.dpsnc.net/domain/133" target="_blank" rel="noopener">Board of Education Page →</a>
+          </div>
+        </div>
+
+        <div class="doc-download-card">
+          <div class="doc-download-icon">📊</div>
+          <div class="doc-download-info">
+            <h3>Comprehensive Annual Financial Report</h3>
+            <p>DPS publishes an annual audited financial report covering all funds and revenue sources.</p>
+            <a class="doc-download-btn" href="https://www.dpsnc.net" target="_blank" rel="noopener">DPS Website →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spending by Area -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">How the Money Is Spent</h2>
+        <p class="budget-section-sub">FY2026–27 recommended budget — all funds combined (approximate)</p>
+
+        <div class="rev-row">
+          <div class="rev-label">Instruction (Teachers &amp; Aides)</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:56.4%"></div></div>
+          <div class="rev-pct">56.4%</div>
+          <div class="rev-amt">$437.7M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Support Services (Principals, Counselors, Nurses)</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:20.1%"></div></div>
+          <div class="rev-pct">20.1%</div>
+          <div class="rev-amt">$156.0M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Operations &amp; Maintenance</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:10.2%"></div></div>
+          <div class="rev-pct">10.2%</div>
+          <div class="rev-amt">$79.1M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Transportation</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:6.0%"></div></div>
+          <div class="rev-pct">6.0%</div>
+          <div class="rev-amt">$46.6M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Central Administration</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:4.5%"></div></div>
+          <div class="rev-pct">4.5%</div>
+          <div class="rev-amt">$34.9M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Other Programs &amp; Reserves</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:2.8%"></div></div>
+          <div class="rev-pct">2.8%</div>
+          <div class="rev-amt">$21.7M</div>
+        </div>
+
+        <p class="budget-table-note">* Spending breakdown is approximate and based on the recommended budget document. See the <a href="https://go.boarddocs.com/nc/dpsnc/Board.nsf/files/DSJR666B4007/$file/Corrected_2026-2027%20Recommended%20Budget.pdf" target="_blank" rel="noopener">official document</a> for precise figures. All-funds total includes county, state, and federal dollars.</p>
+      </section>
+
+      <!-- Budget Calendar -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">DPS Budget Calendar — FY2026–27</h2>
+        <div class="timeline">
+          <div class="timeline-step timeline-step--done">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Mar 2026</span>
+              <span class="timeline-label">Superintendent Recommended Budget Presented to Board</span>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--done">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 17</span>
+              <span class="timeline-label">DPS Board of Education Reviews &amp; Approves County Budget Request</span>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 24</span>
+              <span class="timeline-label">Durham County Public Hearing on FY2027 Budget · 7:00 PM</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jun 2</span>
+              <span class="timeline-label">Durham County BOCC Budget Adoption — Sets DPS County Allocation</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jun 2026</span>
+              <span class="timeline-label">DPS Board Adopts Final Budget After County Allocation Is Confirmed</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jul 1</span>
+              <span class="timeline-label">New Fiscal Year Begins</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to Participate -->
+      <section class="budget-section budget-section--cta">
+        <h2 class="budget-section-title">How to Weigh In</h2>
+        <div class="participate-grid">
+          <div class="participate-card">
+            <div class="participate-icon">🎤</div>
+            <h3>Speak at the County Hearing</h3>
+            <p>The county controls how much DPS receives. The public hearing on the county budget is <strong>April 24 at 7:00 PM</strong> — 200 E. Main St.</p>
+            <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener" class="participate-link">Sign Up to Speak →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">🏫</div>
+            <h3>Attend a DPS Board Meeting</h3>
+            <p>The Board of Education meets the 3rd Thursday of each month at 5:30 PM at 511 Cleveland St. Public comment is taken at each meeting.</p>
+            <a href="https://www.dpsnc.net/domain/133" target="_blank" rel="noopener" class="participate-link">Board of Education →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">✍️</div>
+            <h3>Contact County Commissioners</h3>
+            <p>Commissioners set the county property tax rate and decide how much goes to DPS. Contact them directly to share your priorities.</p>
+            <a href="https://www.dconc.gov/Board-of-Commissioners" target="_blank" rel="noopener" class="participate-link">Board of Commissioners →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">📄</div>
+            <h3>Read the Budget Document</h3>
+            <p>The full recommended budget includes staffing details, program costs, and revenue projections by source.</p>
+            <a href="https://go.boarddocs.com/nc/dpsnc/Board.nsf/files/DSJR666B4007/$file/Corrected_2026-2027%20Recommended%20Budget.pdf" target="_blank" rel="noopener" class="participate-link">Download PDF →</a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.inner-content -->
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bull">🐂</span>
+        <span>Durham Civic Hub</span>
+      </div>
+      <p class="footer-note">Independent civic resource for Durham County, NC. Not an official government website. Links go to official sources.</p>
+      <nav class="footer-nav">
+        <a href="index.html">News</a>
+        <a href="meetings.html">Meetings</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
+        <a href="https://www.dconc.gov" target="_blank" rel="noopener">Durham County</a>
+        <a href="https://www.durhamnc.gov" target="_blank" rel="noopener">City of Durham</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

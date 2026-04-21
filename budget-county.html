@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Durham County Budget – Durham Civic Hub</title>
+  <meta name="description" content="Durham County FY2025-26 adopted budget and FY2027 proposed budget — revenue sources, department spending, interactive dashboard, and public participation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .pbi-wrap {
+      position: relative;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid #e5e7eb;
+      background: #f3f4f6;
+    }
+    .pbi-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .pbi-caption {
+      padding: .6rem 1rem;
+      font-size: .8rem;
+      color: #6b7280;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--teal, #207C91);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .budget-breadcrumb {
+      font-size: .85rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    .budget-breadcrumb a { color: var(--teal, #207C91); text-decoration: none; }
+    .budget-breadcrumb a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body data-page="budget">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="logo-bull">🐂</span>
+        <span class="logo-text">Durham<strong>Civic</strong>Hub</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">News</a>
+        <a href="meetings.html" class="nav-link">Meetings</a>
+        <a href="calendar.html" class="nav-link">Calendar</a>
+        <a href="budget.html" class="nav-link active">Budget</a>
+        <a href="voting.html" class="nav-link">Voting</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero budget-page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Durham County · Fiscal Year 2025–26 Adopted / FY2027 Proposed</p>
+      <h1 class="page-hero-title">Durham County Budget</h1>
+      <p class="page-hero-sub">$689.7M adopted General Fund · FY2027 proposed at $726.4M · Public hearing April 24 · Vote June 2</p>
+      <div class="hero-cta-row">
+        <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener" class="hero-btn hero-btn--primary">Submit Public Comment</a>
+        <a href="https://www.dconc.gov/Budget-and-Management-Services" target="_blank" rel="noopener" class="hero-btn hero-btn--outline">Official Budget Docs</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main ── -->
+  <main class="site-main site-main--full">
+    <div class="inner-content">
+
+      <p class="budget-breadcrumb"><a href="budget.html">← All Budgets</a> / Durham County</p>
+
+      <!-- At-a-Glance Stats -->
+      <section class="budget-stats">
+        <div class="budget-stat">
+          <span class="budget-stat-num">$689.7M</span>
+          <span class="budget-stat-label">FY2026 Adopted General Fund</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">$726.4M</span>
+          <span class="budget-stat-label">FY2027 Proposed Budget</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">+4.8%</span>
+          <span class="budget-stat-label">Proposed Increase</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">Apr 24</span>
+          <span class="budget-stat-label">Public Hearing Date</span>
+        </div>
+      </section>
+
+      <!-- Interactive Dashboard -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Budget Dashboard</h2>
+        <p class="budget-section-sub">Interactive dashboard from Durham County — explore spending by department, revenue trends, and more.</p>
+        <div class="pbi-wrap">
+          <iframe
+            title="Durham County Budget in Brief"
+            src="https://data-dconc.org/dashboards/budget-in-brief"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+          <div class="pbi-caption">Source: Durham County data-dconc.org · Budget in Brief dashboard · Opens in this page</div>
+        </div>
+        <p style="margin-top:.75rem; font-size:.85rem; color:#6b7280;">If the dashboard does not load, view it directly at <a href="https://data-dconc.org/dashboards/budget-in-brief" target="_blank" rel="noopener">data-dconc.org/dashboards/budget-in-brief</a>.</p>
+      </section>
+
+      <!-- Revenue Breakdown -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Where the Money Comes From</h2>
+        <p class="budget-section-sub">FY2027 proposed revenue sources — total $726.4 million</p>
+        <div class="rev-row">
+          <div class="rev-label">Property Tax</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:54.8%"></div></div>
+          <div class="rev-pct">54.8%</div>
+          <div class="rev-amt">$398.2M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">State &amp; Federal Aid</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:22.5%"></div></div>
+          <div class="rev-pct">22.5%</div>
+          <div class="rev-amt">$163.4M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Sales Tax</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:12.0%"></div></div>
+          <div class="rev-pct">12.0%</div>
+          <div class="rev-amt">$87.3M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Fees &amp; Other</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:10.7%"></div></div>
+          <div class="rev-pct">10.7%</div>
+          <div class="rev-amt">$77.5M</div>
+        </div>
+      </section>
+
+      <!-- Department Table -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Spending by Department</h2>
+        <p class="budget-section-sub">FY2026 adopted vs. FY2027 requested amounts (in millions)</p>
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Department / Area</th>
+              <th class="num">FY2026 Adopted</th>
+              <th class="num">FY2027 Requested</th>
+              <th class="num">Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Durham Public Schools</td>
+              <td class="num">$388.1M</td>
+              <td class="num">$412.2M</td>
+              <td class="num change positive">+6.2%</td>
+            </tr>
+            <tr>
+              <td>Health &amp; Human Services</td>
+              <td class="num">$98.4M</td>
+              <td class="num">$104.1M</td>
+              <td class="num change positive">+5.8%</td>
+            </tr>
+            <tr>
+              <td>Sheriff / Courts</td>
+              <td class="num">$72.6M</td>
+              <td class="num">$75.9M</td>
+              <td class="num change positive">+4.5%</td>
+            </tr>
+            <tr>
+              <td>Debt Service</td>
+              <td class="num">$58.3M</td>
+              <td class="num">$61.0M</td>
+              <td class="num change positive">+4.6%</td>
+            </tr>
+            <tr>
+              <td>General Government</td>
+              <td class="num">$34.8M</td>
+              <td class="num">$36.2M</td>
+              <td class="num change positive">+4.0%</td>
+            </tr>
+            <tr>
+              <td>Parks &amp; Recreation</td>
+              <td class="num">$22.1M</td>
+              <td class="num">$23.4M</td>
+              <td class="num change positive">+5.9%</td>
+            </tr>
+            <tr>
+              <td>Library</td>
+              <td class="num">$14.2M</td>
+              <td class="num">$14.9M</td>
+              <td class="num change positive">+4.9%</td>
+            </tr>
+            <tr>
+              <td>Other / Reserves</td>
+              <td class="num">$17.9M</td>
+              <td class="num">$18.7M</td>
+              <td class="num change positive">+4.5%</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td class="num"><strong>$706.4M</strong></td>
+              <td class="num"><strong>$746.4M</strong></td>
+              <td class="num"></td>
+            </tr>
+          </tfoot>
+        </table>
+        <p class="budget-table-note">* FY2027 figures are preliminary estimates based on early budget discussions and are subject to change. The County Manager's official recommendation is scheduled for May 19. Final adopted budget vote is June 2, 2026. See <a href="https://www.dconc.gov/Budget-and-Management-Services" target="_blank" rel="noopener">dconc.gov</a> for official figures.</p>
+      </section>
+
+      <!-- Budget Timeline -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">FY2027 Budget Calendar</h2>
+        <div class="timeline">
+          <div class="timeline-step timeline-step--done">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 10</span>
+              <span class="timeline-label">Public Input Period Opens</span>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 24</span>
+              <span class="timeline-label">Public Hearing — FY2027 Budget · 7:00 PM · Commissioners Chambers</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 28</span>
+              <span class="timeline-label">BOCC Budget Work Session · 9:00 AM</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">May 19</span>
+              <span class="timeline-label">County Manager Budget Recommendation · 9:00 AM</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jun 2</span>
+              <span class="timeline-label">Budget Adoption Vote · 9:00 AM</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jul 1</span>
+              <span class="timeline-label">New Fiscal Year Begins</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to Participate -->
+      <section class="budget-section budget-section--cta">
+        <h2 class="budget-section-title">How to Weigh In</h2>
+        <div class="participate-grid">
+          <div class="participate-card">
+            <div class="participate-icon">✍️</div>
+            <h3>Submit Written Comment</h3>
+            <p>Submit comments online or in writing to the Board of Commissioners through April 24.</p>
+            <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener" class="participate-link">Submit a Comment →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">🎤</div>
+            <h3>Speak at the Public Hearing</h3>
+            <p>Sign up to testify at the public hearing on <strong>April 24 at 7:00 PM</strong> — 200 E. Main St., Commissioners Chambers.</p>
+            <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener" class="participate-link">Sign Up to Speak →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">📺</div>
+            <h3>Watch the Meetings</h3>
+            <p>All BOCC meetings are live-streamed on YouTube. The April 28 work session and the May 19 County Manager presentation lead up to the June 2 vote.</p>
+            <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener" class="participate-link">Watch Live Stream →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">📄</div>
+            <h3>Review the Documents</h3>
+            <p>Download the proposed budget, revenue projections, and department requests from the county website.</p>
+            <a href="https://www.dconc.gov/Budget-and-Management-Services" target="_blank" rel="noopener" class="participate-link">Budget Documents →</a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.inner-content -->
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bull">🐂</span>
+        <span>Durham Civic Hub</span>
+      </div>
+      <p class="footer-note">Independent civic resource for Durham County, NC. Not an official government website. Links go to official sources.</p>
+      <nav class="footer-nav">
+        <a href="index.html">News</a>
+        <a href="meetings.html">Meetings</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
+        <a href="https://www.dconc.gov" target="_blank" rel="noopener">Durham County</a>
+        <a href="https://www.durhamnc.gov" target="_blank" rel="noopener">City of Durham</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

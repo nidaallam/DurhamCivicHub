@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City of Durham Budget – Durham Civic Hub</title>
+  <meta name="description" content="City of Durham FY2025-26 adopted budget — revenue sources, department spending, and public participation opportunities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .budget-breadcrumb {
+      font-size: .85rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    .budget-breadcrumb a { color: var(--teal, #207C91); text-decoration: none; }
+    .budget-breadcrumb a:hover { text-decoration: underline; }
+    .doc-download-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: #fff;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: box-shadow .18s;
+    }
+    .doc-download-card:hover { box-shadow: 0 4px 16px rgba(38,46,79,.09); }
+    .doc-download-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .doc-download-info h3 {
+      margin: 0 0 .25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy, #262E4F);
+    }
+    .doc-download-info p {
+      margin: 0 0 .5rem;
+      font-size: .875rem;
+      color: #4b5563;
+    }
+    .doc-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--teal, #207C91);
+      text-decoration: none;
+    }
+    .doc-download-btn:hover { text-decoration: underline; }
+    .budget-explainer {
+      background: #f8f9fb;
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 1rem;
+    }
+    .budget-explainer h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy, #262E4F);
+      margin: 0 0 .75rem;
+    }
+    .budget-explainer ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .budget-explainer li {
+      font-size: .9rem;
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: .4rem;
+    }
+  </style>
+</head>
+<body data-page="budget">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="logo-bull">🐂</span>
+        <span class="logo-text">Durham<strong>Civic</strong>Hub</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">News</a>
+        <a href="meetings.html" class="nav-link">Meetings</a>
+        <a href="calendar.html" class="nav-link">Calendar</a>
+        <a href="budget.html" class="nav-link active">Budget</a>
+        <a href="voting.html" class="nav-link">Voting</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero budget-page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">City of Durham · Fiscal Year 2025–26 Adopted</p>
+      <h1 class="page-hero-title">City of Durham Budget</h1>
+      <p class="page-hero-sub">$835.7M adopted total budget · Separate tax rate and budget from Durham County · Adopted each June by City Council</p>
+      <div class="hero-cta-row">
+        <a href="https://www.durhamnc.gov/1338/City-Council" target="_blank" rel="noopener" class="hero-btn hero-btn--primary">City Council Info</a>
+        <a href="https://www.durhamnc.gov/182/Finance" target="_blank" rel="noopener" class="hero-btn hero-btn--outline">Finance Department</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main ── -->
+  <main class="site-main site-main--full">
+    <div class="inner-content">
+
+      <p class="budget-breadcrumb"><a href="budget.html">← All Budgets</a> / City of Durham</p>
+
+      <!-- At-a-Glance Stats -->
+      <section class="budget-stats">
+        <div class="budget-stat">
+          <span class="budget-stat-num">$835.7M</span>
+          <span class="budget-stat-label">FY2026 Adopted Total Budget</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">$447.6M</span>
+          <span class="budget-stat-label">General Fund</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">$388.1M</span>
+          <span class="budget-stat-label">Enterprise &amp; Special Funds</span>
+        </div>
+        <div class="budget-stat">
+          <span class="budget-stat-num">Jun</span>
+          <span class="budget-stat-label">Annual Adoption Month</span>
+        </div>
+      </section>
+
+      <!-- Budget Documents -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Budget Documents</h2>
+        <p class="budget-section-sub">Official documents from the City of Durham Finance Department</p>
+
+        <div class="doc-download-card">
+          <div class="doc-download-icon">📘</div>
+          <div class="doc-download-info">
+            <h3>FY2025–26 Adopted Budget Book</h3>
+            <p>Full adopted budget document with revenue, expenditures, and department narratives. Adopted by City Council June 2025.</p>
+            <a class="doc-download-btn" href="https://www.durhamnc.gov/DocumentCenter/View/61856/FY26-COD-Adopted-Budget-Book" target="_blank" rel="noopener">Download PDF →</a>
+          </div>
+        </div>
+
+        <div class="doc-download-card">
+          <div class="doc-download-icon">📊</div>
+          <div class="doc-download-info">
+            <h3>Finance Department &amp; Budget Reports</h3>
+            <p>Quarterly financial reports, capital improvement program, and prior year budgets.</p>
+            <a class="doc-download-btn" href="https://www.durhamnc.gov/182/Finance" target="_blank" rel="noopener">Visit Finance Department →</a>
+          </div>
+        </div>
+
+        <div class="doc-download-card">
+          <div class="doc-download-icon">🏗️</div>
+          <div class="doc-download-info">
+            <h3>Capital Improvement Program</h3>
+            <p>Multi-year plan for infrastructure, facilities, and major equipment — parks, roads, utilities, and public safety buildings.</p>
+            <a class="doc-download-btn" href="https://www.durhamnc.gov/182/Finance" target="_blank" rel="noopener">View CIP Documents →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Revenue Breakdown -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Where the Money Comes From</h2>
+        <p class="budget-section-sub">FY2025–26 General Fund revenue sources — $447.6 million</p>
+
+        <div class="rev-row">
+          <div class="rev-label">Property Tax</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:49.2%"></div></div>
+          <div class="rev-pct">49.2%</div>
+          <div class="rev-amt">$220.2M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Sales Tax (Local Share)</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:17.8%"></div></div>
+          <div class="rev-pct">17.8%</div>
+          <div class="rev-amt">$79.7M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Fees &amp; Charges</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:14.3%"></div></div>
+          <div class="rev-pct">14.3%</div>
+          <div class="rev-amt">$64.0M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">State Shared Revenue</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:10.5%"></div></div>
+          <div class="rev-pct">10.5%</div>
+          <div class="rev-amt">$47.0M</div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Other / Transfers</div>
+          <div class="rev-bar-wrap"><div class="rev-bar" style="width:8.2%"></div></div>
+          <div class="rev-pct">8.2%</div>
+          <div class="rev-amt">$36.7M</div>
+        </div>
+
+        <p class="budget-table-note">* Revenue figures are approximate estimates based on the adopted FY2026 budget. See the <a href="https://www.durhamnc.gov/DocumentCenter/View/61856/FY26-COD-Adopted-Budget-Book" target="_blank" rel="noopener">official budget document</a> for precise amounts.</p>
+      </section>
+
+      <!-- Spending by Department -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Spending by Department</h2>
+        <p class="budget-section-sub">FY2025–26 General Fund expenditures by service area (approximate)</p>
+
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Service Area</th>
+              <th class="num">Amount</th>
+              <th class="num">Share</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Public Safety (Police &amp; Fire)</td>
+              <td class="num">$189.0M</td>
+              <td class="num">42.2%</td>
+            </tr>
+            <tr>
+              <td>Public Works &amp; Transportation</td>
+              <td class="num">$58.4M</td>
+              <td class="num">13.0%</td>
+            </tr>
+            <tr>
+              <td>Parks, Recreation &amp; Cultural</td>
+              <td class="num">$42.6M</td>
+              <td class="num">9.5%</td>
+            </tr>
+            <tr>
+              <td>General Government</td>
+              <td class="num">$38.9M</td>
+              <td class="num">8.7%</td>
+            </tr>
+            <tr>
+              <td>Planning &amp; Community Development</td>
+              <td class="num">$28.1M</td>
+              <td class="num">6.3%</td>
+            </tr>
+            <tr>
+              <td>Housing &amp; Neighborhood Services</td>
+              <td class="num">$24.7M</td>
+              <td class="num">5.5%</td>
+            </tr>
+            <tr>
+              <td>Debt Service</td>
+              <td class="num">$38.2M</td>
+              <td class="num">8.5%</td>
+            </tr>
+            <tr>
+              <td>Other / Reserves</td>
+              <td class="num">$27.7M</td>
+              <td class="num">6.2%</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><strong>General Fund Total</strong></td>
+              <td class="num"><strong>$447.6M</strong></td>
+              <td class="num"><strong>100%</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+        <p class="budget-table-note">* Spending figures are approximate and drawn from the FY2026 adopted budget document. See <a href="https://www.durhamnc.gov/DocumentCenter/View/61856/FY26-COD-Adopted-Budget-Book" target="_blank" rel="noopener">the official document</a> for full detail.</p>
+      </section>
+
+      <!-- How the City Budget Works -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">How the City Budget Works</h2>
+        <div class="budget-explainer">
+          <h3>City vs. County — Two Separate Budgets</h3>
+          <ul>
+            <li>The City of Durham and Durham County are separate governments with separate budgets and separate tax rates. If you live in the city limits, you pay both.</li>
+            <li>The <strong>city tax rate</strong> funds police, fire, public works, water and sewer, parks, and planning. The <strong>county tax rate</strong> funds schools, health services, the sheriff, courts, and social services.</li>
+            <li>The FY2026 city tax rate was <strong>55.77 cents per $100 of assessed value</strong>. The county rate was <strong>73.57 cents</strong>. Durham residents within city limits pay both.</li>
+            <li>The City Manager presents a recommended budget each spring. City Council holds public hearings in May and adopts the budget by June 30.</li>
+            <li>Enterprise funds — water, sewer, solid waste — are funded by fees, not taxes, and are budgeted separately from the General Fund.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Budget Calendar -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">City Budget Calendar — Typical Annual Cycle</h2>
+        <div class="timeline">
+          <div class="timeline-step timeline-step--done">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jan–Feb</span>
+              <span class="timeline-label">Department Budget Requests Submitted to City Manager</span>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--done">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Mar–Apr</span>
+              <span class="timeline-label">City Manager Budget Review &amp; Revenue Projections</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">May</span>
+              <span class="timeline-label">City Manager Recommended Budget Released · Public Hearings</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jun</span>
+              <span class="timeline-label">City Council Budget Adoption Vote</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jul 1</span>
+              <span class="timeline-label">New Fiscal Year Begins</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:#6b7280;margin-top:1rem;">For FY2027-specific dates, check <a href="https://www.durhamnc.gov/1338/City-Council" target="_blank" rel="noopener">the City Council page</a> for announcements.</p>
+      </section>
+
+      <!-- How to Participate -->
+      <section class="budget-section budget-section--cta">
+        <h2 class="budget-section-title">How to Weigh In</h2>
+        <div class="participate-grid">
+          <div class="participate-card">
+            <div class="participate-icon">🎤</div>
+            <h3>Speak at City Council</h3>
+            <p>Durham City Council meets the 1st and 3rd Monday of each month at 7 PM. The public comment period is open at every regular meeting.</p>
+            <a href="https://www.durhamnc.gov/1338/City-Council" target="_blank" rel="noopener" class="participate-link">City Council Info →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">✍️</div>
+            <h3>Contact Your Council Member</h3>
+            <p>Durham's mayor and six council members are elected at large. Contact them directly or through the City Clerk's office.</p>
+            <a href="https://www.durhamnc.gov/1338/City-Council" target="_blank" rel="noopener" class="participate-link">Council Members →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">📺</div>
+            <h3>Watch City Council Meetings</h3>
+            <p>City Council meetings are livestreamed and archived on YouTube.</p>
+            <a href="https://www.youtube.com/user/CityofDurhamNC" target="_blank" rel="noopener" class="participate-link">Watch on YouTube →</a>
+          </div>
+          <div class="participate-card">
+            <div class="participate-icon">📄</div>
+            <h3>Review Budget Documents</h3>
+            <p>Download adopted budgets, capital improvement plans, and financial reports from the Finance Department.</p>
+            <a href="https://www.durhamnc.gov/182/Finance" target="_blank" rel="noopener" class="participate-link">Finance Department →</a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.inner-content -->
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bull">🐂</span>
+        <span>Durham Civic Hub</span>
+      </div>
+      <p class="footer-note">Independent civic resource for Durham County, NC. Not an official government website. Links go to official sources.</p>
+      <nav class="footer-nav">
+        <a href="index.html">News</a>
+        <a href="meetings.html">Meetings</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
+        <a href="https://www.dconc.gov" target="_blank" rel="noopener">Durham County</a>
+        <a href="https://www.durhamnc.gov" target="_blank" rel="noopener">City of Durham</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voting &amp; Elected Officials – Durham Civic Hub</title>
+  <meta name="description" content="Register to vote, check your registration, find your polling place, and get to know Durham County's elected officials." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Voter Tools ── */
+    .voter-tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .voter-tool-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .voter-tool-icon  { font-size: 1.75rem; }
+    .voter-tool-title { font-weight: 700; font-size: 1rem; color: var(--navy); }
+    .voter-tool-desc  { font-size: 0.85rem; color: var(--text-2); line-height: 1.55; flex: 1; }
+    .voter-tool-btn {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: background 0.15s;
+    }
+    .voter-tool-btn:hover { background: var(--navy); text-decoration: none; color: #fff; }
+    .boe-info {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .boe-info a { color: var(--teal); font-weight: 600; }
+
+    /* ── Officials ── */
+    .officials-section { padding: 2.5rem 0; }
+    .officials-group  { margin-bottom: 2.5rem; }
+    .officials-group-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .officials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1rem;
+    }
+    .official-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.18s, transform 0.18s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .official-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.1); transform: translateY(-2px); text-decoration: none; }
+    .official-photo-wrap {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg-subtle);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .official-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .official-initials {
+      width: 100%;
+      height: 100%;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .official-info {
+      padding: 0.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .official-name  { font-weight: 700; font-size: 0.875rem; color: var(--navy); line-height: 1.3; }
+    .official-title { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+    .official-party {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      display: inline-block;
+      margin-top: 0.2rem;
+      width: fit-content;
+    }
+    .party-d { background: #DBEAFE; color: #1D4ED8; }
+    .party-r { background: #FEE2E2; color: #B91C1C; }
+
+    .officials-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .voter-tool-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .voter-tool-grid { grid-template-columns: 1fr; }
+      .officials-grid  { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    }
+  </style>
+</head>
+<body data-page="voting">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="logo-bull">🐂</span>
+        <span class="logo-text">Durham<strong>Civic</strong>Hub</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html"   class="nav-link">News</a>
+        <a href="meetings.html" class="nav-link">Meetings</a>
+        <a href="calendar.html" class="nav-link">Calendar</a>
+        <a href="budget.html"  class="nav-link">Budget</a>
+        <a href="voting.html"  class="nav-link active">Voting</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Durham County, NC</p>
+      <h1 class="page-hero-title">Voting &amp; Elected Officials</h1>
+      <p class="page-hero-sub">Register to vote, find your polling place, and get to know the people who represent you.</p>
+    </div>
+  </div>
+
+  <main class="site-main site-main--full">
+    <div class="inner-content">
+
+      <!-- ── Voter Tools ── -->
+      <section class="budget-section">
+        <h2 class="budget-section-title">Voter Resources</h2>
+        <span class="budget-section-sub">All tools link to official NC State Board of Elections and Durham County Board of Elections pages.</span>
+
+        <div class="voter-tool-grid">
+
+          <div class="voter-tool-card">
+            <div class="voter-tool-icon">🗳️</div>
+            <div class="voter-tool-title">Register to Vote</div>
+            <p class="voter-tool-desc">Register online through the NC DMV voter registration portal, or in person at the Durham County Board of Elections.</p>
+            <a class="voter-tool-btn" href="https://www.ncdot.gov/dmv/offices-services/online/Pages/voter-registration-application.aspx" target="_blank" rel="noopener noreferrer">Register Online</a>
+          </div>
+
+          <div class="voter-tool-card">
+            <div class="voter-tool-icon">✅</div>
+            <div class="voter-tool-title">Check Your Registration</div>
+            <p class="voter-tool-desc">Look up your current voter registration status using the NC State Board of Elections voter lookup tool.</p>
+            <a class="voter-tool-btn" href="https://vt.ncsbe.gov/RegLkup/" target="_blank" rel="noopener noreferrer">Check Registration</a>
+          </div>
+
+          <div class="voter-tool-card">
+            <div class="voter-tool-icon">📍</div>
+            <div class="voter-tool-title">Find Your Polling Place</div>
+            <p class="voter-tool-desc">Enter your address to find your Election Day polling location in Durham County.</p>
+            <a class="voter-tool-btn" href="https://vt.ncsbe.gov/PPLkup/" target="_blank" rel="noopener noreferrer">Find Polling Place</a>
+          </div>
+
+          <div class="voter-tool-card">
+            <div class="voter-tool-icon">🗓️</div>
+            <div class="voter-tool-title">Early Voting Sites</div>
+            <p class="voter-tool-desc">Find early voting locations and hours for Durham County elections.</p>
+            <a class="voter-tool-btn" href="https://vt.ncsbe.gov/EVSite/" target="_blank" rel="noopener noreferrer">Early Voting Info</a>
+          </div>
+
+          <div class="voter-tool-card">
+            <div class="voter-tool-icon">📋</div>
+            <div class="voter-tool-title">Sample Ballot</div>
+            <p class="voter-tool-desc">View your sample ballot through the NC voter lookup tool. Search by name and select Durham County.</p>
+            <a class="voter-tool-btn" href="https://vt.ncsbe.gov/RegLkup/" target="_blank" rel="noopener noreferrer">View Sample Ballot</a>
+          </div>
+
+          <div class="voter-tool-card">
+            <div class="voter-tool-icon">📬</div>
+            <div class="voter-tool-title">Vote by Mail</div>
+            <p class="voter-tool-desc">Request an absentee ballot through the NC absentee ballot portal.</p>
+            <a class="voter-tool-btn" href="https://votebymail.ncsbe.gov/app/home" target="_blank" rel="noopener noreferrer">Request Absentee Ballot</a>
+          </div>
+
+        </div><!-- /.voter-tool-grid -->
+
+        <div class="boe-info">
+          <strong>Durham County Board of Elections</strong> &nbsp;·&nbsp;
+          3825 S. Roxboro St., Suite 101 &nbsp;·&nbsp;
+          (919) 560-0700 &nbsp;·&nbsp;
+          <a href="mailto:elections@dconc.gov">elections@dconc.gov</a> &nbsp;·&nbsp;
+          <a href="https://www.dcovotes.dconc.gov/" target="_blank" rel="noopener noreferrer">dcovotes.dconc.gov</a>
+        </div>
+      </section>
+
+      <!-- ── Elected Officials ── -->
+      <section class="budget-section officials-section">
+        <h2 class="budget-section-title">Your Elected Officials</h2>
+        <p class="officials-note">Durham County is served by elected officials at the federal, state, county, and city level. Click any card to visit their official page. Information verified from official sources as of April 2026.</p>
+
+        <!-- Federal -->
+        <div class="officials-group">
+          <div class="officials-group-label">Federal Representatives</div>
+          <div class="officials-grid">
+
+            <a class="official-card" href="https://foushee.house.gov/" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://foushee.house.gov/sites/evo-subsites/foushee.house.gov/files/evo-media-image/foushee-headshot-2023.jpg" alt="Valerie Foushee" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">VF</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Valerie Foushee</div>
+                <div class="official-title">U.S. Representative, NC-4</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.tillis.senate.gov/" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.tillis.senate.gov/sites/default/files/styles/large/public/2022-09/Tillis_Headshot.jpg" alt="Thom Tillis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">TT</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Thom Tillis</div>
+                <div class="official-title">U.S. Senator, NC (Senior)</div>
+                <span class="official-party party-r">Republican</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.budd.senate.gov/" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.budd.senate.gov/wp-content/uploads/2023/07/Budd_Ted-010423-JS7-031_V3-VERSION-2-819x1024-1.jpg" alt="Ted Budd" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">TB</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Ted Budd</div>
+                <div class="official-title">U.S. Senator, NC (Junior)</div>
+                <span class="official-party party-r">Republican</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- NC State -->
+        <div class="officials-group">
+          <div class="officials-group-label">NC State Legislature</div>
+          <div class="officials-grid">
+
+            <a class="official-card" href="https://ncleg.gov/Members/Biography/S/422" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://webservices.ncleg.gov/Members/MemberImage/S/422/Low" alt="Natalie Murdock" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">NM</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Natalie S. Murdock</div>
+                <div class="official-title">NC Senate, District 20</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://ncleg.gov/Members/Biography/S/452" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://webservices.ncleg.gov/Members/MemberImage/S/452/Low" alt="Sophia Chitlik" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">SC</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Sophia Chitlik</div>
+                <div class="official-title">NC Senate, District 22</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://ncleg.gov/Members/Biography/H/805" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://webservices.ncleg.gov/Members/MemberImage/H/805/Low" alt="B. Ray Jeffers" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">RJ</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">B. Ray Jeffers</div>
+                <div class="official-title">NC House, District 2</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://ncleg.gov/Members/Biography/H/765" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://webservices.ncleg.gov/Members/MemberImage/H/765/Low" alt="Vernetta Alston" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">VA</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Vernetta Alston</div>
+                <div class="official-title">NC House, District 29</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://ncleg.gov/Members/Biography/H/732" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://webservices.ncleg.gov/Members/MemberImage/H/732/Low" alt="Marcia Morey" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">MM</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Marcia Morey</div>
+                <div class="official-title">NC House, District 30</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://ncleg.gov/Members/Biography/H/742" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://webservices.ncleg.gov/Members/MemberImage/H/742/Low" alt="Zack Hawkins" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">ZH</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Zack Hawkins</div>
+                <div class="official-title">NC House, District 31</div>
+                <span class="official-party party-d">Democrat</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Durham County -->
+        <div class="officials-group">
+          <div class="officials-group-label">Durham County</div>
+          <div class="officials-grid">
+
+            <a class="official-card" href="https://dconc.gov/Board-of-Commissioners/Commissioners/Mike-Lee" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Images/DCo-Michael-Lee-LR-6394.jpg" alt="Dr. Michael Lee" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">ML</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Dr. Michael Lee</div>
+                <div class="official-title">Commissioner, Chair</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://dconc.gov/Board-of-Commissioners/Commissioners/Nida-Allam" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Images/DCo-Nida-Allam-LR-6487.jpg" alt="Nida Allam" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">NA</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Nida Allam</div>
+                <div class="official-title">Commissioner, Vice Chair</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://dconc.gov/Board-of-Commissioners/Commissioners/Michelle-Burton" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Images/DCo-Michelle-Burton-LR-6371.jpg" alt="Michelle Burton" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">MB</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Michelle Burton</div>
+                <div class="official-title">Commissioner</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://dconc.gov/Board-of-Commissioners/Commissioners/Stephen-Valentine" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Images/DCo-Stephen-Valentine-LR-6426.jpg" alt="Stephen Valentine" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">SV</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Stephen J. Valentine</div>
+                <div class="official-title">Commissioner</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://dconc.gov/Board-of-Commissioners/Commissioners/Wendy-Jacobs" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Images/DCo-Wendy-Jacobs.jpg" alt="Wendy Jacobs" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">WJ</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Wendy Jacobs</div>
+                <div class="official-title">Commissioner</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamsheriff.com/" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <div class="official-initials" style="display:flex">CB</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Clarence F. Birkhead</div>
+                <div class="official-title">Sheriff</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.ncdistrictattorney.org/district-attorney/prosecutorial-district-16/" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://nccoda-14072-content.s3.amazonaws.com/wp-content/uploads/2023/05/12083932/Deberry-Satana--475x660.jpg" alt="Satana Deberry" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">SD</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Satana Deberry</div>
+                <div class="official-title">District Attorney, 16th District</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://dconc.gov/Clerk-of-the-Superior-Court" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Images/Aminah-M.-Thompson.png" alt="Aminah M. Thompson" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">AT</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Aminah M. Thompson</div>
+                <div class="official-title">Clerk of Superior Court</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://dconc.gov/Register-of-Deeds" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://dconc.gov/Register-of-Deeds1/Images/Sharon-Davis_Headshot.jpg" alt="Sharon A. Davis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">SD</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Sharon A. Davis</div>
+                <div class="official-title">Register of Deeds</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- City of Durham -->
+        <div class="officials-group">
+          <div class="officials-group-label">City of Durham</div>
+          <div class="officials-grid">
+
+            <a class="official-card" href="https://www.durhamnc.gov/1329/About-the-Mayor" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=41709" alt="Leonardo Williams" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">LW</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Leonardo Williams</div>
+                <div class="official-title">Mayor</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamnc.gov/3286/Javiera-Caballero" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=53769" alt="Javiera Caballero" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">JC</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Javiera Caballero</div>
+                <div class="official-title">Mayor Pro Tempore, At-Large</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamnc.gov/4797/Nate-Baker" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=53762" alt="Nate Baker" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">NB</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Nate Baker</div>
+                <div class="official-title">Council Member, At-Large</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamnc.gov/1661/Carl-Rist" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=53761" alt="Carl Rist" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">CR</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Carl Rist</div>
+                <div class="official-title">Council Member, At-Large</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamnc.gov/5483/Matt-Kopac" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=62990" alt="Matt Kopac" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">MK</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Matt Kopac</div>
+                <div class="official-title">Council Member, Ward 1</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamnc.gov/5484/Shanetta-Burris" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=62991" alt="Shanetta Burris" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">SB</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Shanetta Burris</div>
+                <div class="official-title">Council Member, Ward 2</div>
+              </div>
+            </a>
+
+            <a class="official-card" href="https://www.durhamnc.gov/4664/Chelsea-Cook" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap">
+                <img class="official-photo" src="https://www.durhamnc.gov/ImageRepository/Document?documentId=54505" alt="Chelsea Cook" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="official-initials">CC</div>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Chelsea Cook</div>
+                <div class="official-title">Council Member, Ward 3</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- DPS Board -->
+        <div class="officials-group">
+          <div class="officials-group-label">Durham Public Schools Board of Education</div>
+          <div class="officials-grid">
+            <a class="official-card" href="https://www.dpsnc.net/domain/133" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap" style="background:var(--navy);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:2.5rem">🏫</span>
+              </div>
+              <div class="official-info">
+                <div class="official-name">DPS Board of Education</div>
+                <div class="official-title">7 elected members · dpsnc.net</div>
+              </div>
+            </a>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.75rem;">Visit <a href="https://www.dpsnc.net/domain/133" target="_blank" rel="noopener noreferrer">dpsnc.net</a> for the full board member roster with bios and contact information.</p>
+        </div>
+
+        <!-- Durham Board of Elections -->
+        <div class="officials-group">
+          <div class="officials-group-label">Durham Board of Elections</div>
+          <div class="officials-grid">
+            <a class="official-card" href="https://www.dcovotes.dconc.gov/" target="_blank" rel="noopener noreferrer">
+              <div class="official-photo-wrap" style="background:var(--teal);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:2.5rem">🗳️</span>
+              </div>
+              <div class="official-info">
+                <div class="official-name">Durham County Board of Elections</div>
+                <div class="official-title">dcovotes.dconc.gov</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div><!-- /.inner-content -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bull">🐂</span>
+        <span>Durham Civic Hub</span>
+      </div>
+      <p class="footer-note">Independent civic resource for Durham County, NC. Not an official government website. Links go to official sources.</p>
+      <nav class="footer-nav">
+        <a href="index.html">News</a>
+        <a href="meetings.html">Meetings</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
+        <a href="https://www.dconc.gov" target="_blank" rel="noopener noreferrer">Durham County</a>
+        <a href="https://www.durhamnc.gov" target="_blank" rel="noopener noreferrer">City of Durham</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

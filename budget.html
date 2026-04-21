@@ -2,13 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FY2027 Budget – Durham Civic Hub</title>
-  <meta name="description" content="Durham County FY2027 proposed budget breakdown — revenue sources, department spending, and the budget calendar for residents." />
+  <title>Budgets – Durham Civic Hub</title>
+  <meta name="description" content="Durham County, City of Durham, and Durham Public Schools budget information — spending breakdowns, revenue sources, and public participation opportunities." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .budget-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2rem;
+    }
+    .budget-hub-card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1.5px solid #e5e7eb;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: box-shadow .18s, border-color .18s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .budget-hub-card:hover {
+      box-shadow: 0 6px 24px rgba(38,46,79,.11);
+      border-color: var(--teal, #207C91);
+    }
+    .budget-hub-card-icon {
+      font-size: 2.25rem;
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .budget-hub-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy, #262E4F);
+      margin: 0;
+    }
+    .budget-hub-card-fy {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--teal, #207C91);
+    }
+    .budget-hub-card-total {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy, #262E4F);
+      line-height: 1.1;
+    }
+    .budget-hub-card-desc {
+      font-size: .925rem;
+      color: #4b5563;
+      line-height: 1.55;
+      flex: 1;
+    }
+    .budget-hub-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: .5rem;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--teal, #207C91);
+      text-decoration: none;
+    }
+    .budget-hub-card-link:hover { text-decoration: underline; }
+    .budget-hub-intro {
+      max-width: 680px;
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.65;
+      margin-bottom: .25rem;
+    }
+    .budget-hub-note {
+      margin-top: 2.5rem;
+      padding: 1rem 1.25rem;
+      background: #f8f9fb;
+      border-left: 3px solid var(--teal, #207C91);
+      border-radius: 4px;
+      font-size: .875rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+    .budget-hub-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy, #262E4F);
+      margin: 0 0 .5rem;
+    }
+  </style>
 </head>
 <body data-page="budget">
 
@@ -25,6 +116,7 @@
         <a href="meetings.html" class="nav-link">Meetings</a>
         <a href="calendar.html" class="nav-link">Calendar</a>
         <a href="budget.html" class="nav-link active">Budget</a>
+        <a href="voting.html" class="nav-link">Voting</a>
       </nav>
     </div>
   </header>
@@ -32,13 +124,9 @@
   <!-- ── Page Hero ── -->
   <div class="page-hero budget-page-hero">
     <div class="page-hero-inner">
-      <p class="page-hero-eyebrow">Durham County · Fiscal Year 2027</p>
-      <h1 class="page-hero-title">FY2027 Budget</h1>
-      <p class="page-hero-sub">$726.4 million proposed operating budget · Public input open through <strong>April 24</strong> · Budget adoption vote <strong>June 2</strong></p>
-      <div class="hero-cta-row">
-        <a href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener" class="hero-btn hero-btn--primary">Submit Public Comment</a>
-        <a href="https://www.dconc.gov/Budget-and-Management-Services" target="_blank" rel="noopener" class="hero-btn hero-btn--outline">Official Budget Docs</a>
-      </div>
+      <p class="page-hero-eyebrow">Durham County · Fiscal Year 2026–27</p>
+      <h1 class="page-hero-title">Durham Budgets</h1>
+      <p class="page-hero-sub">Explore spending, revenue, and public participation opportunities for the county, city, and schools.</p>
     </div>
   </div>
 
@@ -46,188 +134,97 @@
   <main class="site-main site-main--full">
     <div class="inner-content">
 
-      <!-- At-a-Glance Stats -->
-      <section class="budget-stats">
-        <div class="budget-stat">
-          <span class="budget-stat-num">$726.4M</span>
-          <span class="budget-stat-label">Total Proposed Budget</span>
-        </div>
-        <div class="budget-stat">
-          <span class="budget-stat-num">$412.2M</span>
-          <span class="budget-stat-label">Durham Public Schools Request</span>
-        </div>
-        <div class="budget-stat">
-          <span class="budget-stat-num">+4.8%</span>
-          <span class="budget-stat-label">Increase from FY2026</span>
-        </div>
-        <div class="budget-stat">
-          <span class="budget-stat-num">Apr 24</span>
-          <span class="budget-stat-label">Public Hearing Date</span>
-        </div>
-      </section>
+      <p class="budget-hub-intro">Durham County, the City of Durham, and Durham Public Schools each adopt separate annual budgets. Together they determine local tax rates, school funding, public safety staffing, housing programs, parks, and most of the services residents rely on every day.</p>
 
-      <!-- Budget Timeline -->
-      <section class="budget-section">
-        <h2 class="budget-section-title">Budget Calendar</h2>
-        <div id="budgetTimeline">
-          <div class="timeline">
-            <div class="timeline-step timeline-step--done">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-date">Apr 10</span>
-                <span class="timeline-label">Public Input Period Opens</span>
-              </div>
-            </div>
-            <div class="timeline-step timeline-step--active">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-date">Apr 24</span>
-                <span class="timeline-label">Public Hearing — FY2027 Budget · 7:00 PM</span>
-              </div>
-            </div>
-            <div class="timeline-step">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-date">Apr 28</span>
-                <span class="timeline-label">BOCC Budget Work Session · 9:00 AM</span>
-              </div>
-            </div>
-            <div class="timeline-step">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-date">May 19</span>
-                <span class="timeline-label">County Manager Budget Recommendation · 9:00 AM</span>
-              </div>
-            </div>
-            <div class="timeline-step">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-date">Jun 2</span>
-                <span class="timeline-label">Budget Adoption Vote · 9:00 AM</span>
-              </div>
-            </div>
-            <div class="timeline-step">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-date">Jul 1</span>
-                <span class="timeline-label">New Fiscal Year Begins</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="budget-hub-grid">
 
-      <!-- Revenue Breakdown -->
-      <section class="budget-section">
-        <h2 class="budget-section-title">Where the Money Comes From</h2>
-        <p class="budget-section-sub">FY2027 proposed revenue sources — total $726.4 million</p>
-        <div id="revenueBreakdown">
-          <div class="rev-row">
-            <div class="rev-label">Property Tax</div>
-            <div class="rev-bar-wrap"><div class="rev-bar" style="width:54.8%"></div></div>
-            <div class="rev-pct">54.8%</div>
-            <div class="rev-amt">$398.2M</div>
+        <!-- Durham County -->
+        <a class="budget-hub-card" href="budget-county.html">
+          <div class="budget-hub-card-icon">🏛️</div>
+          <div class="budget-hub-card-fy">FY 2025–26 Adopted</div>
+          <h2 class="budget-hub-card-title">Durham County</h2>
+          <div class="budget-hub-card-total">$689.7M</div>
+          <p class="budget-hub-card-desc">The county General Fund covers schools, health and human services, the sheriff, courts, and debt service. Property tax provides more than half of total revenue. The FY2027 proposed budget is $726.4M, with a public hearing on April 24.</p>
+          <span class="budget-hub-card-link">Explore county budget →</span>
+        </a>
+
+        <!-- City of Durham -->
+        <a class="budget-hub-card" href="budget-city.html">
+          <div class="budget-hub-card-icon">🏙️</div>
+          <div class="budget-hub-card-fy">FY 2025–26 Adopted</div>
+          <h2 class="budget-hub-card-title">City of Durham</h2>
+          <div class="budget-hub-card-total">$835.7M</div>
+          <p class="budget-hub-card-desc">The city budget funds police, fire, public works, water and sewer, planning, parks, and transit. The city sets its own tax rate, separate from the county. City Council adopts the budget each June.</p>
+          <span class="budget-hub-card-link">Explore city budget →</span>
+        </a>
+
+        <!-- DPS -->
+        <a class="budget-hub-card" href="budget-schools.html">
+          <div class="budget-hub-card-icon">🏫</div>
+          <div class="budget-hub-card-fy">FY 2026–27 Requested</div>
+          <h2 class="budget-hub-card-title">Durham Public Schools</h2>
+          <div class="budget-hub-card-total">$412.2M</div>
+          <p class="budget-hub-card-desc">DPS funding comes from three sources: the state (largest share), Durham County, and federal grants. The FY2027 county request is $412.2M — a 6.2% increase. A $7M+ state funding gap puts roughly 61 positions at risk.</p>
+          <span class="budget-hub-card-link">Explore schools budget →</span>
+        </a>
+
+      </div>
+
+      <div class="budget-hub-note">
+        <strong>Note:</strong> All budget figures on this site are drawn from official government documents and are provided for public information. Proposed and requested amounts are subject to change until formally adopted. See <a href="https://www.dconc.gov/Budget-and-Management-Services" target="_blank" rel="noopener">dconc.gov</a>, <a href="https://www.durhamnc.gov/182/Finance" target="_blank" rel="noopener">durhamnc.gov</a>, and <a href="https://www.dpsnc.net" target="_blank" rel="noopener">dpsnc.net</a> for official documents.
+      </div>
+
+      <!-- FY2027 Key Dates -->
+      <section class="budget-section" style="margin-top:3rem;">
+        <h2 class="budget-section-title">FY2027 Key Dates — Durham County</h2>
+        <div class="timeline">
+          <div class="timeline-step timeline-step--done">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 10</span>
+              <span class="timeline-label">Public Input Period Opens</span>
+            </div>
           </div>
-          <div class="rev-row">
-            <div class="rev-label">State &amp; Federal Aid</div>
-            <div class="rev-bar-wrap"><div class="rev-bar" style="width:22.5%"></div></div>
-            <div class="rev-pct">22.5%</div>
-            <div class="rev-amt">$163.4M</div>
+          <div class="timeline-step timeline-step--active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 24</span>
+              <span class="timeline-label">Public Hearing — FY2027 Budget · 7:00 PM</span>
+            </div>
           </div>
-          <div class="rev-row">
-            <div class="rev-label">Sales Tax</div>
-            <div class="rev-bar-wrap"><div class="rev-bar" style="width:12.0%"></div></div>
-            <div class="rev-pct">12.0%</div>
-            <div class="rev-amt">$87.3M</div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 28</span>
+              <span class="timeline-label">BOCC Budget Work Session · 9:00 AM</span>
+            </div>
           </div>
-          <div class="rev-row">
-            <div class="rev-label">Fees &amp; Other</div>
-            <div class="rev-bar-wrap"><div class="rev-bar" style="width:10.7%"></div></div>
-            <div class="rev-pct">10.7%</div>
-            <div class="rev-amt">$77.5M</div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">May 19</span>
+              <span class="timeline-label">County Manager Budget Recommendation · 9:00 AM</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jun 2</span>
+              <span class="timeline-label">Budget Adoption Vote · 9:00 AM</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jul 1</span>
+              <span class="timeline-label">New Fiscal Year Begins</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Department Table -->
-      <section class="budget-section">
-        <h2 class="budget-section-title">Spending by Department</h2>
-        <p class="budget-section-sub">FY2026 adopted vs. FY2027 requested amounts (in millions)</p>
-        <div id="deptTable">
-          <table class="budget-table">
-            <thead>
-              <tr>
-                <th>Department / Area</th>
-                <th class="num">FY2026 Adopted</th>
-                <th class="num">FY2027 Requested</th>
-                <th class="num">Change</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Durham Public Schools</td>
-                <td class="num">$388.1M</td>
-                <td class="num">$412.2M</td>
-                <td class="num change positive">+6.2%</td>
-              </tr>
-              <tr>
-                <td>Health &amp; Human Services</td>
-                <td class="num">$98.4M</td>
-                <td class="num">$104.1M</td>
-                <td class="num change positive">+5.8%</td>
-              </tr>
-              <tr>
-                <td>Sheriff / Courts</td>
-                <td class="num">$72.6M</td>
-                <td class="num">$75.9M</td>
-                <td class="num change positive">+4.5%</td>
-              </tr>
-              <tr>
-                <td>Debt Service</td>
-                <td class="num">$58.3M</td>
-                <td class="num">$61.0M</td>
-                <td class="num change positive">+4.6%</td>
-              </tr>
-              <tr>
-                <td>General Government</td>
-                <td class="num">$34.8M</td>
-                <td class="num">$36.2M</td>
-                <td class="num change positive">+4.0%</td>
-              </tr>
-              <tr>
-                <td>Parks &amp; Recreation</td>
-                <td class="num">$22.1M</td>
-                <td class="num">$23.4M</td>
-                <td class="num change positive">+5.9%</td>
-              </tr>
-              <tr>
-                <td>Library</td>
-                <td class="num">$14.2M</td>
-                <td class="num">$14.9M</td>
-                <td class="num change positive">+4.9%</td>
-              </tr>
-              <tr>
-                <td>Other / Reserves</td>
-                <td class="num">$17.9M</td>
-                <td class="num">$18.7M</td>
-                <td class="num change positive">+4.5%</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td><strong>Total</strong></td>
-                <td class="num"><strong>$706.4M</strong></td>
-                <td class="num"><strong>$746.4M</strong></td>
-                <td class="num"></td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <p class="budget-table-note">* FY2027 figures reflect requested amounts. Final adopted budget will be voted on June 2, 2026.</p>
-      </section>
-
-      <!-- How to Participate -->
-      <section class="budget-section budget-section--cta">
+      <!-- How to Weigh In -->
+      <section class="budget-section budget-section--cta" style="margin-top:2.5rem;">
         <h2 class="budget-section-title">How to Weigh In</h2>
         <div class="participate-grid">
           <div class="participate-card">
@@ -245,7 +242,7 @@
           <div class="participate-card">
             <div class="participate-icon">📺</div>
             <h3>Watch the Meetings</h3>
-            <p>All BOCC meetings are live-streamed on YouTube. The April 28 and May 19 budget sessions are key dates to watch.</p>
+            <p>All BOCC meetings are live-streamed on YouTube. The April 28 budget work session and the May 19 County Manager presentation are the main events before the June 2 vote.</p>
             <a href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener" class="participate-link">Watch Live Stream →</a>
           </div>
           <div class="participate-card">
@@ -273,6 +270,7 @@
         <a href="meetings.html">Meetings</a>
         <a href="calendar.html">Calendar</a>
         <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
         <a href="https://www.dconc.gov" target="_blank" rel="noopener">Durham County</a>
         <a href="https://www.durhamnc.gov" target="_blank" rel="noopener">City of Durham</a>
       </nav>
