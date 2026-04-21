@@ -364,11 +364,20 @@
         }
       ],
       "expenditures": [
-        { "name": "Instructional Services",      "amounts": { "FY2025-26": 364119863 }, "description": "Classroom teachers, instructional assistants, textbooks, and direct student learning activities." },
-        { "name": "Capital Outlay",              "amounts": { "FY2025-26": 161600679 }, "description": "School construction, renovation, and major equipment purchases." },
-        { "name": "Systemwide Support Services", "amounts": { "FY2025-26": 95054780  }, "description": "Central administration, human resources, finance, transportation, and school-based support." },
-        { "name": "Non-Programmed Services",     "amounts": { "FY2025-26": 60632894  }, "description": "Benefits, insurance, and other non-programmed expenditures." },
-        { "name": "Ancillary Services",          "amounts": { "FY2025-26": 26651907  }, "description": "Child nutrition program and community services." }
+        { "id": "instruction",  "icon": "📚", "name": "Instructional Services",      "amounts": { "FY2025-26": 364119863 }, "description": "Classroom teachers, instructional assistants, textbooks, curriculum materials, and all direct student learning activities across DPS schools.", "departments": [
+          { "name": "Classroom Instruction",       "description": "Teacher salaries, benefits, and classroom supplies — the core of daily school operations.", "amounts": { "FY2025-26": null } },
+          { "name": "Instructional Support Staff", "description": "Instructional assistants, reading coaches, curriculum specialists, and library/media staff.", "amounts": { "FY2025-26": null } },
+          { "name": "Student Support Services",    "description": "Counselors, psychologists, social workers, and special education coordinators supporting student needs.", "amounts": { "FY2025-26": null } }
+        ]},
+        { "id": "capital",      "icon": "🏗️", "name": "Capital Outlay",              "amounts": { "FY2025-26": 161600679 }, "description": "School construction, renovation, HVAC replacement, roofing, and major equipment purchases funded through county bonds.", "departments": [] },
+        { "id": "support",      "icon": "🏢", "name": "Systemwide Support Services", "amounts": { "FY2025-26": 95054780  }, "description": "Central administration, human resources, finance, school transportation, technology infrastructure, and school-based administrative support.", "departments": [
+          { "name": "Central Administration", "description": "Superintendent's office, school board operations, district leadership, and strategic planning.", "amounts": { "FY2025-26": null } },
+          { "name": "Transportation",          "description": "School bus operations, routing, and driver staffing for transporting students to and from school.", "amounts": { "FY2025-26": null } },
+          { "name": "Facilities & Operations", "description": "Building maintenance, custodial services, utilities, and grounds keeping across all DPS campuses.", "amounts": { "FY2025-26": null } },
+          { "name": "Technology",              "description": "Student and staff devices, network infrastructure, software licenses, and IT support.", "amounts": { "FY2025-26": null } }
+        ]},
+        { "id": "non-prog",     "icon": "📋", "name": "Non-Programmed Services",     "amounts": { "FY2025-26": 60632894  }, "description": "Employee health benefits, retirement contributions, liability insurance, and other non-programmed fixed expenditures.", "departments": [] },
+        { "id": "ancillary",    "icon": "🍎", "name": "Ancillary Services",          "amounts": { "FY2025-26": 26651907  }, "description": "Child nutrition program (school meals), before/after school care, and community services operated by DPS.", "departments": [] }
       ]
     }
   ]
