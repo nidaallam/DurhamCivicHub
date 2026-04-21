@@ -250,13 +250,15 @@ a { color: var(--teal); }
   padding: .6rem 1.5rem;
   overflow-x: auto;
   white-space: nowrap;
-}
-.jump-bar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   gap: .35rem;
   align-items: center;
+}
+.jump-bar--sticky {
+  position: sticky;
+  top: 56px; /* height of site-header */
+  z-index: 90;
+  box-shadow: 0 2px 8px rgba(38,46,79,.08);
 }
 .jump-link {
   display: inline-flex;
@@ -272,6 +274,21 @@ a { color: var(--teal); }
   flex-shrink: 0;
 }
 .jump-link:hover { background: var(--cream); border-color: var(--teal); color: var(--teal); }
+.jump-label { font-size: .72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; flex-shrink: 0; margin-right: .25rem; }
+
+/* ── Meetings groups ── */
+.meetings-group { margin-bottom: 3rem; }
+.meetings-group-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--navy);
+  border-bottom: 3px solid var(--orange);
+  padding-bottom: .5rem;
+  margin-bottom: 1.5rem;
+}
 
 /* ── Main Layout ── */
 .site-main {
@@ -315,6 +332,25 @@ a { color: var(--teal); }
   margin-bottom: 1.35rem;
 }
 .tag-filter-bar { display: flex; gap: .35rem; flex-wrap: wrap; }
+/* ── Entity badges ── */
+.entity-badge {
+  display: inline-block;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .12rem .45rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.entity-badge--county  { background: #dbeafe; color: #1e40af; }
+.entity-badge--city    { background: #d1fae5; color: #065f46; }
+.entity-badge--dps     { background: #ede9fe; color: #5b21b6; }
+.entity-badge--joint   { background: #fef3c7; color: #92400e; }
+.entity-badge--press   { background: #f1f5f9; color: #475569; }
+
+.meeting-body-entity { margin-top: .25rem; }
+
 .tag-btn {
   padding: .3rem .8rem;
   border-radius: 20px;

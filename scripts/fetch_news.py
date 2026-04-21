@@ -16,38 +16,78 @@ from datetime import datetime, timezone, date
 from typing import Optional
 
 # ── RSS feeds to pull from ────────────────────────────────────────────────────
+# durham_only=True  → accept every story (it's a Durham-specific feed)
+# durham_only=False → filter stories to Durham-relevant ones only
 FEEDS = [
+    # ── Official government feeds (Durham-specific) ──
     {
-        "url": "https://www.dconc.gov/Home/ShowRss",
-        "source": "Durham County",
-        "default_tag": "County"
+        "url":          "https://www.dconc.gov/Home/ShowRss",
+        "source":       "Durham County",
+        "default_tag":  "County",
+        "durham_only":  True,
     },
     {
-        "url": "https://www.durhamnc.gov/RSSFeed.aspx?ModID=56&CID=All-0",
-        "source": "City of Durham",
-        "default_tag": "City"
+        "url":          "https://www.durhamnc.gov/RSSFeed.aspx?ModID=56&CID=All-0",
+        "source":       "City of Durham",
+        "default_tag":  "City",
+        "durham_only":  True,
     },
     {
-        "url": "https://www.dpsnc.net/site/handlers/rss.ashx?DSID=2",
-        "source": "Durham Public Schools",
-        "default_tag": "Schools"
+        "url":          "https://www.dpsnc.net/site/handlers/rss.ashx?DSID=2",
+        "source":       "Durham Public Schools",
+        "default_tag":  "Schools",
+        "durham_only":  True,
     },
+    # ── Local news outlets (Triangle-wide → filter for Durham) ──
+    {
+        "url":          "http://www.wral.com/news/rss/142/",
+        "source":       "WRAL News",
+        "default_tag":  "Local News",
+        "durham_only":  False,
+    },
+    {
+        "url":          "https://indyweek.com/feed/",
+        "source":       "Indy Week",
+        "default_tag":  "Local News",
+        "durham_only":  False,
+    },
+    {
+        "url":          "https://abc11.com/feed/",
+        "source":       "ABC11 / WTVD",
+        "default_tag":  "Local News",
+        "durham_only":  False,
+    },
+    {
+        "url":          "https://ncnewsline.com/feed/",
+        "source":       "NC Newsline",
+        "default_tag":  "Policy",
+        "durham_only":  False,
+    },
+]
+
+# Keywords that make a story Durham-relevant (for triangle-wide feeds)
+DURHAM_KEYWORDS = [
+    "durham", "bull city", "dconc", "dpsnc", "gotriangle",
+    "duke university", "north carolina central", "nccu",
+    "ellerbe creek", "west point on the eno", "american tobacco",
 ]
 
 # ── Tag keywords ──────────────────────────────────────────────────────────────
 TAG_RULES = [
-    ("Budget",       ["budget", "fy20", "fiscal year", "tax rate", "appropriation"]),
-    ("Housing",      ["housing", "affordable housing", "bond", "hud", "dhic"]),
-    ("Schools",      ["school", "dps", "durham public schools", "education", "superintendent"]),
-    ("Health",       ["health", "clinic", "vaccine", "mental health", "dhhs"]),
-    ("Transit",      ["transit", "bus", "gotriangle", "brt", "transportation", "rail"]),
-    ("Development",  ["rezoning", "zoning", "development", "planning commission", "land use"]),
-    ("Parks",        ["park", "greenway", "recreation", "trail"]),
-    ("Announcement", ["apply", "application", "deadline", "seeking", "vacancy"]),
+    ("Budget",       ["budget", "fy20", "fiscal year", "tax rate", "appropriation", "spending"]),
+    ("Housing",      ["housing", "affordable housing", "bond", "hud", "dhic", "eviction", "rent"]),
+    ("Schools",      ["school", "dps", "durham public schools", "education", "superintendent", "classroom"]),
+    ("Health",       ["health", "clinic", "vaccine", "mental health", "dhhs", "hospital", "medicaid"]),
+    ("Transit",      ["transit", "bus", "gotriangle", "brt", "transportation", "rail", "light rail"]),
+    ("Development",  ["rezoning", "zoning", "development", "planning commission", "land use", "construction"]),
+    ("Parks",        ["park", "greenway", "recreation", "trail", "eno river"]),
+    ("Public Safety",["police", "sheriff", "fire", "crime", "jail", "911", "emergency"]),
+    ("Environment",  ["climate", "environment", "water", "stormwater", "flood", "solar", "emissions"]),
+    ("Announcement", ["apply", "application", "deadline", "seeking", "vacancy", "hiring", "grant"]),
 ]
 
-MAX_STORIES = 15
-CUTOFF_DAYS = 30  # ignore stories older than this many days
+MAX_STORIES  = 25   # more sources → more stories
+CUTOFF_DAYS  = 45   # keep up to 45 days
 
 HEADERS = {
     "User-Agent": (
@@ -93,17 +133,25 @@ def parse_entry_date(entry) -> date | None:
     return None
 
 
+def is_durham_relevant(title: str, excerpt: str) -> bool:
+    """Return True if any Durham keyword appears in title or excerpt."""
+    text = (title + " " + excerpt).lower()
+    return any(kw in text for kw in DURHAM_KEYWORDS)
+
+
 def fetch_all() -> list[dict]:
     stories = []
     today = date.today()
 
     for feed_cfg in FEEDS:
+        print(f"  Fetching: {feed_cfg['source']} …")
         try:
             feed = feedparser.parse(feed_cfg["url"])
         except Exception as e:
-            print(f"  Failed to fetch {feed_cfg['url']}: {e}")
+            print(f"    Failed: {e}")
             continue
 
+        count_added = 0
         for entry in feed.entries:
             pub = parse_entry_date(entry)
             if pub is None:
@@ -118,9 +166,13 @@ def fetch_all() -> list[dict]:
             if not title or not link:
                 continue
 
+            # For triangle-wide feeds, skip stories not about Durham
+            if not feed_cfg.get("durham_only") and not is_durham_relevant(title, excerpt):
+                continue
+
             # Trim overly long excerpts
-            if len(excerpt) > 280:
-                excerpt = excerpt[:277].rsplit(" ", 1)[0] + "…"
+            if len(excerpt) > 300:
+                excerpt = excerpt[:297].rsplit(" ", 1)[0] + "…"
 
             tag = guess_tag(title, excerpt)
 
@@ -133,6 +185,8 @@ def fetch_all() -> list[dict]:
                 "displayDate": pub.strftime("%B %-d, %Y"),
                 "tag":         tag,
             })
+            count_added += 1
+        print(f"    → {count_added} Durham stories")
 
     # Sort newest first, deduplicate by link
     seen = set()

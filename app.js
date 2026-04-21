@@ -73,6 +73,7 @@ function runSiteSearch(q) {
     { title: 'Meeting Schedules',    url: 'meetings.html',        desc: 'BOCC, City Council, DPS Board, Planning Commission, and more.' },
     { title: 'Civic Calendar',       url: 'calendar.html',        desc: 'Public hearings, board meetings, and community events.' },
     { title: 'Budgets',              url: 'budget.html',          desc: 'Durham County, City of Durham, and Durham Public Schools budgets.' },
+    { title: 'Budget Explorer',      url: 'budget-explorer.html', desc: 'Interactive budget explorer — spending by area, YoY changes, line items for all three Durham entities.' },
     { title: 'Durham County Budget', url: 'budget-county.html',   desc: 'County budget documents, dashboard, and FY2026-27 process.' },
     { title: 'City of Durham Budget','url': 'budget-city.html',   desc: 'City budget documents, Finance Department, and City Council.' },
     { title: 'DPS Budget',           url: 'budget-schools.html',  desc: 'Durham Public Schools budget, funding sources, and documents.' },
@@ -161,6 +162,21 @@ function injectSearchUI() {
   });
 }
 
+
+// ── Entity badge helper ───────────────────────────────────────
+function entityBadge(source) {
+  const s = (source || '').toLowerCase();
+  if (s.includes('durham county') || s.includes('dconc') || s.includes('commissioner'))
+    return '<span class="entity-badge entity-badge--county">Durham County</span>';
+  if (s.includes('city of durham') || s.includes('durhamnc') || s.includes('city council'))
+    return '<span class="entity-badge entity-badge--city">City of Durham</span>';
+  if (s.includes('durham public schools') || s.includes('dps') || s.includes('dpsnc'))
+    return '<span class="entity-badge entity-badge--dps">Durham Public Schools</span>';
+  if (s.includes('wral') || s.includes('indy week') || s.includes('abc11') || s.includes('newsline') || s.includes('observer') || s.includes('herald'))
+    return '<span class="entity-badge entity-badge--press">Press</span>';
+  return '';
+}
+
 // ── News ──────────────────────────────────────────────────────
 async function loadNews() {
   const grid = document.getElementById('storiesGrid');
@@ -225,6 +241,7 @@ function renderStories() {
       <div class="story-body">
         <div class="story-meta">
           ${tag}
+          ${entityBadge(s.source)}
           <span class="story-source">${esc(s.source)}</span>
           <span class="story-date">${esc(s.displayDate || s.date)}</span>
         </div>
@@ -252,12 +269,35 @@ async function loadMeetings() {
   }
 }
 
-function renderMeetings(data, container) {
-  container.innerHTML = data.bodies.map(body => `
+
+function entityBadgeForBody(body) {
+  const id   = body.id || '';
+  const name = (body.name || '').toLowerCase();
+  // Elected boards
+  if (id === 'commissioners')  return '<span class="entity-badge entity-badge--county">Durham County</span>';
+  if (id === 'city-council')   return '<span class="entity-badge entity-badge--city">City of Durham</span>';
+  if (id === 'dps')            return '<span class="entity-badge entity-badge--dps">Durham Public Schools</span>';
+  // City boards
+  const cityIds = ['board-of-adjustment','planning','bicycle-pedestrian','workers-rights',
+    'civilian-police-review','racial-equity','environmental-affairs','historic-preservation',
+    'cultural-advisory','open-space-trails','jccpc','workforce-development','human-relations',
+    'housing-appeals','recreation-advisory','citizens-advisory','housing-authority'];
+  if (cityIds.includes(id)) return '<span class="entity-badge entity-badge--city">City of Durham</span>';
+  // Joint city-county
+  const jointIds = ['homeless-services','cultural-advisory','environmental-affairs',
+    'historic-preservation','jccpc','bicycle-pedestrian','open-space-trails'];
+  if (jointIds.includes(id)) return '<span class="entity-badge entity-badge--joint">City &amp; County</span>';
+  // County boards
+  return '<span class="entity-badge entity-badge--county">Durham County</span>';
+}
+
+function renderBodyCard(body) {
+  return `
     <section class="meetings-section" id="${esc(body.id)}">
       <div class="meeting-body-header">
         <div>
           <div class="meeting-body-name">${esc(body.name)}</div>
+          <div class="meeting-body-entity">${entityBadgeForBody(body)}</div>
           <div class="meeting-body-desc">${esc(body.description || '')}</div>
         </div>
       </div>
@@ -268,9 +308,36 @@ function renderMeetings(data, container) {
       <div>
         ${(body.meetings || []).map(m => renderMeetingRow(m)).join('')}
       </div>
-      <a class="archive-link" href="${esc(body.archiveUrl)}" target="_blank" rel="noopener">Full Archive →</a>
+      <a class="archive-link" href="${esc(body.archiveUrl)}" target="_blank" rel="noopener">Agendas & Minutes →</a>
     </section>
-  `).join('');
+  `;
+}
+
+function renderMeetings(data, container) {
+  const elected  = data.bodies.filter(b => b.group === 'elected');
+  const advisory = data.bodies.filter(b => b.group === 'advisory' || !b.group);
+
+  // Build sticky jump bar
+  const jumpBar = document.getElementById('jumpBar');
+  if (jumpBar) {
+    const allBodies = [...elected, ...advisory];
+    jumpBar.innerHTML =
+      `<span class="jump-label">Jump to:</span>` +
+      allBodies.map(b =>
+        `<a href="#${esc(b.id)}" class="jump-link">${esc(b.name)}</a>`
+      ).join('');
+  }
+
+  container.innerHTML = `
+    <div class="meetings-group">
+      <h2 class="meetings-group-title">Elected Boards</h2>
+      ${elected.map(renderBodyCard).join('')}
+    </div>
+    <div class="meetings-group">
+      <h2 class="meetings-group-title">Advisory Boards &amp; Commissions</h2>
+      ${advisory.map(renderBodyCard).join('')}
+    </div>
+  `;
 }
 
 function renderMeetingRow(m) {

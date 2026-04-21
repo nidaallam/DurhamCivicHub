@@ -5,19 +5,30 @@
     {
       "id": "commissioners",
       "name": "Board of Commissioners",
-      "description": "Durham County's five elected commissioners set the property tax rate and adopt the county's annual operating budget. All meetings are open to the public.",
-      "schedule": "2nd & 4th Monday of each month · 9:00 AM",
+      "description": "Durham County's five elected commissioners set the property tax rate and adopt the county's annual operating budget.",
+      "schedule": "2nd & 4th Monday, 9:00 AM",
       "location": "200 E. Main St., Durham — Commissioners Chambers, Room 2A",
       "archiveUrl": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+      "group": "elected",
       "meetings": [
         {
           "date": "2026-04-28",
           "type": "Budget Work Session",
           "status": "upcoming",
           "links": [
-            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
-            { "label": "Live Stream", "url": "https://www.youtube.com/user/DCoWebmaster/videos" },
-            { "label": "Public Comment", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" }
+            {
+              "label": "Agenda",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/user/DCoWebmaster/videos"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment"
+            }
           ]
         },
         {
@@ -25,8 +36,15 @@
           "type": "Work Session",
           "status": "upcoming",
           "links": [
-            { "label": "Agenda", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
-            { "label": "Live Stream", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+            {
+              "label": "Agenda",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/user/DCoWebmaster/videos"
+            }
           ]
         },
         {
@@ -34,8 +52,15 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
-            { "label": "Video", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+            {
+              "label": "Minutes",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+              "primary": true
+            },
+            {
+              "label": "Video",
+              "url": "https://www.youtube.com/user/DCoWebmaster/videos"
+            }
           ]
         },
         {
@@ -43,7 +68,11 @@
           "type": "Work Session",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true }
+            {
+              "label": "Minutes",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+              "primary": true
+            }
           ]
         },
         {
@@ -51,8 +80,15 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
-            { "label": "Video", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+            {
+              "label": "Minutes",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+              "primary": true
+            },
+            {
+              "label": "Video",
+              "url": "https://www.youtube.com/user/DCoWebmaster/videos"
+            }
           ]
         },
         {
@@ -60,8 +96,15 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library", "primary": true },
-            { "label": "Video", "url": "https://www.youtube.com/user/DCoWebmaster/videos" }
+            {
+              "label": "Minutes",
+              "url": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+              "primary": true
+            },
+            {
+              "label": "Video",
+              "url": "https://www.youtube.com/user/DCoWebmaster/videos"
+            }
           ]
         }
       ]
@@ -69,19 +112,30 @@
     {
       "id": "city-council",
       "name": "Durham City Council",
-      "description": "Durham's seven-member city council governs city operations, sets the city tax rate, and adopts the city budget. The mayor and six council members are elected at large. Meetings are livestreamed and archived on the city website.",
-      "schedule": "1st & 3rd Monday of each month · 7:00 PM",
-      "location": "Durham City Hall, 101 City Hall Plaza",
-      "archiveUrl": "https://www.durhamnc.gov/1338/City-Council",
+      "description": "The seven-member City Council sets city policy, adopts the city budget, and appoints the city manager.",
+      "schedule": "1st & 3rd Monday, 7:00 PM",
+      "location": "101 City Hall Plaza, Durham — Council Chambers",
+      "archiveUrl": "https://www.durhamnc.gov/1323/City-Council",
+      "group": "elected",
       "meetings": [
         {
           "date": "2026-05-04",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Agenda", "url": "https://www.durhamnc.gov/1338/City-Council", "primary": true },
-            { "label": "Live Stream", "url": "https://www.youtube.com/user/CityofDurhamNC" },
-            { "label": "Public Comment", "url": "https://www.durhamnc.gov/1338/City-Council" }
+            {
+              "label": "Agenda",
+              "url": "https://www.durhamnc.gov/1338/City-Council",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/user/CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
           ]
         },
         {
@@ -89,8 +143,15 @@
           "type": "Work Session",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.durhamnc.gov/1338/City-Council", "primary": true },
-            { "label": "Video", "url": "https://www.youtube.com/user/CityofDurhamNC" }
+            {
+              "label": "Minutes",
+              "url": "https://www.durhamnc.gov/1338/City-Council",
+              "primary": true
+            },
+            {
+              "label": "Video",
+              "url": "https://www.youtube.com/user/CityofDurhamNC"
+            }
           ]
         },
         {
@@ -98,8 +159,15 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.durhamnc.gov/1338/City-Council", "primary": true },
-            { "label": "Video", "url": "https://www.youtube.com/user/CityofDurhamNC" }
+            {
+              "label": "Minutes",
+              "url": "https://www.durhamnc.gov/1338/City-Council",
+              "primary": true
+            },
+            {
+              "label": "Video",
+              "url": "https://www.youtube.com/user/CityofDurhamNC"
+            }
           ]
         }
       ]
@@ -107,18 +175,26 @@
     {
       "id": "dps",
       "name": "DPS Board of Education",
-      "description": "Seven elected board members who govern Durham Public Schools. DPS serves about 32,000 students at 53 schools countywide. The board sets district policy, approves the annual budget, and selects the superintendent.",
-      "schedule": "3rd Thursday of each month · 5:30 PM",
-      "location": "511 Cleveland St., Durham",
-      "archiveUrl": "https://www.dpsnc.net/domain/133",
+      "description": "The elected DPS Board of Education governs Durham Public Schools, hires the superintendent, and sets the schools budget.",
+      "schedule": "3rd Thursday, 5:00 PM",
+      "location": "Durham Public Schools, 511 Cleveland St., Durham",
+      "archiveUrl": "https://www.dpsnc.net/page/board-of-education",
+      "group": "elected",
       "meetings": [
         {
           "date": "2026-05-15",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Agenda", "url": "https://www.dpsnc.net/domain/133", "primary": true },
-            { "label": "Watch Online", "url": "https://www.dpsnc.net" }
+            {
+              "label": "Agenda",
+              "url": "https://www.dpsnc.net/domain/133",
+              "primary": true
+            },
+            {
+              "label": "Watch Online",
+              "url": "https://www.dpsnc.net"
+            }
           ]
         },
         {
@@ -126,7 +202,11 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.dpsnc.net/domain/133", "primary": true }
+            {
+              "label": "Minutes",
+              "url": "https://www.dpsnc.net/domain/133",
+              "primary": true
+            }
           ]
         },
         {
@@ -134,7 +214,11 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.dpsnc.net/domain/133", "primary": true }
+            {
+              "label": "Minutes",
+              "url": "https://www.dpsnc.net/domain/133",
+              "primary": true
+            }
           ]
         }
       ]
@@ -142,17 +226,22 @@
     {
       "id": "planning",
       "name": "City-County Planning Commission",
-      "description": "A joint city-county body that reviews land use changes, rezonings, and development applications. It forwards recommendations to both Durham City Council and the Board of Commissioners.",
-      "schedule": "4th Wednesday of each month · 5:00 PM",
-      "location": "Durham City Hall, 101 City Hall Plaza",
-      "archiveUrl": "https://www.durhamnc.gov/579/Planning-Commission",
+      "description": "Reviews rezoning petitions, subdivision plans, and long-range land use policy for both the City and County.",
+      "schedule": "4th Wednesday, 9:00 AM",
+      "location": "101 City Hall Plaza, Durham — Committee Room",
+      "archiveUrl": "https://www.durhamnc.gov/1367/Planning-Commission",
+      "group": "advisory",
       "meetings": [
         {
           "date": "2026-04-23",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Agenda", "url": "https://www.durhamnc.gov/579/Planning-Commission", "primary": true }
+            {
+              "label": "Agenda",
+              "url": "https://www.durhamnc.gov/579/Planning-Commission",
+              "primary": true
+            }
           ]
         },
         {
@@ -160,7 +249,11 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.durhamnc.gov/579/Planning-Commission", "primary": true }
+            {
+              "label": "Minutes",
+              "url": "https://www.durhamnc.gov/579/Planning-Commission",
+              "primary": true
+            }
           ]
         }
       ]
@@ -168,17 +261,22 @@
     {
       "id": "board-of-adjustment",
       "name": "Board of Adjustment",
-      "description": "Hears appeals of zoning decisions and grants variances from zoning requirements. Decisions are quasi-judicial and final unless appealed to Superior Court.",
-      "schedule": "3rd Tuesday of each month · 5:30 PM",
-      "location": "Durham City Hall, 101 City Hall Plaza",
-      "archiveUrl": "https://www.durhamnc.gov/580/Board-of-Adjustment",
+      "description": "Hears appeals of zoning decisions and grants variances from development regulations.",
+      "schedule": "2nd & 4th Thursday, 9:00 AM",
+      "location": "101 City Hall Plaza, Durham — Committee Room",
+      "archiveUrl": "https://www.durhamnc.gov/1372/Board-of-Adjustment-BOA",
+      "group": "advisory",
       "meetings": [
         {
           "date": "2026-05-19",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Agenda", "url": "https://www.durhamnc.gov/580/Board-of-Adjustment", "primary": true }
+            {
+              "label": "Agenda",
+              "url": "https://www.durhamnc.gov/580/Board-of-Adjustment",
+              "primary": true
+            }
           ]
         },
         {
@@ -186,25 +284,34 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Minutes", "url": "https://www.durhamnc.gov/580/Board-of-Adjustment", "primary": true }
+            {
+              "label": "Minutes",
+              "url": "https://www.durhamnc.gov/580/Board-of-Adjustment",
+              "primary": true
+            }
           ]
         }
       ]
     },
     {
       "id": "mental-health",
-      "name": "Mental Health Advisory Board",
-      "description": "A county advisory board that guides Durham DHHS on mental health, substance use disorder, and intellectual and developmental disability services.",
-      "schedule": "1st Tuesday of each month · 4:00 PM",
-      "location": "414 E. Main St., Durham",
-      "archiveUrl": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
+      "name": "Alliance Health Board of Directors",
+      "description": "Governing board for Alliance Health, overseeing mental health, IDD, and substance use services across Durham, Wake, Cumberland, and Johnston counties.",
+      "schedule": "1st Thursday, 4:00 PM",
+      "location": "501 Willard Street, Durham",
+      "archiveUrl": "https://www.alliancehealthplan.org/about/governance/board-of-directors/",
+      "group": "advisory",
       "meetings": [
         {
           "date": "2026-05-05",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Details", "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees", "primary": true }
+            {
+              "label": "Details",
+              "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
+              "primary": true
+            }
           ]
         },
         {
@@ -212,7 +319,11 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Details", "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees", "primary": true }
+            {
+              "label": "Details",
+              "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
+              "primary": true
+            }
           ]
         }
       ]
@@ -220,17 +331,22 @@
     {
       "id": "housing-authority",
       "name": "Durham Housing Authority Board",
-      "description": "Governs the Durham Housing Authority, which owns and manages public housing and administers federal housing assistance programs for low-income residents.",
-      "schedule": "4th Thursday of each month · 4:00 PM",
+      "description": "Governs the Durham Housing Authority, which administers public housing and Section 8 vouchers for low-income Durham residents.",
+      "schedule": "3rd Thursday, 5:30 PM",
       "location": "330 E. Main St., Durham",
       "archiveUrl": "https://www.durhamhousingauthority.org",
+      "group": "advisory",
       "meetings": [
         {
           "date": "2026-04-23",
           "type": "Regular Meeting",
           "status": "upcoming",
           "links": [
-            { "label": "Details", "url": "https://www.durhamhousingauthority.org", "primary": true }
+            {
+              "label": "Details",
+              "url": "https://www.durhamhousingauthority.org",
+              "primary": true
+            }
           ]
         },
         {
@@ -238,10 +354,234 @@
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
-            { "label": "Details", "url": "https://www.durhamhousingauthority.org", "primary": true }
+            {
+              "label": "Details",
+              "url": "https://www.durhamhousingauthority.org",
+              "primary": true
+            }
           ]
         }
       ]
+    },
+    {
+      "id": "civilian-police-review",
+      "name": "Civilian Police Review Board",
+      "description": "Reviews civilian complaints and matters related to police conduct in the City of Durham.",
+      "schedule": "3rd Wednesday, 6:00 PM",
+      "location": "101 City Hall Plaza, Durham — Conference Room 1A",
+      "archiveUrl": "https://www.durhamnc.gov/AgendaCenter",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "racial-equity",
+      "name": "Racial Equity Commission",
+      "description": "City-County joint commission that examines and advocates for policies to eliminate systemic inequities and racism in Durham.",
+      "schedule": "Monthly (virtual evening meetings)",
+      "location": "Virtual (Zoom)",
+      "archiveUrl": "https://www.durhamnc.gov/AgendaCenter",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "environmental-affairs",
+      "name": "Environmental Affairs Board",
+      "description": "Advises City Council and BOCC on watershed protection, air quality, energy conservation, and related environmental matters.",
+      "schedule": "1st Wednesday, 6:00 PM (no July)",
+      "location": "101 City Hall Plaza, Durham — Committee Room",
+      "archiveUrl": "https://www.durhamnc.gov/1368/Environmental-Affairs-Board-EAB",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "historic-preservation",
+      "name": "Historic Preservation Commission",
+      "description": "Holds quasi-judicial hearings on exterior changes to historic district or landmark properties.",
+      "schedule": "1st Tuesday, 9:00 AM",
+      "location": "101 City Hall Plaza, Durham — Committee Room",
+      "archiveUrl": "https://www.durhamnc.gov/397/Historic-Preservation-Commission-HPC",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "bicycle-pedestrian",
+      "name": "Bicycle & Pedestrian Advisory Commission",
+      "description": "Citizen advisory group providing guidance on bicycle and pedestrian infrastructure to City Council and BOCC.",
+      "schedule": "3rd Tuesday, 7:00 PM",
+      "location": "City Hall or Zoom",
+      "archiveUrl": "https://www.durhamnc.gov/3851/Durham-Bicycle-and-Pedestrian-Advisory-C",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "workers-rights",
+      "name": "Workers' Rights Commission",
+      "description": "City commission focused on worker advocacy and protection of worker rights in Durham.",
+      "schedule": "4th Tuesday, 6:00 PM",
+      "location": "101 City Hall Plaza, Durham — Conference Room 1A",
+      "archiveUrl": "https://www.durhamnc.gov/AgendaCenter",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "board-of-health",
+      "name": "Board of Health",
+      "description": "Policy-making and rule-making body for Durham County's Department of Public Health.",
+      "schedule": "Every other month, 2nd Thursday, 5:00 PM",
+      "location": "Virtual (open to public)",
+      "archiveUrl": "https://www.dconc.gov/Public-Health/About-Us/Board-of-Health/Board-of-Health-Agendas-and-Minutes",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "library-trustees",
+      "name": "Library Board of Trustees",
+      "description": "Advises the Library Director on library issues and serves as liaison between Durham County Library and the community.",
+      "schedule": "4th Tuesday, 6:00 PM (rotates branches)",
+      "location": "Various Durham County Library branches",
+      "archiveUrl": "https://durhamcountylibrary.org/board-of-trustees/meetings/",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "dss-board",
+      "name": "Department of Social Services Board",
+      "description": "Responsible for Durham County social services administration, including selecting the DSS Director and setting policy.",
+      "schedule": "4th Wednesday, 10:30 AM",
+      "location": "Hybrid",
+      "archiveUrl": "https://dconc.gov/Social-Services/Contact-DSS/DSS-Board-Minutes",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "cultural-advisory",
+      "name": "Durham Cultural Advisory Board",
+      "description": "Joint advisory body to City Council and BOCC on arts funding, public art, and cultural development.",
+      "schedule": "3rd Wednesday, 3:00 PM",
+      "location": "General Services Dept., Room 141, 2011 Fay St., Durham",
+      "archiveUrl": "https://www.durhamnc.gov/452/Durham-Cultural-Advisory-Board",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "open-space-trails",
+      "name": "Open Space and Trails Commission",
+      "description": "Advises City Council and BOCC on open space preservation and trail development.",
+      "schedule": "3rd Wednesday, 7:00 PM",
+      "location": "Virtual / Durham City Hall Committee Room",
+      "archiveUrl": "https://www.durhamnc.gov/1652/Durham-Open-Space-and-Trails-Commission-",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "homeless-services",
+      "name": "Homeless Services Advisory Committee",
+      "description": "Provides guidance to county and city leadership on initiatives to prevent and end homelessness in Durham.",
+      "schedule": "4th Wednesday, 3:00 PM",
+      "location": "414 E. Main St., Durham — Conference Room C",
+      "archiveUrl": "https://www.dconc.gov/Clerk-to-the-Board/Boards-and-Commissions/Minutes-and-Meeting-Information/Homeless-Services-Advisory-Committee",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "jccpc",
+      "name": "Joint City-County Planning Committee",
+      "description": "Expedites joint City and County consideration of planning issues affecting both governments.",
+      "schedule": "1st Wednesday, 9:30 AM",
+      "location": "101 City Hall Plaza, Durham — Committee Room",
+      "archiveUrl": "https://www.durhamnc.gov/1418/Joint-City-County-Planning-Committee",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "workforce-development",
+      "name": "Workforce Development Board",
+      "description": "Local policy body responsible for planning, oversight, and coordination of workforce development initiatives.",
+      "schedule": "Every other month, 4th Thursday, 8:30 AM",
+      "location": "423 Morris Street, Durham (Durham Housing Authority)",
+      "archiveUrl": "https://durhamnc.gov/460/Workforce-Development-Board",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "human-relations",
+      "name": "Human Relations Commission",
+      "description": "Provides forums and workshops to improve community relations and address discrimination concerns in Durham.",
+      "schedule": "Monthly (check AgendaCenter for dates)",
+      "location": "Durham City Hall",
+      "archiveUrl": "https://www.durhamnc.gov/AgendaCenter",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "farmland-protection",
+      "name": "Farmland Protection Advisory Board",
+      "description": "Promotes protection of Durham County's farmland and forests to balance development with preservation of agricultural resources.",
+      "schedule": "3rd Thursday, 6:30 PM",
+      "location": "Durham Farm Bureau, 1901 Hillandale Rd., Suite 105",
+      "archiveUrl": "https://www.dconc.gov/Clerk-to-the-Board/Boards-and-Commissions/Minutes-and-Meeting-Information/Farmland-Protection-Advisory-Board",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "opioid-settlement",
+      "name": "Opioid Settlement Advisory Committee",
+      "description": "Reviews funding proposals aligned with the national opioid litigation settlement for Durham County.",
+      "schedule": "Monthly, alternating 2nd Monday & Wednesday, 5:00 PM",
+      "location": "Virtual (YouTube livestream)",
+      "archiveUrl": "https://www.dconc.gov/Clerk-to-the-Board/Boards-and-Commissions/Minutes-and-Meeting-Information/Opioid-Settlement-Advisory-Committee",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "rdu",
+      "name": "Raleigh-Durham Airport Authority",
+      "description": "Governs Raleigh-Durham International Airport with representatives from Durham City, Durham County, Raleigh, and Wake County.",
+      "schedule": "3rd Thursday, 1:00 PM",
+      "location": "RDU Airport Center, 1000 Trade Drive, Durham",
+      "archiveUrl": "https://www.rdu.com/airport-authority/meetings/",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "durham-tech-trustees",
+      "name": "Durham Technical Community College Board of Trustees",
+      "description": "Supervises the administration of Durham Technical Community College.",
+      "schedule": "Every other month, 2nd Tuesday, 3:00 PM",
+      "location": "Durham Tech Main Campus, Lyon Board Room, 1637 E. Lawson St.",
+      "archiveUrl": "https://www.dconc.gov/Clerk-to-the-Board/Boards-and-Commissions/Minutes-and-Meeting-Information/Durham-Technical-Community-College-Board-of-Trustees",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "abc-board",
+      "name": "ABC Board",
+      "description": "Policy-making body appointed by County Commissioners to oversee Durham ABC stores and enforcement.",
+      "schedule": "3rd Tuesday, 5:30 PM",
+      "location": "Durham ABC Office, 3620 Shannon Rd., Suite 200",
+      "archiveUrl": "https://www.durhamabc.com/board-meeting-minutes",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "citizens-advisory",
+      "name": "Citizens Advisory Committee",
+      "description": "Advises City Council and BOCC on housing and community development needs funded by HUD block grants.",
+      "schedule": "4th Monday, 6:00 PM",
+      "location": "101 City Hall Plaza, Durham — Conference Room 1A",
+      "archiveUrl": "https://www.durhamnc.gov/4775/Citizens-Advisory-Committee-CAC",
+      "group": "advisory",
+      "meetings": []
+    },
+    {
+      "id": "recreation-advisory",
+      "name": "Recreation Advisory Commission",
+      "description": "Works with Parks & Recreation Director on recommendations for recreational programs, facilities, and community needs.",
+      "schedule": "2nd Wednesday, 7:30 AM",
+      "location": "Durham Parks & Recreation, 400 Cleveland St.",
+      "archiveUrl": "https://www.durhamnc.gov/AgendaCenter",
+      "group": "advisory",
+      "meetings": []
     }
   ]
 }
