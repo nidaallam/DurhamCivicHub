@@ -7,6 +7,9 @@ Runs daily via GitHub Actions.
 import json
 import feedparser
 import re
+import time
+import requests
+from bs4 import BeautifulSoup
 from datetime import datetime, timezone, date
 
 # ── RSS feeds to pull from ────────────────────────────────────────────────────
@@ -42,6 +45,29 @@ TAG_RULES = [
 
 MAX_STORIES = 15
 CUTOFF_DAYS = 30  # ignore stories older than this many days
+
+HEADERS = {
+    "User-Agent": (
+        "DurhamCivicHub/1.0 (https://nidaallam.github.io/BullCity/; "
+        "public civic info aggregator)"
+    ),
+    "Accept": "text/html,application/xhtml+xml,*/*;q=0.9",
+}
+
+
+def fetch_og_image(url: str) -> str | None:
+    """Try to retrieve the og:image from an article page. Returns None on failure."""
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=10)
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, "html.parser")
+        for prop in ("og:image", "twitter:image", "og:image:secure_url"):
+            tag = soup.find("meta", property=prop) or soup.find("meta", attrs={"name": prop})
+            if tag and tag.get("content", "").startswith("http"):
+                return tag["content"].strip()
+    except Exception:
+        pass
+    return None
 
 
 def guess_tag(title: str, summary: str) -> str:
@@ -113,7 +139,18 @@ def fetch_all() -> list[dict]:
             seen.add(s["link"])
             unique.append(s)
 
-    return unique[:MAX_STORIES]
+    unique = unique[:MAX_STORIES]
+
+    # Try to enrich each story with a social share image (og:image)
+    print("  Fetching social share images…")
+    for s in unique:
+        img = fetch_og_image(s["link"])
+        if img:
+            s["image"] = img
+            print(f"    ✓ image for: {s['title'][:60]}")
+        time.sleep(0.5)  # polite rate-limiting
+
+    return unique
 
 
 def main():

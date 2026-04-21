@@ -344,7 +344,25 @@ a { color: var(--teal); }
   border: 1.5px solid var(--border);
   padding: 1.3rem 1.5rem;
   transition: box-shadow .18s;
+  overflow: hidden;
 }
+.story-card--has-img {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.story-card--has-img .story-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+.story-img-link { display: block; line-height: 0; }
+.story-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+.story-card--lead .story-img { height: 220px; }
 .story-card:hover { box-shadow: var(--shadow); }
 .story-card--lead { border-left: 4px solid var(--orange); }
 .story-meta {

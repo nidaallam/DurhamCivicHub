@@ -211,20 +211,32 @@ function renderStories() {
     grid.innerHTML = '<p style="color:var(--muted);padding:2rem 0;">No stories match your filter.</p>';
     return;
   }
-  grid.innerHTML = stories.map((s, i) => `
-    <article class="story-card${i === 0 ? ' story-card--lead' : ''}">
-      <div class="story-meta">
-        ${(s.tags||[]).slice(0,1).map(t => `<span class="story-tag">${esc(t)}</span>`).join('')}
-        <span class="story-source">${esc(s.source)}</span>
-        <span class="story-date">${esc(s.date)}</span>
+  grid.innerHTML = stories.map((s, i) => {
+    const tag = (s.tags||[s.tag]).filter(Boolean).slice(0,1)
+                  .map(t => `<span class="story-tag">${esc(t)}</span>`).join('');
+    const img = s.image
+      ? `<a href="${esc(s.link)}" target="_blank" rel="noopener" class="story-img-link">
+           <img class="story-img" src="${esc(s.image)}" alt="" loading="lazy" />
+         </a>`
+      : '';
+    return `
+    <article class="story-card${i === 0 ? ' story-card--lead' : ''}${s.image ? ' story-card--has-img' : ''}">
+      ${img}
+      <div class="story-body">
+        <div class="story-meta">
+          ${tag}
+          <span class="story-source">${esc(s.source)}</span>
+          <span class="story-date">${esc(s.displayDate || s.date)}</span>
+        </div>
+        <h3 class="story-title">
+          <a href="${esc(s.link)}" target="_blank" rel="noopener">${esc(s.title)}</a>
+        </h3>
+        ${s.excerpt ? `<p class="story-excerpt">${esc(s.excerpt)}</p>` : ''}
+        <a class="story-read-more" href="${esc(s.link)}" target="_blank" rel="noopener">Read more →</a>
       </div>
-      <h3 class="story-title">
-        <a href="${esc(s.link)}" target="_blank" rel="noopener">${esc(s.title)}</a>
-      </h3>
-      ${s.excerpt ? `<p class="story-excerpt">${esc(s.excerpt)}</p>` : ''}
-      <a class="story-read-more" href="${esc(s.link)}" target="_blank" rel="noopener">Read more →</a>
     </article>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // ── Meetings ──────────────────────────────────────────────────
