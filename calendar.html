@@ -12,6 +12,238 @@
   <link href="https://api.fontshare.com/v2/css?f[]=margin@700,800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Calendar Controls ───────────────────────────────── */
+    .cal-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .cal-month-nav {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      flex: 1;
+    }
+    .cal-month-nav-label {
+      font-family: var(--font-display, 'Margin', serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--navy);
+      min-width: 160px;
+      text-align: center;
+    }
+    .cal-nav-btn {
+      background: #fff;
+      border: 1.5px solid var(--border, #e5e7eb);
+      border-radius: 6px;
+      padding: .3rem .7rem;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      transition: background .15s;
+      line-height: 1;
+    }
+    .cal-nav-btn:hover { background: var(--bg-subtle, #f3f4f6); }
+    .cal-today-btn {
+      font-size: .78rem;
+      padding: .3rem .65rem;
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+    .cal-view-toggle {
+      display: flex;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .cal-view-btn {
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      padding: .3rem .7rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #6b7280;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .cal-view-btn.active {
+      background: #fff;
+      color: var(--navy);
+      box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    }
+
+    /* ── Month Grid ──────────────────────────────────────── */
+    .cal-grid-wrap { overflow-x: auto; }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      min-width: 420px;
+    }
+    .cal-grid-header {
+      text-align: center;
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-muted, #9ca3af);
+      padding: .35rem 0;
+    }
+    .cal-grid-cell {
+      min-height: 82px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      padding: 4px;
+      cursor: pointer;
+      transition: border-color .15s, box-shadow .15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .cal-grid-cell:hover {
+      border-color: var(--teal);
+      box-shadow: 0 2px 8px rgba(32,124,145,.12);
+      z-index: 1;
+    }
+    .cal-grid-cell--other-month {
+      background: #fafafa;
+    }
+    .cal-grid-cell--other-month .cal-grid-day-num {
+      color: #d1d5db;
+    }
+    .cal-grid-cell--today {
+      border-color: var(--teal) !important;
+      background: #f0fafa;
+    }
+    .cal-grid-cell--today .cal-grid-day-num {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cal-grid-cell--selected {
+      border-color: var(--orange) !important;
+      box-shadow: 0 0 0 2px var(--orange);
+    }
+    .cal-grid-day-num {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 3px;
+      display: inline-block;
+    }
+    .cal-chip {
+      display: block;
+      font-size: .6rem;
+      font-weight: 600;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+      color: #fff;
+    }
+    .cal-chip--more {
+      font-size: .58rem;
+      color: #6b7280;
+      background: transparent !important;
+      padding: 1px 2px;
+      font-weight: 600;
+    }
+
+    /* ── Day Detail Panel ────────────────────────────────── */
+    .cal-day-detail {
+      margin-top: 1rem;
+      background: #fff;
+      border: 1.5px solid var(--border, #e5e7eb);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cal-day-detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1.1rem;
+      background: var(--navy);
+      color: #fff;
+    }
+    .cal-day-detail-title {
+      font-family: var(--font-display, 'Margin', serif);
+      font-size: .95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .cal-day-detail-close {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,.7);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    .cal-day-detail-close:hover { color: #fff; }
+    .cal-day-detail-body { padding: .75rem 1.1rem; display: flex; flex-direction: column; gap: .6rem; }
+    .cal-detail-event {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+    .cal-detail-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+    .cal-detail-info { flex: 1; }
+    .cal-detail-name { font-weight: 600; font-size: .875rem; color: var(--navy); line-height: 1.3; }
+    .cal-detail-meta { font-size: .78rem; color: #6b7280; margin-top: .15rem; }
+    .cal-detail-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem; }
+    .cal-detail-link {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-decoration: none;
+      border: 1px solid var(--teal);
+      border-radius: 4px;
+      padding: .15rem .5rem;
+      transition: background .15s;
+    }
+    .cal-detail-link:hover { background: var(--teal); color: #fff; text-decoration: none; }
+
+    /* ── List view (existing, kept for toggle) ───────────── */
+    .cal-month { margin-bottom: 2rem; }
+
+    @media (max-width: 520px) {
+      .cal-grid-cell { min-height: 58px; }
+      .cal-chip { display: none; }
+      .cal-grid-cell::after {
+        content: attr(data-count);
+        font-size: .55rem;
+        color: #6b7280;
+        display: block;
+        margin-top: 2px;
+      }
+      .cal-grid-cell[data-count="0"]::after { display: none; }
+    }
+  </style>
 </head>
 <body data-page="calendar">
 
@@ -39,7 +271,7 @@
     <div class="page-hero-inner">
       <p class="page-hero-eyebrow">Durham County</p>
       <h1 class="page-hero-title">Civic Calendar</h1>
-      <p class="page-hero-sub">Public hearings, board meetings, community events, and budget milestones — all in one place.</p>
+      <p class="page-hero-sub">Public hearings, board meetings, community events, and budget milestones.</p>
     </div>
   </div>
 
@@ -47,246 +279,44 @@
   <main class="site-main site-main--full">
     <div class="inner-content">
 
-      <!-- Category Filters -->
-      <div class="cal-filters">
+      <!-- Controls: nav + view toggle -->
+      <div class="cal-controls" id="calControls">
+        <!-- Month nav (grid mode only) -->
+        <div class="cal-month-nav" id="calMonthNav" style="display:none">
+          <button class="cal-nav-btn" id="calPrevBtn" aria-label="Previous month">‹</button>
+          <button class="cal-nav-btn cal-today-btn" id="calTodayBtn">Today</button>
+          <span class="cal-month-nav-label" id="calMonthLabel"></span>
+          <button class="cal-nav-btn" id="calNextBtn" aria-label="Next month">›</button>
+        </div>
+        <!-- Category filter (list mode only) -->
         <div class="tag-filter-bar" id="calCatFilters">
-          <button class="tag-btn active">All</button>
-          <button class="tag-btn" style="--cat-color:#E97221">Announcement</button>
-          <button class="tag-btn" style="--cat-color:#262E4F">Government</button>
-          <button class="tag-btn" style="--cat-color:#B8393A">Budget</button>
-          <button class="tag-btn" style="--cat-color:#207C91">Schools</button>
-          <button class="tag-btn" style="--cat-color:#9B4DCA">Hearing</button>
-          <button class="tag-btn" style="--cat-color:#2E7D32">Community</button>
-          <button class="tag-btn" style="--cat-color:#C62828">Health</button>
+          <button class="tag-btn active" onclick="calFilterCat(null,this)">All</button>
+          <button class="tag-btn" onclick="calFilterCat('budget',this)">Budget</button>
+          <button class="tag-btn" onclick="calFilterCat('government',this)">Government</button>
+          <button class="tag-btn" onclick="calFilterCat('schools',this)">Schools</button>
+          <button class="tag-btn" onclick="calFilterCat('hearing',this)">Hearings</button>
+          <button class="tag-btn" onclick="calFilterCat('community',this)">Community</button>
+          <button class="tag-btn" onclick="calFilterCat('health',this)">Health</button>
+        </div>
+        <!-- View toggle -->
+        <div class="cal-view-toggle">
+          <button class="cal-view-btn active" id="calViewGrid" onclick="setCalView('grid')">📅 Grid</button>
+          <button class="cal-view-btn" id="calViewList" onclick="setCalView('list')">☰ List</button>
         </div>
       </div>
 
       <div id="calendarContainer">
-        <!-- Populated by app.js / calendar.json. Fallback below. -->
+        <p style="color:var(--muted);padding:2rem 0">Loading calendar…</p>
+      </div>
 
-        <div class="cal-month">
-          <h3 class="cal-month-label">April 2026</h3>
-
-          <div class="cal-event" style="--event-color:#E97221">
-            <div class="cal-event-date"><span class="cal-day-name">Fri</span><span class="cal-day-num">10</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">announcement</div>
-              <div class="cal-event-title">📢 FY2027 Budget Public Input Period Now Open</div>
-              <div class="cal-event-time">Now through April 24</div>
-              <div class="cal-event-loc">📍 Online at dconc.gov or in writing to the Board of Commissioners</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener">Submit Comment</a>
-              <a class="cal-event-link" href="https://www.dconc.gov/Budget-and-Management-Services" target="_blank" rel="noopener">Budget Docs</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#E97221">
-            <div class="cal-event-date"><span class="cal-day-name">Sun</span><span class="cal-day-num">12</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">announcement</div>
-              <div class="cal-event-title">📢 Durham County Seeks Applicants for Housing Advisory Board</div>
-              <div class="cal-event-time">Applications due May 1, 2026</div>
-              <div class="cal-event-loc">📍 Apply online at dconc.gov</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/county-departments/departments-a-e/board-of-commissioners/boards-and-commissions" target="_blank" rel="noopener">Apply Now</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#262E4F">
-            <div class="cal-event-date"><span class="cal-day-name">Mon</span><span class="cal-day-num">14</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">government</div>
-              <div class="cal-event-title">Board of Commissioners – Regular Meeting</div>
-              <div class="cal-event-time">Monday · 9:00 AM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham – Room 2A</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" rel="noopener">Agenda</a>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener">Public Comment</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#207C91">
-            <div class="cal-event-date"><span class="cal-day-name">Thu</span><span class="cal-day-num">17</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">schools</div>
-              <div class="cal-event-title">Durham Public Schools Board of Education</div>
-              <div class="cal-event-time">Thursday · 5:30 PM</div>
-              <div class="cal-event-loc">📍 511 Cleveland St., Durham</div>
-              <a class="cal-event-link" href="https://www.dpsnc.net/page/board-of-education" target="_blank" rel="noopener">Agenda</a>
-              <a class="cal-event-link" href="https://www.dpsnc.net" target="_blank" rel="noopener">Watch Online</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#262E4F">
-            <div class="cal-event-date"><span class="cal-day-name">Mon</span><span class="cal-day-num">21</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">government</div>
-              <div class="cal-event-title">Board of Commissioners – Work Session</div>
-              <div class="cal-event-time">Monday · 9:00 AM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham – Room 2A</div>
-              <div class="cal-event-rel">Today</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" rel="noopener">Agenda</a>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#262E4F">
-            <div class="cal-event-date"><span class="cal-day-name">Wed</span><span class="cal-day-num">23</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">government</div>
-              <div class="cal-event-title">City-County Planning Commission</div>
-              <div class="cal-event-time">Wednesday · 5:00 PM</div>
-              <div class="cal-event-loc">📍 Durham City Hall, 101 City Hall Plaza</div>
-              <a class="cal-event-link" href="https://www.durhamnc.gov/1367/Planning-Commission" target="_blank" rel="noopener">Agenda</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#9B4DCA">
-            <div class="cal-event-date"><span class="cal-day-name">Thu</span><span class="cal-day-num">24</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">hearing</div>
-              <div class="cal-event-title">Public Hearing: FY2027 Budget Proposal</div>
-              <div class="cal-event-time">Thursday · 7:00 PM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham – Commissioners Chambers</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener">Sign Up to Speak</a>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#2E7D32">
-            <div class="cal-event-date"><span class="cal-day-name">Fri</span><span class="cal-day-num">25</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">community</div>
-              <div class="cal-event-title">Durham Farmers Market – Season Opener</div>
-              <div class="cal-event-time">Saturday · 8:00 AM – 12:00 PM</div>
-              <div class="cal-event-loc">📍 501 Foster St., Durham (American Tobacco Campus)</div>
-              <a class="cal-event-link" href="https://www.durhamfarmersmarket.com" target="_blank" rel="noopener">Details</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#B8393A">
-            <div class="cal-event-date"><span class="cal-day-name">Mon</span><span class="cal-day-num">28</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">budget</div>
-              <div class="cal-event-title">Board of Commissioners – Budget Work Session</div>
-              <div class="cal-event-time">Monday · 9:00 AM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" rel="noopener">Agenda</a>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener">Public Comment</a>
-            </div>
-          </div>
-        </div><!-- /April -->
-
-        <div class="cal-month">
-          <h3 class="cal-month-label">May 2026</h3>
-
-          <div class="cal-event" style="--event-color:#E97221">
-            <div class="cal-event-date"><span class="cal-day-name">Fri</span><span class="cal-day-num">1</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">announcement</div>
-              <div class="cal-event-title">📢 Durham County Housing Advisory Board Applications Due</div>
-              <div class="cal-event-time">Deadline: May 1, 2026</div>
-              <div class="cal-event-loc">📍 Apply online at dconc.gov</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/county-departments/departments-a-e/board-of-commissioners/boards-and-commissions" target="_blank" rel="noopener">Apply</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#C62828">
-            <div class="cal-event-date"><span class="cal-day-name">Mon</span><span class="cal-day-num">5</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">health</div>
-              <div class="cal-event-title">Durham County Mental Health Advisory Board</div>
-              <div class="cal-event-time">Tuesday · 4:00 PM</div>
-              <div class="cal-event-loc">📍 414 E. Main St., Durham</div>
-              <a class="cal-event-link" href="https://www.dconc.gov" target="_blank" rel="noopener">Details</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#262E4F">
-            <div class="cal-event-date"><span class="cal-day-name">Mon</span><span class="cal-day-num">12</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">government</div>
-              <div class="cal-event-title">Board of Commissioners – Regular Meeting</div>
-              <div class="cal-event-time">Monday · 9:00 AM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham – Room 2A</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" rel="noopener">Agenda</a>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#9B4DCA">
-            <div class="cal-event-date"><span class="cal-day-name">Wed</span><span class="cal-day-num">14</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">hearing</div>
-              <div class="cal-event-title">Public Hearing: Affordable Housing Bond Update</div>
-              <div class="cal-event-time">Thursday · 6:30 PM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham – Commissioners Chambers</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener">Sign Up to Speak</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#207C91">
-            <div class="cal-event-date"><span class="cal-day-name">Thu</span><span class="cal-day-num">15</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">schools</div>
-              <div class="cal-event-title">Durham Public Schools Board of Education</div>
-              <div class="cal-event-time">Friday · 5:30 PM</div>
-              <div class="cal-event-loc">📍 511 Cleveland St., Durham</div>
-              <a class="cal-event-link" href="https://www.dpsnc.net/page/board-of-education" target="_blank" rel="noopener">Agenda</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#B8393A">
-            <div class="cal-event-date"><span class="cal-day-name">Mon</span><span class="cal-day-num">19</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">budget</div>
-              <div class="cal-event-title">County Manager Budget Presentation (FY2027)</div>
-              <div class="cal-event-time">Tuesday · 9:00 AM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham</div>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#2E7D32">
-            <div class="cal-event-date"><span class="cal-day-name">Sat</span><span class="cal-day-num">23</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">community</div>
-              <div class="cal-event-title">Durham Earth Day Community Festival</div>
-              <div class="cal-event-time">Saturday · 10:00 AM – 4:00 PM</div>
-              <div class="cal-event-loc">📍 Durham Central Park, 501 Foster St.</div>
-              <a class="cal-event-link" href="https://www.durhamcentralpark.org" target="_blank" rel="noopener">Details</a>
-            </div>
-          </div>
-        </div><!-- /May -->
-
-        <div class="cal-month">
-          <h3 class="cal-month-label">June 2026</h3>
-
-          <div class="cal-event" style="--event-color:#B8393A">
-            <div class="cal-event-date"><span class="cal-day-name">Tue</span><span class="cal-day-num">2</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">budget</div>
-              <div class="cal-event-title">Board of Commissioners – FY2027 Budget Adoption</div>
-              <div class="cal-event-time">Tuesday · 9:00 AM</div>
-              <div class="cal-event-loc">📍 200 E. Main St., Durham</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library" target="_blank" rel="noopener">Agenda</a>
-              <a class="cal-event-link" href="https://www.youtube.com/user/DCoWebmaster/videos" target="_blank" rel="noopener">Live Stream</a>
-              <a class="cal-event-link" href="https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment" target="_blank" rel="noopener">Public Comment</a>
-            </div>
-          </div>
-
-          <div class="cal-event" style="--event-color:#C62828">
-            <div class="cal-event-date"><span class="cal-day-name">Tue</span><span class="cal-day-num">9</span></div>
-            <div class="cal-event-body">
-              <div class="cal-event-cat">health</div>
-              <div class="cal-event-title">Durham County Health Dept. — Free Vaccination Clinic</div>
-              <div class="cal-event-time">Tuesday · 10:00 AM – 2:00 PM</div>
-              <div class="cal-event-loc">📍 Durham County Human Services, 414 E. Main St.</div>
-              <a class="cal-event-link" href="https://www.dconc.gov/Public-Health/Clinical-Services" target="_blank" rel="noopener">Register</a>
-            </div>
-          </div>
-        </div><!-- /June -->
-
-      </div><!-- /#calendarContainer -->
+      <!-- Day detail panel (shown when a grid day is clicked) -->
+      <div id="calDayDetail" class="cal-day-detail" style="display:none">
+        <div class="cal-day-detail-header">
+          <span class="cal-day-detail-title" id="calDayDetailTitle"></span>
+          <button class="cal-day-detail-close" onclick="closeDayDetail()" aria-label="Close">✕</button>
+        </div>
+        <div class="cal-day-detail-body" id="calDayDetailBody"></div>
+      </div>
 
     </div><!-- /.inner-content -->
   </main>
