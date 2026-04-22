@@ -260,6 +260,229 @@
       .cip-grid { grid-template-columns: 1fr; }
       .cip-stats { grid-template-columns: 1fr; }
     }
+
+    /* ── Map Legend Control ── */
+    .cip-map-legend {
+      background: rgba(255,255,255,.96);
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+      padding: 0;
+      min-width: 170px;
+      font-family: 'Libre Franklin', sans-serif;
+      overflow: hidden;
+    }
+    .cip-map-legend-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--navy, #262E4F);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .45rem .75rem;
+      gap: .5rem;
+    }
+    .cip-legend-toggle {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0;
+      width: 18px;
+      text-align: center;
+    }
+    .cip-map-legend-body { padding: .6rem .75rem .65rem; }
+    .cip-legend-section { margin-bottom: .5rem; }
+    .cip-legend-section:last-child { margin-bottom: 0; }
+    .cip-legend-section-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: .3rem;
+    }
+    .cip-legend-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8rem;
+      color: #374151;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .cip-legend-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.7);
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    }
+
+    /* ── Budget Stats Button ── */
+    .cip-stats-btn-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin: -.25rem 0 1.5rem;
+    }
+    .cip-stats-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--navy, #262E4F);
+      color: #fff;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      padding: .6rem 1.25rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      box-shadow: 0 2px 8px rgba(38,46,79,.25);
+    }
+    .cip-stats-btn:hover { background: var(--teal, #207C91); transform: translateY(-1px); }
+
+    /* ── Stats Modal ── */
+    .cip-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(38,46,79,.6);
+      backdrop-filter: blur(4px);
+      z-index: 600;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .cip-modal-overlay.open { display: flex; }
+    .cip-modal-inner {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 86vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .cip-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1.5px solid #f3f4f6;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1;
+    }
+    .cip-modal-header h2 {
+      font-family: 'Margin', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--navy, #262E4F);
+      margin: 0;
+    }
+    .cip-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #6b7280;
+      padding: .25rem .5rem;
+      border-radius: 6px;
+      line-height: 1;
+    }
+    .cip-modal-close:hover { background: #f3f4f6; }
+    .cip-modal-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .cip-modal-section { margin-bottom: 1.75rem; }
+    .cip-modal-section:last-child { margin-bottom: 0; }
+    .cip-modal-section-title {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: .85rem;
+      padding-bottom: .4rem;
+      border-bottom: 1.5px solid #f3f4f6;
+    }
+    .cip-modal-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .cip-modal-kpi {
+      background: var(--cream, #FAF6EE);
+      border-radius: 8px;
+      padding: .85rem 1rem;
+      text-align: center;
+    }
+    .cip-modal-kpi-val {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy, #262E4F);
+      line-height: 1.1;
+    }
+    .cip-modal-kpi-lbl {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin-top: .2rem;
+    }
+    .cip-bar-row {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      margin-bottom: .55rem;
+    }
+    .cip-bar-label {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #374151;
+      min-width: 130px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cip-bar-track {
+      flex: 1;
+      background: #f3f4f6;
+      border-radius: 4px;
+      height: 16px;
+      overflow: hidden;
+    }
+    .cip-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width .4s ease;
+    }
+    .cip-bar-val {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .8rem;
+      font-weight: 700;
+      color: #374151;
+      min-width: 60px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    @media (max-width: 500px) {
+      .cip-modal-kpi-row { grid-template-columns: 1fr 1fr; }
+      .cip-bar-label { min-width: 100px; font-size: .75rem; }
+    }
   </style>
 </head>
 <body data-page="cip">
@@ -322,23 +545,16 @@
       </div>
 
       <!-- Interactive Map -->
-      <div id="cipMap" style="width:100%;height:420px;border-radius:12px;overflow:hidden;border:1.5px solid #e5e0d8;margin-bottom:2rem;"></div>
-      <!-- Map Legend -->
-      <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:1.75rem;flex-wrap:wrap;">
-        <span style="font-family:'Libre Franklin',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6b7280;">Map legend</span>
-        <span style="display:flex;align-items:center;gap:.4rem;font-family:'Libre Franklin',sans-serif;font-size:.82rem;color:#374151;">
-          <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#207C91" stroke="#fff" stroke-width="2"/></svg>
-          City of Durham
-        </span>
-        <span style="display:flex;align-items:center;gap:.4rem;font-family:'Libre Franklin',sans-serif;font-size:.82rem;color:#374151;">
-          <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#262E4F" stroke="#fff" stroke-width="2"/></svg>
-          Durham County
-        </span>
-        <span style="display:flex;align-items:center;gap:.4rem;font-family:'Libre Franklin',sans-serif;font-size:.82rem;color:#374151;">
-          <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#5b21b6" stroke="#fff" stroke-width="2"/></svg>
-          Durham Public Schools
-        </span>
-        <span style="font-family:'Libre Franklin',sans-serif;font-size:.82rem;color:#9ca3af;font-style:italic;">Click a marker to highlight the project card below</span>
+      <div style="position:relative;margin-bottom:.5rem;">
+        <div id="cipMap" style="width:100%;height:420px;border-radius:12px;overflow:hidden;border:1.5px solid #e5e0d8;"></div>
+      </div>
+
+      <!-- Map controls row: Budget Stats button -->
+      <div class="cip-stats-btn-wrap">
+        <button class="cip-stats-btn" onclick="showCipStatsModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="4" height="18"/><rect x="10" y="8" width="4" height="13"/><rect x="17" y="13" width="4" height="8"/></svg>
+          Budget Stats
+        </button>
       </div>
 
       <!-- Filters -->
