@@ -623,6 +623,136 @@
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
   <script src="app.js"></script>
   <script>
+    // ── Category icon map ─────────────────────────────────────────
+    const CATEGORY_ICONS = {
+      'Water & Utilities':       '💧',
+      'Transportation':          '🛣️',
+      'Transit':                 '🚌',
+      'Housing & Community':     '🏘️',
+      'Schools & Education':     '🏫',
+      'Parks & Recreation':      '🌳',
+      'Public Safety':           '🚒',
+      'Government Facilities':   '🏛️',
+      'Streets & Sidewalks':     '🚗',
+      'Environment':             '♻️',
+    };
+    function categoryIcon(cat) {
+      return CATEGORY_ICONS[cat] || '📍';
+    }
+
+    // ── Stats modal ───────────────────────────────────────────────
+    window.showCipStatsModal = function() {
+      const modal = document.getElementById('cipStatsModal');
+      const body  = document.getElementById('cipStatsModalBody');
+      if (!modal || !body) return;
+
+      const projects = window._cipProjects || [];
+      if (!projects.length) {
+        body.innerHTML = '<p style="color:#9ca3af;">No project data loaded yet.</p>';
+        modal.classList.add('open');
+        return;
+      }
+
+      function fmtM(n) {
+        if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+        if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+        return '$' + (n / 1e3).toFixed(0) + 'K';
+      }
+
+      const totalBudget = projects.reduce((s, p) => s + p.amount, 0);
+      const totalCount  = projects.length;
+
+      // By entity
+      const ENTITY_COLORS = { city: '#207C91', county: '#262E4F', dps: '#5b21b6' };
+      const ENTITY_LABELS = { city: 'City of Durham', county: 'Durham County', dps: 'Durham Public Schools' };
+      const byEntity = {};
+      projects.forEach(p => {
+        byEntity[p.entity] = (byEntity[p.entity] || 0) + p.amount;
+      });
+      const maxEntity = Math.max(...Object.values(byEntity));
+
+      // By category
+      const byCategory = {};
+      projects.forEach(p => {
+        byCategory[p.category] = (byCategory[p.category] || 0) + p.amount;
+      });
+      const sortedCats = Object.entries(byCategory).sort((a,b) => b[1]-a[1]);
+      const maxCat = sortedCats[0]?.[1] || 1;
+
+      // By status
+      const byStatus = {};
+      projects.forEach(p => {
+        byStatus[p.status] = (byStatus[p.status] || 0) + 1;
+      });
+      const statusColors = { active:'#16a34a', ongoing:'#16a34a', planning:'#2563eb', design:'#d97706', various:'#6b7280' };
+
+      body.innerHTML = `
+        <div class="cip-modal-kpi-row">
+          <div class="cip-modal-kpi">
+            <div class="cip-modal-kpi-val">${totalCount}</div>
+            <div class="cip-modal-kpi-lbl">Total Projects</div>
+          </div>
+          <div class="cip-modal-kpi">
+            <div class="cip-modal-kpi-val">${fmtM(totalBudget)}</div>
+            <div class="cip-modal-kpi-lbl">Total Budget</div>
+          </div>
+          <div class="cip-modal-kpi">
+            <div class="cip-modal-kpi-val">${Object.keys(byCategory).length}</div>
+            <div class="cip-modal-kpi-lbl">Categories</div>
+          </div>
+        </div>
+
+        <div class="cip-modal-section">
+          <div class="cip-modal-section-title">Budget by Entity</div>
+          ${Object.entries(byEntity).map(([k,v]) => `
+            <div class="cip-bar-row">
+              <div class="cip-bar-label">${ENTITY_LABELS[k] || k}</div>
+              <div class="cip-bar-track">
+                <div class="cip-bar-fill" style="width:${Math.round(v/maxEntity*100)}%;background:${ENTITY_COLORS[k]||'#6b7280'}"></div>
+              </div>
+              <div class="cip-bar-val">${fmtM(v)}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="cip-modal-section">
+          <div class="cip-modal-section-title">Budget by Category</div>
+          ${sortedCats.map(([cat,v]) => `
+            <div class="cip-bar-row">
+              <div class="cip-bar-label" title="${cat}">${categoryIcon(cat)} ${cat}</div>
+              <div class="cip-bar-track">
+                <div class="cip-bar-fill" style="width:${Math.round(v/maxCat*100)}%;background:var(--teal,#207C91)"></div>
+              </div>
+              <div class="cip-bar-val">${fmtM(v)}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="cip-modal-section">
+          <div class="cip-modal-section-title">Projects by Status</div>
+          ${Object.entries(byStatus).map(([s,n]) => `
+            <div class="cip-bar-row">
+              <div class="cip-bar-label" style="text-transform:capitalize">${s}</div>
+              <div class="cip-bar-track">
+                <div class="cip-bar-fill" style="width:${Math.round(n/totalCount*100)}%;background:${statusColors[s.toLowerCase()]||'#6b7280'}"></div>
+              </div>
+              <div class="cip-bar-val">${n} projects</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      modal.classList.add('open');
+    };
+
+    window.closeCipStatsModal = function() {
+      document.getElementById('cipStatsModal')?.classList.remove('open');
+    };
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') window.closeCipStatsModal();
+    });
+
     (function () {
       let allProjects = [];
       let activeEntity = 'all';
