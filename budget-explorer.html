@@ -1008,6 +1008,10 @@
       ? 'Durham residents within city limits also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100.'
       : 'Durham County residents also pay a separate <strong>Durham County</strong> property tax of 55.42¢ per $100.';
 
+    const staticCrossNote = e.id === 'county'
+      ? 'Durham residents within city limits also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100 — an additional <strong>$1,529.85/yr</strong> for a $350,000 home.'
+      : 'Durham County residents also pay a separate <strong>Durham County</strong> property tax of 55.42¢ per $100 — an additional <strong>$1,939.70/yr</strong> for a $350,000 home.';
+
     return `
       <div class="exp-section-title" style="display:flex;align-items:center;gap:.6rem;">
         Your Property Tax Receipt
@@ -1025,6 +1029,9 @@
         ">Interactive</span>
       </div>
       <div class="exp-receipt-card">
+        <div style="background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:7px;padding:.75rem 1rem;margin-bottom:1rem;font-family:'Libre Franklin',sans-serif;font-size:.83rem;color:#0c4a6e;line-height:1.55;">
+          ⓘ ${staticCrossNote}
+        </div>
         <p class="exp-receipt-intro">Enter your home's assessed value to see how your annual property tax breaks down by spending area. In North Carolina, property is assessed at 100% of appraised (market) value. The current ${e.name} tax rate is <strong>${rateDisplay}</strong>.</p>
         <div class="exp-receipt-input-row">
           <label class="exp-receipt-label" for="receiptInput_${e.id}">Home Assessed Value</label>
@@ -1057,23 +1064,35 @@
 
     // For county: break down across all areas.
     // For city: only City Operations is property-tax-funded (CIP is bond-funded).
-    const receiptAreas = entityId === 'city'
-      ? (e.areas || []).filter(a => a.id === 'city-operations')
-      : (e.areas || []);
+    //           Break down by departments within City Operations.
+    let receiptItems = [];
+    if (entityId === 'city') {
+      const cityOps = (e.areas || []).find(a => a.id === 'city-operations');
+      if (cityOps && (cityOps.departments || []).some(d => d.amounts?.[yr])) {
+        receiptItems = (cityOps.departments || [])
+          .filter(d => d.amounts?.[yr])
+          .map(d => ({ name: d.name, icon: '📊', amount: d.amounts[yr] }));
+      } else if (cityOps) {
+        receiptItems = [{ name: cityOps.name, icon: cityOps.icon || '🏙️', amount: cityOps.amounts?.[yr] }];
+      }
+    } else {
+      receiptItems = (e.areas || [])
+        .filter(a => a.amounts?.[yr])
+        .map(a => ({ name: a.name, icon: a.icon || '📊', amount: a.amounts[yr] }));
+    }
 
-    const areaTotal = receiptAreas.reduce((sum, a) => sum + (a.amounts?.[yr] ?? 0), 0);
+    const areaTotal = receiptItems.reduce((sum, a) => sum + (a.amount ?? 0), 0);
 
     let breakdownHtml = '';
     if (areaTotal > 0) {
-      const rows = receiptAreas
-        .filter(a => a.amounts?.[yr])
-        .sort((a, b) => b.amounts[yr] - a.amounts[yr])
+      const rows = receiptItems
+        .sort((a, b) => b.amount - a.amount)
         .map(a => {
-          const areaPct   = a.amounts[yr] / areaTotal;
+          const areaPct   = a.amount / areaTotal;
           const dollarAmt = annualTax * areaPct;
           return `
             <div class="exp-receipt-row">
-              <span class="exp-receipt-row-icon">${a.icon || '📊'}</span>
+              <span class="exp-receipt-row-icon">${a.icon}</span>
               <span class="exp-receipt-row-name">${a.name}</span>
               <div class="exp-receipt-row-bar-wrap">
                 <div class="exp-receipt-row-bar" style="width:${(areaPct * 100).toFixed(1)}%;background:${e.accent || '#E97221'}"></div>
@@ -1086,7 +1105,7 @@
     }
 
     const cityNote = entityId === 'city'
-      ? '<strong>Note:</strong> Your city property taxes fund day-to-day operations (police, fire, parks, etc.). The Capital Improvement Plan ($537.6M) is funded by bonds and grants, not annual property taxes.'
+      ? '<strong>Note:</strong> Department figures are approximate estimates — verify exact amounts at <a href="https://www.durhamnc.gov/456/Finance" target="_blank" rel="noopener">durhamnc.gov</a>. The Capital Improvement Plan ($537.6M) is funded by bonds and grants, not annual property taxes.'
       : '';
     const combinedNote = entityId === 'county'
       ? 'Durham residents within city limits also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100 — an additional $' + (homeValue * 0.4371 / 100).toFixed(2) + '/yr for a $' + Math.round(homeValue).toLocaleString() + ' home.'
