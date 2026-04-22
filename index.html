@@ -23,7 +23,7 @@
     }
     .home-hero-eyebrow {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .78rem;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -59,7 +59,7 @@
     }
     .home-credit {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .78rem;
+      font-size: .85rem;
       color: rgba(255,255,255,.5);
       margin-top: 2.25rem;
       line-height: 1.6;
@@ -106,7 +106,7 @@
     .nida-message-text { flex: 1; }
     .nida-message-eyebrow {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .72rem;
+      font-size: .82rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -147,7 +147,7 @@
     .home-nav-inner { max-width: 1100px; margin: 0 auto; }
     .home-nav-heading {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .72rem;
+      font-size: .82rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .1em;
@@ -184,14 +184,14 @@
     .home-nav-icon { font-size: 1.75rem; line-height: 1; }
     .home-nav-label {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .78rem;
+      font-size: .85rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .05em;
     }
     .home-nav-sub {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .68rem;
+      font-size: .85rem;
       color: #888;
       line-height: 1.35;
     }
@@ -234,7 +234,7 @@
     }
     .home-highlight-label {
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .68rem;
+      font-size: .85rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .1em;
@@ -291,7 +291,7 @@
       border-color: var(--teal, #207C91);
     }
     .budget-snap-label {
-      font-size: .68rem;
+      font-size: .85rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .09em;
@@ -307,7 +307,7 @@
       margin-bottom: .3rem;
     }
     .budget-snap-desc {
-      font-size: .78rem;
+      font-size: .85rem;
       color: #6b7280;
       line-height: 1.4;
     }
@@ -331,7 +331,7 @@
       color: #fff;
     }
     .budget-explorer-cta-label {
-      font-size: .7rem;
+      font-size: .82rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .09em;
@@ -400,7 +400,7 @@
       align-items: center;
       flex-wrap: wrap;
       font-family: 'Libre Franklin', sans-serif;
-      font-size: .75rem;
+      font-size: .82rem;
       color: #555;
     }
     .cip-map-dot {
@@ -650,7 +650,7 @@
             if (!p.lat || !p.lng) return;
             const color = p.entity === 'city' ? '#207C91' : p.entity === 'dps' ? '#5b21b6' : '#262E4F';
             L.circleMarker([p.lat, p.lng], { radius: 9, fillColor: color, color: '#fff', weight: 2, opacity: 1, fillOpacity: 0.85 })
-              .bindPopup('<strong style="font-family:sans-serif;font-size:.85rem;">' + p.title + '</strong><br><span style="font-family:sans-serif;font-size:.75rem;color:#666;">$' + (p.amount/1e6).toFixed(1) + 'M</span>')
+              .bindPopup('<strong style="font-family:sans-serif;font-size:.85rem;">' + p.title + '</strong><br><span style="font-family:sans-serif;font-size:.82rem;color:#666;">$' + (p.amount/1e6).toFixed(1) + 'M</span>')
               .addTo(map);
           });
           // Add "view full map" overlay
