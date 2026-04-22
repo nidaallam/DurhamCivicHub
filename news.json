@@ -1,10 +1,28 @@
 {
-  "updated": "2026-04-21",
-  "count": 10,
+  "updated": "2026-04-22",
+  "count": 12,
   "stories": [
     {
+      "title": "Commissioner Allam Highlights Mental Health Funding as a Budget Priority",
+      "excerpt": "Vice Chair Nida Allam identified mental health services and the county's co-responder crisis program as essential priorities for the FY2026-27 budget at the BOCC's April budget work sessions. Public comment on the budget is open now and the hearing is May 26 at 7 PM at Commissioners Chambers.",
+      "link": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+      "source": "Durham County BOCC",
+      "date": "2026-04-22",
+      "displayDate": "April 22, 2026",
+      "tag": "Budget"
+    },
+    {
+      "title": "Commissioner Allam Backs Affordable Housing Bond for November Ballot",
+      "excerpt": "Vice Chair Nida Allam is supporting efforts to place an affordable housing bond on Durham County's November ballot. The proposed bond would fund housing for residents earning below 60% of area median income. The Board of Commissioners continues reviewing the proposal.",
+      "link": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
+      "source": "Durham County BOCC",
+      "date": "2026-04-21",
+      "displayDate": "April 21, 2026",
+      "tag": "Housing"
+    },
+    {
       "title": "FY2026-27 Budget Public Input Period Is Open",
-      "excerpt": "Durham County is accepting public comment on the proposed FY2026-27 budget. Submit written comments online at dconc.gov or attend the public hearing on May 26 at 7 PM at Commissioners Chambers, 200 E. Main St. County Manager Claudia Hager presents the recommended budget on May 11.",
+      "excerpt": "Durham County is accepting public comment on the proposed FY2026-27 budget. Submit written comments online or attend the public hearing on May 26 at 7 PM at Commissioners Chambers, 200 E. Main St. County Manager Claudia Hager presents the recommended budget on May 11.",
       "link": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Rules-for-Citizens-and-Public-Comment",
       "source": "Durham County",
       "date": "2026-04-20",
@@ -13,17 +31,16 @@
     },
     {
       "title": "Durham Public Schools Submits FY2026-27 Budget Request to County",
-      "excerpt": "The DPS Board of Education submitted its FY2026-27 budget request to the county, seeking increased funding for staffing, facilities, and mental health services. See the board's agenda materials for the full request.",
+      "excerpt": "The DPS Board of Education formally submitted its FY2026-27 budget request to the county, seeking increased funding to cover staffing, facilities, and mental health services across 53 schools.",
       "link": "https://www.dpsnc.net/page/board-of-education",
       "source": "DPS",
       "date": "2026-04-19",
       "displayDate": "April 19, 2026",
-      "tag": "Schools",
-      "image": "https://cmsv2-assets.apptegy.net/uploads/25110/logo/27923/durham-logo.png"
+      "tag": "Schools"
     },
     {
       "title": "FY2026-27 Budget Schedule: Key Dates for Public Participation",
-      "excerpt": "County Manager Claudia Hager presents the recommended FY2026-27 budget on May 11 at 7 PM. The public hearing is May 26 at 7 PM at Commissioners Chambers, 200 E. Main St. The Board of Commissioners votes on adoption June 8. See dconc.gov for the full schedule.",
+      "excerpt": "County Manager Claudia Hager presents the recommended FY2026-27 budget on May 11 at 7 PM. The public hearing is May 26 at 7 PM at Commissioners Chambers, 200 E. Main St. The Board of Commissioners votes on adoption June 8.",
       "link": "https://www.dconc.gov/Budget-and-Management-Services",
       "source": "Durham County",
       "date": "2026-04-18",
@@ -31,17 +48,17 @@
       "tag": "Budget"
     },
     {
-      "title": "Planning Commission Reviews Southside Rezoning at April 23 Meeting",
-      "excerpt": "The City-County Planning Commission will take up a rezoning application in the Southside neighborhood on April 23. See the Planning Commission agenda for full application details.",
+      "title": "Planning Commission Reviews Major Southside Rezoning Proposal",
+      "excerpt": "The City-County Planning Commission will consider a rezoning application in the Southside neighborhood at its April 23 meeting. The proposal would allow higher-density residential development. See the Planning Commission agenda for the full application and public comment information.",
       "link": "https://www.durhamnc.gov/1367/Planning-Commission",
       "source": "Durham City-County Planning",
       "date": "2026-04-17",
       "displayDate": "April 17, 2026",
-      "tag": "Development"
+      "tag": "Housing"
     },
     {
-      "title": "BOCC Takes Up Affordable Housing Bond Question",
-      "excerpt": "The Board of Commissioners is considering an affordable housing bond measure for the November ballot. The bond would fund new housing units for residents earning below 60% of area median income. No final vote has been taken.",
+      "title": "BOCC Takes Up Affordable Housing Funding at April Meeting",
+      "excerpt": "The Board of Commissioners discussed affordable housing funding options at its April 14 regular meeting, including a potential bond measure. See the official meeting video and agenda for details on actions taken.",
       "link": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
       "source": "Durham County BOCC",
       "date": "2026-04-14",
@@ -49,17 +66,17 @@
       "tag": "Housing"
     },
     {
-      "title": "GoTriangle Pursues Federal Grant for Durham–Chapel Hill BRT",
-      "excerpt": "GoTriangle is seeking federal Small Starts funding for the Durham–Chapel Hill Bus Rapid Transit project. The BRT line would run dedicated bus lanes on NC-54 between the two cities. A funding decision from the FTA is expected later this year.",
-      "link": "https://gotriangle.org",
+      "title": "GoTriangle Pursuing Federal Funding for Durham–Chapel Hill BRT",
+      "excerpt": "GoTriangle continues work on the Durham–Chapel Hill Bus Rapid Transit corridor along NC-54. The agency is seeking federal Small Starts funding to advance the project. See gotriangle.org for current project status.",
+      "link": "https://gotriangle.org/",
       "source": "GoTriangle",
       "date": "2026-04-15",
       "displayDate": "April 15, 2026",
       "tag": "Transit"
     },
     {
-      "title": "Durham County Expands Crisis Intervention Program Countywide",
-      "excerpt": "Durham County is rolling out its co-responder crisis program to all patrol districts starting May 1. Deputies are paired with licensed mental health clinicians on calls involving mental health emergencies. The program was first used in East Durham.",
+      "title": "Durham County Expands Co-Responder Crisis Intervention Program",
+      "excerpt": "Durham County is expanding its co-responder crisis intervention program, which pairs mental health clinicians with law enforcement for behavioral health calls. The program is rolling out countywide starting May 1.",
       "link": "https://www.dconc.gov/Public-Health",
       "source": "Durham County DHHS",
       "date": "2026-04-13",
@@ -68,12 +85,12 @@
     },
     {
       "title": "Ellerbe Creek Greenway Extension Breaks Ground",
-      "excerpt": "Durham Parks & Recreation broke ground on an Ellerbe Creek Greenway extension on April 12. See the Parks & Recreation website for the latest project details.",
-      "link": "https://www.durhamnc.gov/Facilities/Facility/Details/96",
+      "excerpt": "Durham Parks & Recreation broke ground on an Ellerbe Creek Greenway extension, adding new trail miles in northeast Durham. See the Parks & Recreation website for the latest project timeline.",
+      "link": "https://www.dprplaymore.org/CivicAlerts.aspx?AID=579",
       "source": "Durham Parks & Recreation",
       "date": "2026-04-12",
       "displayDate": "April 12, 2026",
-      "tag": "Parks"
+      "tag": "Community"
     },
     {
       "title": "Durham County Seeks Applicants for Housing Advisory Board",
@@ -82,7 +99,7 @@
       "source": "Durham County",
       "date": "2026-04-12",
       "displayDate": "April 12, 2026",
-      "tag": "Announcement"
+      "tag": "Housing"
     },
     {
       "title": "Free Vaccination Clinic at Durham Human Services on June 9",
