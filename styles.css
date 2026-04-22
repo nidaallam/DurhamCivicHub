@@ -337,7 +337,7 @@ a { color: var(--teal); }
 .meetings-group { margin-bottom: 3rem; }
 .meetings-group-title {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.85rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -349,9 +349,9 @@ a { color: var(--teal); }
 
 /* ── Main Layout ── */
 .site-main {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2.25rem 1.5rem;
+  padding: 2.25rem 2rem;
 }
 .main-inner {
   display: grid;
@@ -360,7 +360,7 @@ a { color: var(--teal); }
   align-items: start;
 }
 .site-main--full { }
-.site-main--full .inner-content { max-width: 920px; }
+.site-main--full .inner-content { max-width: 1100px; }
 
 /* ── Section Titles ── */
 .section-header {
@@ -372,7 +372,7 @@ a { color: var(--teal); }
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 800;
   color: var(--navy);
   text-transform: uppercase;
@@ -716,7 +716,7 @@ a { color: var(--teal); }
 .budget-section { margin-bottom: 3.25rem; }
 .budget-section-title {
   font-family: var(--font-display);
-  font-size: 1.9rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: var(--navy);
   text-transform: uppercase;
