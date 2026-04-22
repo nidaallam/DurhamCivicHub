@@ -50,6 +50,91 @@ function toggleNav() {
   document.getElementById('mainNav')?.classList.toggle('open');
 }
 
+// ── Nav dropdowns ─────────────────────────────────────────────
+function buildNavDropdowns() {
+  const nav = document.getElementById('mainNav');
+  if (!nav) return;
+
+  const NAV_CONFIG = {
+    'meetings.html': [
+      { label: 'Meetings & Calendar',      url: 'meetings.html',                  header: true },
+      { label: 'Board of Commissioners',   url: 'meetings.html#commissioners'   },
+      { label: 'Durham City Council',      url: 'meetings.html#city-council'    },
+      { label: 'DPS Board of Education',   url: 'meetings.html#dps'             },
+      { label: 'Planning Commission',      url: 'meetings.html#planning'        },
+    ],
+    'budget.html': [
+      { label: 'Budget Hub',               url: 'budget.html',                    header: true },
+      { label: 'Budget Explorer',          url: 'budget-explorer.html'          },
+      { divider: true },
+      { label: 'Durham County Budget',     url: 'budget-county.html'            },
+      { label: 'City of Durham Budget',    url: 'budget-city.html'              },
+      { label: 'DPS Budget',               url: 'budget-schools.html'           },
+      { label: 'Capital Projects (CIP)',   url: 'cip.html'                      },
+    ],
+    'voting.html': [
+      { label: 'Voting & Officials',       url: 'voting.html',                    header: true },
+      { label: 'Register to Vote',         url: 'https://www.ncsbe.gov/registering/how-register', external: true },
+      { label: 'Check Registration',       url: 'https://vt.ncsbe.gov/RegLkup/',  external: true },
+      { label: 'Find Polling Place',       url: 'https://vt.ncsbe.gov/PPLkup/',   external: true },
+    ],
+    'news.html': [
+      { label: 'All News',                 url: 'news.html',                       header: true },
+      { label: 'Budget News',              url: 'news.html' },
+      { label: 'Schools News',             url: 'news.html' },
+      { label: 'Government News',          url: 'news.html' },
+    ],
+  };
+
+  nav.querySelectorAll('.nav-link').forEach(link => {
+    const href  = link.getAttribute('href');
+    const items = NAV_CONFIG[href];
+    if (!items) return;
+
+    // Wrap in nav-item
+    const wrapper = document.createElement('div');
+    wrapper.className = 'nav-item';
+    link.parentNode.insertBefore(wrapper, link);
+    wrapper.appendChild(link);
+
+    // Chevron indicator
+    const chevron    = document.createElement('span');
+    chevron.className = 'nav-chevron';
+    chevron.textContent = '▾';
+    link.appendChild(chevron);
+
+    // Build dropdown
+    const dropdown = document.createElement('div');
+    dropdown.className = 'nav-dropdown';
+    dropdown.innerHTML = items.map(item => {
+      if (item.divider) return '<div class="nav-dropdown-divider"></div>';
+      const cls = item.header ? 'nav-dropdown-link nav-dropdown-link--header' : 'nav-dropdown-link';
+      const ext = item.external ? ' target="_blank" rel="noopener"' : '';
+      return `<a class="${cls}" href="${item.url}"${ext}>${item.label}</a>`;
+    }).join('');
+    wrapper.appendChild(dropdown);
+
+    // Mobile: first click opens dropdown; second click navigates
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth >= 640) return; // desktop uses CSS :hover
+      if (!wrapper.classList.contains('open')) {
+        e.preventDefault();
+        nav.querySelectorAll('.nav-item.open').forEach(w => {
+          if (w !== wrapper) w.classList.remove('open');
+        });
+        wrapper.classList.add('open');
+      }
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!nav.contains(e.target)) {
+      nav.querySelectorAll('.nav-item.open').forEach(w => w.classList.remove('open'));
+    }
+  });
+}
+
 // ── Search overlay ────────────────────────────────────────────
 function openSearch() {
   document.getElementById('searchOverlay').classList.add('open');
@@ -632,8 +717,9 @@ function renderCalendarList(data, container) {
 
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // Inject search UI on every page
+  // Inject search UI and nav dropdowns on every page
   injectSearchUI();
+  buildNavDropdowns();
 
   // News search wiring
   const ns = document.getElementById('newsSearch');
