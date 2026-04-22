@@ -763,8 +763,12 @@
   <meta name="twitter:title"       content="Budget Explorer - Durham Civic Hub" />
   <meta name="twitter:description" content="Interactive breakdown of Durham County, City of Durham, and DPS budgets. Your personal property tax receipt included." />
   <meta name="twitter:image"       content="https://civichub.nidaallam.com/icons/og-image.png" />
+  <meta name="geo.region"    content="US-NC" />
+  <meta name="geo.placename" content="Durham County, North Carolina" />
+  <meta name="geo.position"  content="35.99403;-78.898558" />
 </head>
 <body data-page="budget-explorer">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- ── Header ── -->
   <header class="site-header">
@@ -778,7 +782,7 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="news.html" class="nav-link">News</a>
         <a href="meetings.html" class="nav-link">Meetings</a>
-        <a href="budget.html" class="nav-link active">Budget</a>
+        <a href="budget.html" class="nav-link active" aria-current="page">Budget</a>
         <a href="my-durham.html" class="nav-link">My Durham</a>
         <a href="connect.html" class="nav-link">Connect</a>
       </nav>
@@ -798,7 +802,7 @@
   </div>
 
   <!-- ── Main ── -->
-  <main class="exp-main" id="expMain">
+  <main id="main-content" class="exp-main" id="expMain">
     <p style="color:#888;padding:2rem 0;font-family:'Libre Franklin',sans-serif;">Loading budget data…</p>
   </main>
 
@@ -862,11 +866,17 @@
   // ── Build entity tabs ───────────────────────────────────────────────────
   function buildTabs() {
     const tabs = document.getElementById('entityTabs');
+    tabs.setAttribute('role', 'tablist');
+    tabs.setAttribute('aria-label', 'Select budget entity');
     tabs.innerHTML = budgetData.entities.map((e, i) => {
-      const yr   = e.years[0];
-      const tot  = e.totals[yr]?.allFunds;
+      const yr      = e.years[0];
+      const tot     = e.totals[yr]?.allFunds;
+      const isActive = i === activeEntity;
       return `
-        <button class="entity-tab${i === activeEntity ? ' active' : ''}"
+        <button class="entity-tab${isActive ? ' active' : ''}"
+                role="tab"
+                aria-selected="${isActive}"
+                aria-controls="expMain"
                 onclick="switchEntity(${i})">
           ${e.name}
           <span class="tab-total">${fmtDollars(tot)} total</span>
@@ -968,7 +978,7 @@
 
       return `
         <div class="exp-area expandable" id="area-${idx}">
-          <div class="exp-area-header" onclick="toggleArea(${idx})">
+          <div class="exp-area-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleArea(${idx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleArea(${idx})}">
             <div class="exp-area-info">
               <div class="exp-area-name"><span class="exp-area-icon">${a.icon || '<i data-lucide="bar-chart-2" aria-hidden="true" class="lucide-wrap"></i>'}</span>${a.name}</div>
               ${a.description ? `<div class="exp-area-desc">${a.description}</div>` : ''}
@@ -1012,7 +1022,7 @@
     // ── Assemble ── (lucide re-init happens at end of renderEntity)
     main.innerHTML = `
       <div class="exp-controls">
-        ${e.years.length > 1 ? `<select class="exp-year-select" onchange="switchYear(this.value)">${yearOpts}</select>` : `<span style="font-family:'Libre Franklin',sans-serif;font-size:.85rem;font-weight:600;color:#888;">${yr}</span>`}
+        ${e.years.length > 1 ? `<select class="exp-year-select" aria-label="Select fiscal year" onchange="switchYear(this.value)">${yearOpts}</select>` : `<span style="font-family:'Libre Franklin',sans-serif;font-size:.85rem;font-weight:600;color:#888;">${yr}</span>`}
         ${viewToggle}
         <a class="exp-source-link" href="${e.sourceUrl}" target="_blank" rel="noopener"><i data-lucide="file-text" aria-hidden="true" class="lucide-wrap"></i> ${e.sourceLabel} →</a>
         <button class="exp-print-btn" onclick="printBudget()" title="Print or save as PDF">
@@ -1363,18 +1373,21 @@
   let openAreaIdx = null;
   function toggleArea(idx) {
     const allAreas = document.querySelectorAll('.exp-area');
+    const setExpanded = (el, val) => {
+      el?.querySelector('.exp-area-header')?.setAttribute('aria-expanded', String(val));
+    };
     if (openAreaIdx === idx) {
-      // Clicking the open one closes it
       allAreas[idx] && allAreas[idx].classList.remove('open');
+      setExpanded(allAreas[idx], false);
       openAreaIdx = null;
     } else {
-      // Close previously open, open this one
       if (openAreaIdx !== null && allAreas[openAreaIdx]) {
         allAreas[openAreaIdx].classList.remove('open');
+        setExpanded(allAreas[openAreaIdx], false);
       }
       allAreas[idx] && allAreas[idx].classList.add('open');
+      setExpanded(allAreas[idx], true);
       openAreaIdx = idx;
-      // Smooth scroll so detail panel is visible
       setTimeout(() => {
         allAreas[idx] && allAreas[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 50);

@@ -28,8 +28,12 @@
   <meta name="twitter:title"       content="Local Government News - Durham Civic Hub" />
   <meta name="twitter:description" content="Budget fights, schools, housing, transit, public health. Every link goes straight to an official Durham County source." />
   <meta name="twitter:image"       content="https://civichub.nidaallam.com/icons/og-image.png" />
+  <meta name="geo.region"    content="US-NC" />
+  <meta name="geo.placename" content="Durham County, North Carolina" />
+  <meta name="geo.position"  content="35.99403;-78.898558" />
 </head>
 <body data-page="news">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- ── Header ── -->
   <header class="site-header">
@@ -41,7 +45,7 @@
       <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"><i data-lucide="menu" aria-hidden="true" class="lucide-wrap"></i></button>
       <nav class="main-nav" id="mainNav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="news.html" class="nav-link active">News</a>
+        <a href="news.html" class="nav-link active" aria-current="page">News</a>
         <a href="meetings.html" class="nav-link">Meetings</a>
         <a href="budget.html" class="nav-link">Budget</a>
         <a href="my-durham.html" class="nav-link">My Durham</a>
@@ -69,7 +73,7 @@
   </div>
 
   <!-- ── Main Content ── -->
-  <main class="site-main">
+  <main id="main-content" class="site-main">
     <div class="main-inner">
 
       <!-- News Column -->
@@ -80,17 +84,17 @@
         </div>
 
         <div class="news-controls">
-          <div class="tag-filter-bar" id="tagFilters">
-            <button class="tag-btn active" onclick="filterByTag(null, this)">All</button>
-            <button class="tag-btn" onclick="filterByTag('Budget', this)">Budget</button>
-            <button class="tag-btn" onclick="filterByTag('Housing', this)">Housing</button>
-            <button class="tag-btn" onclick="filterByTag('Schools', this)">Schools</button>
-            <button class="tag-btn" onclick="filterByTag('Transit', this)">Transit</button>
-            <button class="tag-btn" onclick="filterByTag('Health', this)">Health</button>
-            <button class="tag-btn" onclick="filterByTag('Community', this)">Community</button>
+          <div class="tag-filter-bar" id="tagFilters" role="group" aria-label="Filter news by topic">
+            <button class="tag-btn active" aria-pressed="true"  onclick="filterByTag(null, this)">All</button>
+            <button class="tag-btn" aria-pressed="false" onclick="filterByTag('Budget', this)">Budget</button>
+            <button class="tag-btn" aria-pressed="false" onclick="filterByTag('Housing', this)">Housing</button>
+            <button class="tag-btn" aria-pressed="false" onclick="filterByTag('Schools', this)">Schools</button>
+            <button class="tag-btn" aria-pressed="false" onclick="filterByTag('Transit', this)">Transit</button>
+            <button class="tag-btn" aria-pressed="false" onclick="filterByTag('Health', this)">Health</button>
+            <button class="tag-btn" aria-pressed="false" onclick="filterByTag('Community', this)">Community</button>
           </div>
           <div class="news-controls-right">
-            <input class="news-search" id="newsSearch" type="search" placeholder="Search stories…" />
+            <input class="news-search" id="newsSearch" type="search" placeholder="Search stories…" aria-label="Search news stories" />
             <button class="sort-btn" id="sortBtn" onclick="toggleSort()" title="Toggle sort order">
               <i data-lucide="arrow-up-down" aria-hidden="true" class="lucide-wrap"></i>
               <span id="sortLabel">Newest first</span>

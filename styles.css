@@ -61,6 +61,24 @@ h1 .lucide, h2 .lucide, h3 .lucide { width: 1.1em; height: 1.1em; }
   --shadow-lg: 0 6px 28px rgba(38,46,79,.13);
 }
 
+/* ── Skip navigation ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--navy);
+  color: #fff;
+  padding: .6rem 1.2rem;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top .15s;
+}
+.skip-link:focus { top: 0; }
+
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 20px; }
@@ -73,6 +91,14 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: var(--teal); }
+
+/* ── Focus-visible (global keyboard focus ring) ── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
 
 /* ── Header ── */
 .site-header {
@@ -487,7 +513,7 @@ a { color: var(--teal); }
   transition: border-color .15s;
   min-width: 170px;
 }
-.news-search:focus { border-color: var(--teal); }
+.news-search:focus-visible { border-color: var(--teal); outline: 3px solid var(--teal); outline-offset: 1px; }
 
 /* ── Story Cards ── */
 .stories-grid { display: flex; flex-direction: column; gap: 1.25rem; }
@@ -1162,6 +1188,7 @@ a { color: var(--teal); }
   color: var(--navy);
   background: transparent;
 }
+.search-modal-input:focus-visible { outline: 2px solid var(--teal); border-radius: 3px; }
 .search-modal-input::placeholder { color: var(--muted); }
 .search-modal-close {
   background: none;

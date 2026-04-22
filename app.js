@@ -294,15 +294,21 @@ async function loadNews() {
 function buildTagFilters() {
   const bar = document.getElementById('tagFilters');
   if (!bar) return;
+  bar.setAttribute('role', 'group');
+  bar.setAttribute('aria-label', 'Filter news by topic');
   const tags = [...new Set(allStories.flatMap(s => s.tags || [s.tag]).filter(Boolean))].sort();
-  bar.innerHTML = `<button class="tag-btn active" onclick="filterByTag(null,this)">All</button>` +
-    tags.map(t => `<button class="tag-btn" onclick="filterByTag('${t}',this)">${esc(t)}</button>`).join('');
+  bar.innerHTML = `<button class="tag-btn active" aria-pressed="true" onclick="filterByTag(null,this)">All</button>` +
+    tags.map(t => `<button class="tag-btn" aria-pressed="false" onclick="filterByTag('${esc(t)}',this)">${esc(t)}</button>`).join('');
 }
 
 function filterByTag(tag, btn) {
   activeTag = tag;
-  document.querySelectorAll('#tagFilters .tag-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#tagFilters .tag-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-pressed', 'false');
+  });
   btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
   renderStories();
 }
 

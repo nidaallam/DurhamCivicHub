@@ -1,7 +1,7 @@
 /* Durham Civic Hub – Service Worker */
 'use strict';
 
-const CACHE = 'durhamcivichub-v1';
+const CACHE = 'durhamcivichub-v2';
 const PRECACHE = [
   '/',
   '/index.html',
