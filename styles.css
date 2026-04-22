@@ -186,7 +186,7 @@ a { color: var(--teal); }
   font-size: 1.05rem;
   color: rgba(255,255,255,.78);
   margin-bottom: 2.25rem;
-  max-width: 520px;
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
@@ -234,7 +234,7 @@ a { color: var(--teal); }
 .hub-about-desc {
   font-size: 1rem;
   color: #374151;
-  max-width: 680px;
+  max-width: 860px;
   margin: 0 auto .9rem;
   line-height: 1.65;
 }
@@ -284,7 +284,7 @@ a { color: var(--teal); }
   background: linear-gradient(120deg, rgba(233,114,33,.15) 0%, transparent 55%);
   pointer-events: none;
 }
-.page-hero-inner   { max-width: 1200px; margin: 0 auto; position: relative; }
+.page-hero-inner   { max-width: 1440px; margin: 0 auto; position: relative; }
 .page-hero-eyebrow {
   font-size: .82rem;
   font-weight: 800;
@@ -306,7 +306,7 @@ a { color: var(--teal); }
 .page-hero-sub {
   font-size: 1rem;
   color: rgba(255,255,255,.78);
-  max-width: 640px;
+  max-width: 800px;
   margin-bottom: 1.6rem;
   line-height: 1.6;
 }
