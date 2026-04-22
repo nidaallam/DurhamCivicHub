@@ -505,11 +505,56 @@ def _current_fiscal_year():
         start = today.year - 1
     return f"FY{start}-{str(start + 1)[2:]}"
 
+def _scrape_county_budget_doc_url(fy_label):
+    """Try to find the adopted budget document URL for the given FY on dconc.gov.
+    Returns a URL string or None if not yet posted."""
+    try:
+        html = fetch("https://www.dconc.gov/Budget-and-Management-Services/Budget-Documents")
+        # Look for links containing the FY label (e.g. "FY 2026-27" or "FY2026-27")
+        fy_pattern = fy_label.replace("FY", "FY ?").replace("-", "[-–]")
+        doc_links = re.findall(
+            r'href="(/[^"]+)"[^>]*>[^<]*(?:Adopted|Budget Document)[^<]*', html, re.IGNORECASE
+        )
+        if not doc_links:
+            # Broader search: any internal link near the FY label
+            idx = html.find(fy_label.replace("-", " "))
+            if idx < 0:
+                idx = html.find(fy_label)
+            if idx >= 0:
+                snippet = html[max(0, idx - 200): idx + 500]
+                doc_links = re.findall(r'href="(/[^"]+)"', snippet)
+
+        for path in doc_links:
+            if "coming-soon" in path.lower() or "test" in path.lower():
+                continue
+            return f"https://www.dconc.gov{path}"
+    except Exception as e:
+        print(f"  Budget doc scrape failed: {e}")
+    return None
+
+def _scrape_city_budget_doc_url(fy_label):
+    """Try to find the adopted city budget document URL on durhamnc.gov."""
+    try:
+        html = fetch("https://www.durhamnc.gov/456/Finance")
+        idx = html.find(fy_label.replace("-", " "))
+        if idx < 0:
+            idx = html.find(fy_label)
+        if idx >= 0:
+            snippet = html[max(0, idx - 200): idx + 500]
+            links = re.findall(r'href="(/[^"]+)"', snippet)
+            for path in links:
+                if any(kw in path.lower() for kw in ["budget", "adopted", "fy"]):
+                    return f"https://www.durhamnc.gov{path}"
+    except Exception as e:
+        print(f"  City budget doc scrape failed: {e}")
+    return None
+
 def update_budget():
-    """After budget adoption (mid-June), prepopulate the new fiscal year entry
-    so the site always shows the current cycle label. Dollar amounts are copied
-    from the prior year and flagged for manual update — they need to be filled
-    in once the adopted budget document is published."""
+    """After budget adoption (mid-June):
+    1. Scrape dconc.gov and durhamnc.gov for the new adopted budget document URL.
+    2. If found, update sourceUrl to the new document.
+    3. Add the new fiscal year entry — with the actual doc URL if available,
+       or a placeholder flagged for manual dollar-amount update."""
     print("Checking budget fiscal year...")
     with open(BUDGET_FILE) as f:
         data = json.load(f)
@@ -518,29 +563,51 @@ def update_budget():
     changed = False
 
     for entity in data["entities"]:
+        eid = entity.get("id", "")
         years = entity.get("years", [])
+        totals = entity.get("totals", {})
+
+        # Try to fetch the new adopted budget document URL
+        if eid == "county":
+            doc_url = _scrape_county_budget_doc_url(expected_fy)
+        elif eid == "city":
+            doc_url = _scrape_city_budget_doc_url(expected_fy)
+        else:
+            doc_url = None
+
+        if doc_url:
+            print(f"  {entity['name']}: found {expected_fy} doc → {doc_url}")
+            if entity.get("sourceUrl") != doc_url:
+                entity["sourceUrl"] = doc_url
+                changed = True
+
         if expected_fy in years:
             continue
 
-        print(f"  {entity['name']}: adding {expected_fy} placeholder")
-
-        # Copy prior year figures as a starting point; flag for manual update
+        print(f"  {entity['name']}: adding {expected_fy} entry")
         prior_fy = years[0] if years else None
-        totals = entity.get("totals", {})
 
         if prior_fy and prior_fy in totals:
-            prior = totals[prior_fy]
-            totals[expected_fy] = {
+            prior = dict(totals[prior_fy])
+            new_entry = {
                 **prior,
-                "note": f"PENDING: Update with adopted {expected_fy} figures from official budget document.",
-                "needs_update": True,
+                "note": (
+                    f"Source: {doc_url}" if doc_url
+                    else f"PENDING: Update with adopted {expected_fy} figures from official budget document."
+                ),
             }
+            if not doc_url:
+                new_entry["needs_update"] = True
         else:
-            totals[expected_fy] = {
-                "note": f"PENDING: Update with adopted {expected_fy} figures from official budget document.",
+            new_entry = {
+                "note": (
+                    f"Source: {doc_url}" if doc_url
+                    else f"PENDING: Update with adopted {expected_fy} figures from official budget document."
+                ),
                 "needs_update": True,
             }
 
+        totals[expected_fy] = new_entry
         entity["totals"] = totals
         entity["years"] = [expected_fy] + years
         changed = True
@@ -548,9 +615,14 @@ def update_budget():
     if changed:
         with open(BUDGET_FILE, 'w') as f:
             json.dump(data, f, indent=2)
-        print(f"  Saved budget-data.json — ACTION NEEDED: fill in {expected_fy} dollar amounts")
+        fy_entries = [e for ent in data["entities"] for e in [ent.get("totals", {}).get(expected_fy, {})]]
+        has_pending = any(e.get("needs_update") for e in fy_entries)
+        if has_pending:
+            print(f"  Saved budget-data.json — ACTION NEEDED: fill in {expected_fy} dollar amounts")
+        else:
+            print(f"  Saved budget-data.json with {expected_fy} doc links")
     else:
-        print(f"  budget-data.json already shows {expected_fy}")
+        print(f"  budget-data.json already current for {expected_fy}")
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
