@@ -240,7 +240,7 @@
         <div id="speakRulesContainer"><p style="color:#888;font-size:.9rem;">Loading…</p></div>
         <!-- Draft helper -->
         <div style="margin-top:1.25rem;background:#fff;border:1.5px solid var(--border,#e5e0d8);border-radius:10px;padding:1.25rem;">
-          <h3 style="font-family:'Libre Franklin',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin:0 0 .4rem;">Step 3 — Draft your comment</h3>
+          <h3 style="font-family:'Libre Franklin',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin:0 0 .4rem;">Step 3: Draft your comment</h3>
           <p style="font-size:.82rem;color:#666;margin:0 0 .7rem;">Answer these three questions, then copy the result:</p>
           <div style="display:flex;flex-direction:column;gap:.55rem;">
             <textarea id="draftQ1" placeholder="What issue do you care about?" rows="2" oninput="buildDraftComment()" style="width:100%;padding:.55rem .75rem;font-size:.88rem;font-family:'Libre Franklin',sans-serif;border:1.5px solid var(--border,#e5e0d8);border-radius:6px;resize:vertical;box-sizing:border-box;"></textarea>
@@ -291,16 +291,16 @@
       if (!el || !_speakData) return;
       const b = _speakData.bodies[id];
       if (!b) return;
-      const calData = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${b.name} — Public Comment\nDESCRIPTION:Rules: ${b.rulesUrl}\nLOCATION:${b.location}\nEND:VEVENT\nEND:VCALENDAR`;
+      const calData = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${b.name}: Public Comment\nDESCRIPTION:Rules: ${b.rulesUrl}\nLOCATION:${b.location}\nEND:VEVENT\nEND:VCALENDAR`;
       const calUrl = 'data:text/calendar;charset=utf8,' + encodeURIComponent(calData);
       el.innerHTML = `
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.65rem;margin-bottom:.9rem;">
           <div style="background:#fff;border:1.5px solid var(--border);border-left:4px solid var(--teal);border-radius:8px;padding:.75rem .9rem;">
-            <div style="font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.2rem;">Step 1 — Time limit</div>
+            <div style="font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.2rem;">Step 1: Time limit</div>
             <div style="font-size:.95rem;font-weight:700;color:var(--navy);">${b.timeLimit}</div>
           </div>
           <div style="background:#fff;border:1.5px solid var(--border);border-left:4px solid var(--orange);border-radius:8px;padding:.75rem .9rem;">
-            <div style="font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.2rem;">Step 2 — Sign up by</div>
+            <div style="font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.2rem;">Step 2: Sign up by</div>
             <div style="font-size:.88rem;font-weight:700;color:var(--navy);">${b.signupDeadline}</div>
           </div>
           <div style="background:#fff;border:1.5px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:.75rem .9rem;">

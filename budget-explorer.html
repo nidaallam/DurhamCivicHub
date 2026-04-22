@@ -705,7 +705,7 @@
 
   // ── Formatters ──────────────────────────────────────────────────────────
   function fmtDollars(n) {
-    if (n == null) return '—';
+    if (n == null) return 'N/A';
     if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
     if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
     if (n >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
@@ -713,7 +713,7 @@
   }
 
   function pct(part, total) {
-    if (!total || !part) return '—';
+    if (!total || !part) return 'N/A';
     return (part / total * 100).toFixed(1) + '%';
   }
 
@@ -788,9 +788,9 @@
         badge: '',
       } : null,
       perCapita ? {
-        label: 'Per Resident',
+        label: 'Per Neighbor',
         value: perCapita,
-        sub:   'Approx. ' + Math.round(totals.population / 1000) + 'K residents',
+        sub:   'Approx. ' + Math.round(totals.population / 1000) + 'K neighbors',
         badge: '',
       } : null,
     ].filter(Boolean);
@@ -985,9 +985,9 @@
             ${amt ? `<div class="exp-dept-bar" style="width:${barW.toFixed(0)}%;background:${entity?.accent || '#207C91'}"></div>` : ''}
           </td>
           <td>${fmtDollars(amt)}</td>
-          ${prevYr ? `<td>${amt != null && prev != null ? yoyBadge(amt, prev) : (fmtDollars(prev) || '—')}</td>` : ''}
-          <td>${amt ? pct(amt, areaTotal) : '—'}</td>
-          <td style="color:#888;">${amt && entityTotal ? pct(amt, entityTotal) : '—'}</td>
+          ${prevYr ? `<td>${amt != null && prev != null ? yoyBadge(amt, prev) : (fmtDollars(prev) || 'N/A')}</td>` : ''}
+          <td>${amt ? pct(amt, areaTotal) : 'N/A'}</td>
+          <td style="color:#888;">${amt && entityTotal ? pct(amt, entityTotal) : 'N/A'}</td>
         </tr>`;
     }).join('');
 
@@ -1014,12 +1014,12 @@
 
     const rateDisplay = (e.taxRatePer100 * 100).toFixed(2) + '¢ / $100 assessed value';
     const counterNote = e.id === 'county'
-      ? 'Durham residents within city limits also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100.'
-      : 'Durham County residents also pay a separate <strong>Durham County</strong> property tax of 55.42¢ per $100.';
+      ? 'If you live inside city limits, you also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100.'
+      : 'If you live in Durham County, you also pay a separate <strong>Durham County</strong> property tax of 55.42¢ per $100.';
 
     const staticCrossNote = e.id === 'county'
-      ? 'Durham residents within city limits also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100. Enter your home value below to see the exact additional amount.'
-      : 'Durham County residents also pay a separate <strong>Durham County</strong> property tax of 55.42¢ per $100. Enter your home value below to see the exact additional amount.';
+      ? 'If you live inside city limits, you also pay a separate <strong>City of Durham</strong> property tax of 43.71¢ per $100. Enter your home value below to see the exact additional amount.'
+      : 'If you live in Durham County, you also pay a separate <strong>Durham County</strong> property tax of 55.42¢ per $100. Enter your home value below to see the exact additional amount.';
 
     return `
       <div class="exp-section-title" style="display:flex;align-items:center;gap:.6rem;">
