@@ -607,7 +607,7 @@
   /* ── Geocode via Nominatim ───────────────────────────────────── */
   async function geocode(address) {
     const q   = encodeURIComponent(address + ' Durham NC');
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${q}&limit=1&countrycodes=us`;
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${q}&limit=1&countrycodes=us&addressdetails=1`;
     const res = await fetch(url, {
       headers: { 'Accept-Language': 'en-US,en', 'User-Agent': 'DurhamCivicHub/1.0' },
       signal: AbortSignal.timeout(8000),
@@ -615,7 +615,10 @@
     if (!res.ok) throw new Error('Geocoding service unavailable. Please try again.');
     const data = await res.json();
     if (!data.length) throw new Error('Address not found. Try adding "Durham, NC" to your address, or check the spelling.');
-    return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon), display: data[0].display_name };
+    const addr = data[0].address || {};
+    // Consider in-city if Nominatim tags it as Durham city (not just county)
+    const inDurhamCity = addr.city === 'Durham' || addr.town === 'Durham';
+    return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon), display: data[0].display_name, inDurhamCity };
   }
 
   /* ── GIS query helper ───────────────────────────────────────── */
@@ -628,61 +631,30 @@
   }
 
   /* ── Build result cards ─────────────────────────────────────── */
-  function buildCommissionerCard(gisData) {
-    let districtNum = null;
-    let districtLabel = 'Unknown';
-
-    if (gisData && gisData.features && gisData.features.length > 0) {
-      const attrs = gisData.features[0].attributes;
-      // Try common field names from Durham GIS
-      const raw = attrs.DISTRICT || attrs.District || attrs.district
-               || attrs.COMM_DIST || attrs.CommDist
-               || attrs.DISTRICTID || attrs.DistrictID
-               || null;
-      if (raw !== null && raw !== undefined) {
-        districtNum = parseInt(raw, 10);
-        districtLabel = `District ${districtNum}`;
-      } else {
-        // Show all fields for debugging in console
-        console.info('Commissioner GIS attrs:', attrs);
-        // Try any field that looks like a number 1-5
-        for (const [k, v] of Object.entries(attrs)) {
-          const n = parseInt(v, 10);
-          if (n >= 1 && n <= 5) { districtNum = n; districtLabel = `District ${n}`; break; }
-        }
-      }
-    }
-
-    const comm = districtNum ? COMMISSIONERS[districtNum] : null;
-
-    if (!comm) {
-      return `
-        <div class="result-card result-card--commissioner">
-          <div class="result-card-icon">🏛️</div>
-          <div class="result-card-category">County Commissioner</div>
-          <p class="result-card-title">District not found</p>
-          <p class="result-card-detail">We couldn't determine your commissioner district from that address. Try visiting the official district map to look up manually.</p>
-          <div class="result-card-links">
-            <a href="https://www.dconc.gov/government/commissioners" target="_blank" rel="noopener" class="result-card-link">Board of Commissioners</a>
-          </div>
-        </div>`;
-    }
-
+  function buildCommissionerCard() {
+    // All 5 commissioners are at-large — they represent every Durham County resident equally
+    const rows = COMMISSIONERS.map(c =>
+      `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="display:block;padding:.25rem 0;color:var(--navy,#262E4F);font-size:.85rem;font-weight:600;text-decoration:none;">${esc(c.name)}<span style="font-weight:400;color:#666;"> — ${esc(c.title)}</span></a>`
+    ).join('');
     return `
       <div class="result-card result-card--commissioner">
         <div class="result-card-icon">🏛️</div>
-        <div class="result-card-category">County Commissioner · ${esc(districtLabel)}</div>
-        <p class="result-card-title">${esc(comm.name)}</p>
-        <p class="result-card-detail"><strong>${esc(comm.title)}</strong><br>Durham County Board of Commissioners</p>
+        <div class="result-card-category">County Commissioner</div>
+        <p class="result-card-title">Your Durham County Representatives</p>
+        <p class="result-card-detail">All 5 commissioners are elected at-large and represent every Durham County resident — no districts!</p>
+        <div style="margin:.5rem 0 .25rem;">${rows}</div>
         <div class="result-card-links">
-          <a href="${esc(comm.url)}" target="_blank" rel="noopener" class="result-card-link">Contact Commissioner</a>
-          <a href="https://www.dconc.gov/government/commissioners" target="_blank" rel="noopener" class="result-card-link result-card-link--secondary">Full Board</a>
+          <a href="https://www.dconc.gov/government/commissioners" target="_blank" rel="noopener" class="result-card-link">Board of Commissioners</a>
         </div>
       </div>`;
   }
 
-  function buildCityCouncilCard(gisData) {
-    if (!gisData || !gisData.features || gisData.features.length === 0) {
+  function buildCityCouncilCard(gisData, inDurhamCity) {
+    const hasGIS = gisData && gisData.features && gisData.features.length > 0;
+
+    // Only show "outside city limits" if GIS positively found no features AND
+    // Nominatim also did not identify this as Durham city
+    if (!hasGIS && inDurhamCity === false) {
       return `
         <div class="result-card result-card--city">
           <div class="result-card-icon">🏙️</div>
@@ -695,16 +667,14 @@
         </div>`;
     }
 
-    const attrs = gisData.features[0].attributes;
-    const raw   = attrs.DISTRICT || attrs.District || attrs.district
-               || attrs.CITY_DIST || attrs.CityDist
-               || attrs.COUNCIL_DISTRICT || attrs.CouncilDistrict
-               || null;
-    console.info('City Council GIS attrs:', attrs);
-
     let districtLabel = 'City Council';
-    if (raw !== null && raw !== undefined) {
-      districtLabel = `City Council · District ${raw}`;
+    if (hasGIS) {
+      const attrs = gisData.features[0].attributes;
+      const raw   = attrs.DISTRICT || attrs.District || attrs.district
+                 || attrs.CITY_DIST || attrs.CityDist
+                 || attrs.COUNCIL_DISTRICT || attrs.CouncilDistrict
+                 || null;
+      if (raw !== null && raw !== undefined) districtLabel = `City Council · District ${raw}`;
     }
 
     return `
@@ -712,7 +682,7 @@
         <div class="result-card-icon">🏙️</div>
         <div class="result-card-category">${esc(districtLabel)}</div>
         <p class="result-card-title">Durham City Council</p>
-        <p class="result-card-detail">Your address is inside Durham city limits. Find your City Council member and their contact info on the City's website.</p>
+        <p class="result-card-detail">Your address is inside Durham city limits. Find your City Council member and contact info on the City's website.</p>
         <div class="result-card-links">
           <a href="https://www.durhamnc.gov/1245/City-Council" target="_blank" rel="noopener" class="result-card-link">City Council</a>
         </div>
