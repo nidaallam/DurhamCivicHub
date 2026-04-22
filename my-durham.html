@@ -439,6 +439,32 @@
 
   /* ── Static data ─────────────────────────────────────────────── */
 
+  const CITY_COUNCIL = {
+    mayor:   { name: 'Leonardo Williams',  title: 'Mayor',            url: 'https://www.durhamnc.gov/1329/About-the-Mayor' },
+    atLarge: [
+      { name: 'Javiera Caballero', title: 'Mayor Pro Tempore · At-Large', url: 'https://www.durhamnc.gov/3286/Javiera-Caballero' },
+      { name: 'Nate Baker',        title: 'At-Large',                     url: 'https://www.durhamnc.gov/4797/Nate-Baker' },
+      { name: 'Carl Rist',         title: 'At-Large',                     url: 'https://www.durhamnc.gov/1661/Carl-Rist' },
+    ],
+    wards: [
+      { ward: 1, name: 'Matt Kopac',      url: 'https://www.durhamnc.gov/5483/Matt-Kopac' },
+      { ward: 2, name: 'Shanetta Burris', url: 'https://www.durhamnc.gov/5484/Shanetta-Burris' },
+      { ward: 3, name: 'Chelsea Cook',    url: 'https://www.durhamnc.gov/4664/Chelsea-Cook' },
+    ],
+  };
+
+  const NC_SENATE_DURHAM = [
+    { name: 'Natalie S. Murdock', district: 20, url: 'https://www.ncleg.gov/Members/MemberList/S/0' },
+    { name: 'Sophia Chitlik',     district: 22, url: 'https://www.ncleg.gov/Members/MemberList/S/0' },
+  ];
+
+  const NC_HOUSE_DURHAM = [
+    { name: 'Vernetta Alston', district: 29, url: 'https://www.ncleg.gov/Members/MemberList/H/0' },
+    { name: 'Marcia Morey',    district: 30, url: 'https://www.ncleg.gov/Members/MemberList/H/0' },
+    { name: 'Zack Hawkins',    district: 31, url: 'https://www.ncleg.gov/Members/MemberList/H/0' },
+    { name: 'B. Ray Jeffers',  district:  2, url: 'https://www.ncleg.gov/Members/MemberList/H/0' },
+  ];
+
   /* Durham County Board of Commissioners — all 5 members are at-large (no districts) */
   const COMMISSIONERS = [
     { name: 'Dr. Mike Lee',      title: 'Chair',       url: 'https://www.dconc.gov/Board-of-Commissioners/Commissioners/Mike-Lee' },
@@ -551,57 +577,63 @@
   }
 
   function buildCityCouncilCard(gisData, inDurhamCity) {
-    const hasGIS = gisData && gisData.features && gisData.features.length > 0;
-
-    // Only show "outside city limits" if GIS positively found no features AND
-    // Nominatim also did not identify this as Durham city
-    if (!hasGIS && inDurhamCity === false) {
+    if (inDurhamCity === false) {
       return `
         <div class="result-card result-card--city">
           <div class="result-card-icon">🏙️</div>
           <div class="result-card-category">City Council</div>
           <p class="result-card-title">Outside City Limits</p>
-          <div class="outside-city-note">Your address appears to be in unincorporated Durham County, outside Durham city limits. You don't have a Durham City Council representative — county government serves you directly.</div>
+          <div class="outside-city-note">Your address is in unincorporated Durham County, outside Durham city limits. County government serves you directly — you don't have a Durham City Council representative.</div>
           <div class="result-card-links" style="margin-top:.5rem;">
             <a href="https://www.dconc.gov/government/commissioners" target="_blank" rel="noopener" class="result-card-link result-card-link--secondary">County Board</a>
           </div>
         </div>`;
     }
 
-    let districtLabel = 'City Council';
-    if (hasGIS) {
-      const attrs = gisData.features[0].attributes;
-      const raw   = attrs.DISTRICT || attrs.District || attrs.district
-                 || attrs.CITY_DIST || attrs.CityDist
-                 || attrs.COUNCIL_DISTRICT || attrs.CouncilDistrict
-                 || null;
-      if (raw !== null && raw !== undefined) districtLabel = `City Council · District ${raw}`;
-    }
+    const cc = CITY_COUNCIL;
+    const memberRow = (m, label) =>
+      `<a href="${esc(m.url)}" target="_blank" rel="noopener" style="display:block;padding:.2rem 0;color:var(--navy,#262E4F);font-size:.82rem;font-weight:600;text-decoration:none;">${esc(m.name)}<span style="font-weight:400;color:#666;"> — ${esc(label)}</span></a>`;
+
+    const rows = [
+      memberRow(cc.mayor, 'Mayor'),
+      ...cc.atLarge.map(m => memberRow(m, m.title)),
+      ...cc.wards.map(m => memberRow(m, `Ward ${m.ward}`)),
+    ].join('');
 
     return `
       <div class="result-card result-card--city">
         <div class="result-card-icon">🏙️</div>
-        <div class="result-card-category">${esc(districtLabel)}</div>
+        <div class="result-card-category">City Council</div>
         <p class="result-card-title">Durham City Council</p>
-        <p class="result-card-detail">Your address is inside Durham city limits. Find your City Council member and contact info on the City's website.</p>
+        <p class="result-card-detail" style="margin-bottom:.25rem;">Your address is inside Durham city limits. Use the ward map to find your specific ward representative.</p>
+        <div style="margin:.25rem 0;">${rows}</div>
         <div class="result-card-links">
           <a href="https://www.durhamnc.gov/1245/City-Council" target="_blank" rel="noopener" class="result-card-link">City Council</a>
+          <a href="https://www.durhamnc.gov/1396/City-Council-Members" target="_blank" rel="noopener" class="result-card-link result-card-link--secondary">Find My Ward</a>
         </div>
       </div>`;
   }
 
-  function buildStateLegislatorsCard(address) {
-    // Pre-fill the NCLEG finder with the user's address so they don't have to re-enter it
-    const nclegUrl = `https://www.ncleg.gov/FindYourLegislators`;
-    const encoded  = encodeURIComponent(address + ' Durham, NC 27701');
+  function buildStateLegislatorsCard() {
+    const senateRows = NC_SENATE_DURHAM.map(m =>
+      `<span style="display:block;padding:.15rem 0;font-size:.82rem;"><strong style="color:var(--navy,#262E4F);">${esc(m.name)}</strong><span style="color:#666;font-weight:400;"> — Senate District ${m.district}</span></span>`
+    ).join('');
+    const houseRows = NC_HOUSE_DURHAM.map(m =>
+      `<span style="display:block;padding:.15rem 0;font-size:.82rem;"><strong style="color:var(--navy,#262E4F);">${esc(m.name)}</strong><span style="color:#666;font-weight:400;"> — House District ${m.district}</span></span>`
+    ).join('');
+
     return `
       <div class="result-card result-card--state">
         <div class="result-card-icon">🏫</div>
         <div class="result-card-category">NC General Assembly</div>
         <p class="result-card-title">NC House &amp; Senate</p>
-        <p class="result-card-detail">Durham has multiple House and Senate districts. Click below and your address will be pre-filled — just hit search to see your specific representatives and their contact info.</p>
+        <p class="result-card-detail" style="margin-bottom:.3rem;">Durham County is split across several districts. Use the NCLEG finder to confirm which district your address falls in.</p>
+        <div style="margin:.25rem 0 .1rem;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#888;">NC Senate</div>
+        <div style="margin-bottom:.4rem;">${senateRows}</div>
+        <div style="margin:.25rem 0 .1rem;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#888;">NC House</div>
+        <div style="margin-bottom:.5rem;">${houseRows}</div>
         <div class="result-card-links">
-          <a href="${esc(nclegUrl)}" target="_blank" rel="noopener" class="result-card-link">Find My NC Legislators</a>
+          <a href="https://www.ncleg.gov/FindYourLegislators" target="_blank" rel="noopener" class="result-card-link">Find My District</a>
         </div>
       </div>`;
   }
@@ -683,7 +715,7 @@
       const cards = [
         buildCommissionerCard(),
         buildCityCouncilCard(cityData, inDurhamCity),
-        buildStateLegislatorsCard(addressRaw),
+        buildStateLegislatorsCard(),
         buildVotingCard(addressRaw),
         buildLibraryCard(lat, lng),
         buildParksCard(),
