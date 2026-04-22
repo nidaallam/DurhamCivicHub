@@ -362,7 +362,7 @@ a { color: var(--teal); }
 .site-main {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1rem;
 }
 .main-inner {
   display: grid;
