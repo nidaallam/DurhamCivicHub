@@ -718,11 +718,74 @@ function renderCalendarList(data, container) {
   }).join('');
 }
 
+// ── Language Selector ─────────────────────────────────────────
+function injectLanguageSelector() {
+  const nav = document.getElementById('mainNav');
+  if (!nav) return;
+
+  const LANGUAGES = [
+    { code: 'es',    label: 'Español' },
+    { code: 'ar',    label: 'العربية' },
+    { code: 'vi',    label: 'Tiếng Việt' },
+    { code: 'zh-CN', label: '中文 (简体)' },
+    { code: 'fr',    label: 'Français' },
+    { code: 'pt',    label: 'Português' },
+    { code: 'hi',    label: 'हिन्दी' },
+    { code: 'tl',    label: 'Tagalog' },
+    { code: 'ko',    label: '한국어' },
+    { code: 'am',    label: 'አማርኛ' },
+  ];
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'nav-lang-wrap';
+
+  const btn = document.createElement('button');
+  btn.className = 'nav-lang-btn';
+  btn.setAttribute('aria-haspopup', 'true');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Translate this page');
+  btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Language`;
+
+  const dropdown = document.createElement('div');
+  dropdown.className = 'nav-lang-dropdown';
+  dropdown.setAttribute('role', 'menu');
+  dropdown.innerHTML = LANGUAGES.map(l =>
+    `<a class="nav-lang-option" href="#" data-lang="${l.code}" role="menuitem">${l.label}</a>`
+  ).join('');
+
+  wrapper.appendChild(btn);
+  wrapper.appendChild(dropdown);
+  nav.appendChild(wrapper);
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = wrapper.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  dropdown.querySelectorAll('.nav-lang-option').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const lang = a.dataset.lang;
+      const url  = encodeURIComponent(window.location.href);
+      window.open(`https://translate.google.com/translate?sl=en&tl=${lang}&u=${url}`, '_blank', 'noopener');
+      wrapper.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    wrapper.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+}
+
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // Inject search UI and nav dropdowns on every page
+  // Inject search UI, nav dropdowns, and language selector on every page
   injectSearchUI();
   buildNavDropdowns();
+  injectLanguageSelector();
 
   // News search wiring
   const ns = document.getElementById('newsSearch');
