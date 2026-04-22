@@ -283,7 +283,7 @@ a { color: var(--teal); }
 }
 .page-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.1;
   text-transform: uppercase;
@@ -372,7 +372,7 @@ a { color: var(--teal); }
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--navy);
   text-transform: uppercase;
@@ -716,7 +716,7 @@ a { color: var(--teal); }
 .budget-section { margin-bottom: 3.25rem; }
 .budget-section-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: 800;
   color: var(--navy);
   text-transform: uppercase;
