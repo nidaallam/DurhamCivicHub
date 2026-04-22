@@ -262,6 +262,34 @@
       .cip-stats { grid-template-columns: 1fr; }
     }
 
+    /* ── Legend interactive buttons ── */
+    .cip-legend-item--btn {
+      background: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: .2rem .35rem;
+      text-align: left;
+      width: 100%;
+      transition: background .12s;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8rem;
+      color: #374151;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .cip-legend-item--btn:hover { background: #f3f4f6; }
+    .cip-legend-item--btn.cip-legend-item--active {
+      background: rgba(32,124,145,.12);
+      color: var(--teal, #207C91);
+    }
+    .cip-legend-item--btn.cip-legend-item--active .cip-legend-dot {
+      outline: 2px solid var(--teal, #207C91);
+      outline-offset: 1px;
+    }
+
     /* ── Map Legend Control ── */
     .cip-map-legend {
       background: rgba(255,255,255,.96);
