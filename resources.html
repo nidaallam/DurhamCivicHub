@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Resources – Durham Civic Hub</title>
+  <meta name="description" content="Programs and services for Durham neighbors: housing help, food assistance, health support, legal aid, and more. Compiled by Commissioner Nida Allam." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=margin@700,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Emergency Banner ── */
+    .emergency-banner {
+      background: #7B1A1A;
+      color: #fff;
+      text-align: center;
+      padding: .75rem 1.25rem;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .emergency-banner a {
+      color: var(--peach, #EBA85C);
+      text-decoration: underline;
+    }
+
+    /* ── Jump Bar ── */
+    .jump-bar {
+      background: #fff;
+      border-bottom: 1.5px solid var(--border, #e5e0d8);
+      padding: .75rem 1.25rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      position: sticky;
+      top: 56px;
+      z-index: 80;
+    }
+    .jump-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .jump-bar-label {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #888;
+      margin-right: .25rem;
+      flex-shrink: 0;
+    }
+    .jump-link {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--navy, #262E4F);
+      text-decoration: none;
+      background: var(--cream, #FAF6EE);
+      border: 1.5px solid var(--border, #e5e0d8);
+      border-radius: 20px;
+      padding: .3rem .75rem;
+      transition: background .15s, border-color .15s;
+      flex-shrink: 0;
+    }
+    .jump-link:hover {
+      background: var(--orange, #E97221);
+      border-color: var(--orange, #E97221);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ── Resources Content ── */
+    .resources-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+
+    /* ── Category Section ── */
+    .resource-category {
+      margin-bottom: 3rem;
+    }
+    .resource-category-header {
+      margin-bottom: 1.25rem;
+    }
+    .resource-category-title {
+      font-family: 'Margin', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--navy, #262E4F);
+      margin: 0 0 .35rem;
+      padding-bottom: .4rem;
+      border-bottom: 3px solid var(--orange, #E97221);
+      display: inline-block;
+    }
+    .resource-category-intro {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .95rem;
+      color: #555;
+      line-height: 1.6;
+      margin-top: .6rem;
+    }
+    .resource-category-note {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--navy, #262E4F);
+      background: #FFF8EE;
+      border-left: 3px solid var(--orange, #E97221);
+      padding: .6rem .9rem;
+      border-radius: 0 6px 6px 0;
+      margin: .75rem 0 1rem;
+      line-height: 1.5;
+    }
+
+    /* ── Card Grid ── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* ── Resource Card ── */
+    .resource-card {
+      background: #fff;
+      border: 1.5px solid var(--border, #e5e0d8);
+      border-radius: 10px;
+      padding: 1.4rem 1.4rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      transition: box-shadow .18s, border-color .18s;
+    }
+    .resource-card:hover {
+      box-shadow: 0 6px 24px rgba(38,46,79,.1);
+    }
+    /* Top border color by org type */
+    .resource-card--city  { border-top: 4px solid var(--teal, #207C91); }
+    .resource-card--county { border-top: 4px solid var(--navy, #262E4F); }
+    .resource-card--nonprofit { border-top: 4px solid #7C3D9E; }
+    .resource-card--state { border-top: 4px solid var(--teal, #207C91); }
+
+    .resource-card-icon {
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+    .resource-card-name {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy, #262E4F);
+      line-height: 1.3;
+      margin: 0;
+    }
+    .resource-card-desc {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .88rem;
+      color: #555;
+      line-height: 1.6;
+      flex: 1;
+      margin: 0;
+    }
+    .resource-card-phone {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--navy, #262E4F);
+      margin: 0;
+    }
+    .resource-card-phone a {
+      color: var(--navy, #262E4F);
+      text-decoration: none;
+    }
+    .resource-card-phone a:hover {
+      text-decoration: underline;
+    }
+    .resource-card-btn {
+      display: inline-block;
+      background: var(--teal, #207C91);
+      color: #fff;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      padding: .5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .15s;
+      align-self: flex-start;
+      margin-top: .25rem;
+    }
+    .resource-card-btn:hover {
+      background: var(--navy, #262E4F);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ── Bottom Note ── */
+    .resources-bottom-note {
+      background: var(--cream, #FAF6EE);
+      border: 1.5px solid var(--border, #e5e0d8);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .88rem;
+      color: #555;
+      line-height: 1.65;
+      margin-top: 2rem;
+    }
+    .resources-bottom-note a {
+      color: var(--teal, #207C91);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="resources">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="logo-bull">🐂</span>
+        <span class="logo-text">Durham<strong>Civic</strong>Hub</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="meetings.html" class="nav-link">Meetings</a>
+        <a href="budget.html" class="nav-link">Budget</a>
+        <a href="voting.html" class="nav-link">Voting</a>
+        <a href="resources.html" class="nav-link active">Resources</a>
+        <a href="connect.html" class="nav-link">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Emergency Banner ── -->
+  <div class="emergency-banner">
+    In a life-threatening emergency, call <strong>911</strong>. For mental health crisis, call or text <strong>988</strong>.
+  </div>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Durham County, NC</p>
+      <h1 class="page-hero-title">Community Resources</h1>
+      <p class="page-hero-sub">Programs and services for Durham neighbors -- housing help, food assistance, health support, legal aid, and more. All links go to official or reputable sources.</p>
+    </div>
+  </div>
+
+  <!-- ── Jump Bar ── -->
+  <div class="jump-bar">
+    <div class="jump-bar-inner">
+      <span class="jump-bar-label">Jump to:</span>
+      <a href="#housing" class="jump-link">🏠 Housing</a>
+      <a href="#food" class="jump-link">🥦 Food</a>
+      <a href="#pregnancy" class="jump-link">👶 New Parents</a>
+      <a href="#dv" class="jump-link">🛡 Safety</a>
+      <a href="#immigration" class="jump-link">🌎 Immigration</a>
+      <a href="#mentalhealth" class="jump-link">💚 Mental Health</a>
+      <a href="#emergency" class="jump-link">⚡ Emergency Aid</a>
+      <a href="#legal" class="jump-link">⚖️ Legal Help</a>
+    </div>
+  </div>
+
+  <!-- ── Main Content ── -->
+  <main>
+    <div class="resources-main">
+
+      <!-- ── CATEGORY 1: Housing ── -->
+      <section class="resource-category" id="housing">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">🏠 Housing Help</h2>
+          <p class="resource-category-intro">Whether you need emergency rent help, home repairs, or a path to ownership, here are the programs serving Durham neighbors.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--city">
+            <div class="resource-card-icon">🔨</div>
+            <p class="resource-card-name">City of Durham Home Repair Program</p>
+            <p class="resource-card-desc">Income-eligible homeowners can get grants or loans for critical home repairs through the City's Neighborhood Improvement Services.</p>
+            <a href="https://www.durhamnc.gov/2097/Housing" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">🏘</div>
+            <p class="resource-card-name">Durham County Emergency Rental Assistance</p>
+            <p class="resource-card-desc">Durham County DSS offers short-term emergency assistance for rent and utilities to qualified households.</p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/social-services" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🏡</div>
+            <p class="resource-card-name">Community Home Trust</p>
+            <p class="resource-card-desc">Affordable homeownership in Durham through permanently affordable homes for income-qualifying buyers.</p>
+            <a href="https://www.communityhoometrust.org/" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--state">
+            <div class="resource-card-icon">📞</div>
+            <p class="resource-card-name">NC 211</p>
+            <p class="resource-card-desc">Dial 2-1-1 or visit nc211.org to be connected to housing resources, emergency assistance, and more across North Carolina.</p>
+            <a href="https://nc211.org/" class="resource-card-btn" target="_blank" rel="noopener">Visit NC 211</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 2: Food ── -->
+      <section class="resource-category" id="food">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">🥦 Food &amp; Nutrition</h2>
+          <p class="resource-category-intro">From SNAP benefits to food pantries and mobile distributions, Durham has options for neighbors facing food insecurity.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">🛒</div>
+            <p class="resource-card-name">SNAP (Food Stamps) -- Durham County DSS</p>
+            <p class="resource-card-desc">Apply for Food and Nutrition Services (SNAP) through Durham County Department of Social Services.</p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/social-services" class="resource-card-btn" target="_blank" rel="noopener">Apply Now</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🏦</div>
+            <p class="resource-card-name">Food Bank of Central &amp; Eastern NC</p>
+            <p class="resource-card-desc">Provides food through partner pantries throughout Durham and across central and eastern North Carolina.</p>
+            <a href="https://foodbankcenc.org/" class="resource-card-btn" target="_blank" rel="noopener">Find a Pantry</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🚐</div>
+            <p class="resource-card-name">Inter-Faith Food Shuttle</p>
+            <p class="resource-card-desc">Mobile and fixed-site food access across the Triangle, including Durham neighborhoods.</p>
+            <a href="https://foodshuttle.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Food</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🥗</div>
+            <p class="resource-card-name">TABLE</p>
+            <p class="resource-card-desc">Durham-based food pantry supporting Durham school families and neighbors in need with groceries and more.</p>
+            <a href="https://www.tablenc.org/" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🍽</div>
+            <p class="resource-card-name">Durham Rescue Mission</p>
+            <p class="resource-card-desc">Provides hot meals and groceries to neighbors experiencing food insecurity in Durham.</p>
+            <a href="https://www.durhamrescuemission.org/" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 3: Pregnancy & New Parents ── -->
+      <section class="resource-category" id="pregnancy">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">👶 Pregnancy &amp; New Parents</h2>
+          <p class="resource-category-intro">Support for expecting and new parents in Durham, from nutrition programs to home visiting nurses.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">🍎</div>
+            <p class="resource-card-name">WIC -- Durham County Health</p>
+            <p class="resource-card-desc">Free nutrition support, healthy food, breastfeeding help, and health referrals for pregnant women, new moms, and kids under 5.</p>
+            <p class="resource-card-phone">📞 <a href="tel:9195607600">(919) 560-7600</a></p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/public-health" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🧸</div>
+            <p class="resource-card-name">Durham County Partnership for Children</p>
+            <p class="resource-card-desc">Smart Start programs for early childhood development, parenting support, and childcare help for Durham families.</p>
+            <a href="https://www.dcpfc.org/" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">👩‍⚕️</div>
+            <p class="resource-card-name">Nurse-Family Partnership -- Durham County</p>
+            <p class="resource-card-desc">Free home-visiting program pairing first-time moms with a registered nurse from pregnancy through the child's second birthday.</p>
+            <p class="resource-card-phone">📞 <a href="tel:9195607600">(919) 560-7600</a></p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/public-health" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🧷</div>
+            <p class="resource-card-name">Diaper Bank of NC</p>
+            <p class="resource-card-desc">Provides free diapers and hygiene products to families in need across NC, including Durham.</p>
+            <a href="https://diaperbankofnc.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Diapers</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🌟</div>
+            <p class="resource-card-name">El Centro Hispano</p>
+            <p class="resource-card-desc">Bilingual support for Latino families including health navigation, parenting programs, and community resources.</p>
+            <a href="https://www.elcentrohispano.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Support</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 4: Domestic Violence ── -->
+      <section class="resource-category" id="dv">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">🛡 Domestic Violence &amp; Safety</h2>
+          <p class="resource-category-note">You are not alone. These organizations offer confidential support.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🏠</div>
+            <p class="resource-card-name">Durham Crisis Response Center</p>
+            <p class="resource-card-desc">Durham's primary domestic violence resource. 24/7 crisis line, emergency shelter, counseling, court advocacy, and safety planning.</p>
+            <p class="resource-card-phone">📞 24/7 Crisis Line: <a href="tel:9194036562">(919) 403-6562</a></p>
+            <a href="https://www.durhamcrisisresponse.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">💜</div>
+            <p class="resource-card-name">National Domestic Violence Hotline</p>
+            <p class="resource-card-desc">Free, confidential, 24/7 support for anyone experiencing domestic violence. Call 1-800-799-7233 or text START to 88788.</p>
+            <p class="resource-card-phone">📞 <a href="tel:18007997233">1-800-799-7233</a></p>
+            <a href="https://www.thehotline.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">⚖️</div>
+            <p class="resource-card-name">Legal Aid of NC</p>
+            <p class="resource-card-desc">Free legal help for domestic violence survivors including protective orders, divorce, and custody matters.</p>
+            <a href="https://legalaidnc.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Legal Help</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🌟</div>
+            <p class="resource-card-name">El Centro Hispano</p>
+            <p class="resource-card-desc">Bilingual services and advocacy for Spanish-speaking survivors of domestic violence in Durham.</p>
+            <a href="https://www.elcentrohispano.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Support</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 5: Immigration ── -->
+      <section class="resource-category" id="immigration">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">🌎 Immigration Support</h2>
+          <p class="resource-category-note">Know your rights. These organizations provide confidential support regardless of immigration status.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">✊</div>
+            <p class="resource-card-name">Siembra NC</p>
+            <p class="resource-card-desc">Durham-based immigrant rights organization offering know-your-rights training, rapid response, and community organizing.</p>
+            <a href="https://siembranc.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Involved</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🌟</div>
+            <p class="resource-card-name">El Centro Hispano</p>
+            <p class="resource-card-desc">Immigration assistance, legal referrals, ESL classes, and community services for Durham's Latino community.</p>
+            <a href="https://www.elcentrohispano.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Support</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">⚖️</div>
+            <p class="resource-card-name">Legal Aid of NC -- Immigration Unit</p>
+            <p class="resource-card-desc">Free immigration legal help for qualifying low-income people in NC, including DACA, visas, and more.</p>
+            <a href="https://legalaidnc.org/get-help/our-practice-areas/immigration/" class="resource-card-btn" target="_blank" rel="noopener">Get Legal Help</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 6: Mental Health ── -->
+      <section class="resource-category" id="mentalhealth">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">💚 Mental Health &amp; Crisis Response</h2>
+          <p class="resource-category-intro">Help is available. Whether you need crisis support, therapy, or just someone to talk to, these Durham programs are here.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--city">
+            <div class="resource-card-icon">💙</div>
+            <p class="resource-card-name">HEART Program -- City of Durham</p>
+            <p class="resource-card-desc">Durham's Holistic Empathetic Assistance and Response Team sends mental health clinicians (not police) to non-violent behavioral health calls. Call 911 or the non-emergency line and ask for HEART.</p>
+            <a href="https://www.durhamnc.gov" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--state">
+            <div class="resource-card-icon">💚</div>
+            <p class="resource-card-name">988 Suicide &amp; Crisis Lifeline</p>
+            <p class="resource-card-desc">Free, confidential crisis support 24/7. Call or text 988 to reach a trained counselor.</p>
+            <p class="resource-card-phone">📞 Call or text <strong>988</strong></p>
+            <a href="https://988lifeline.org/" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">🧠</div>
+            <p class="resource-card-name">Alliance Health -- Durham</p>
+            <p class="resource-card-desc">Manages mental health, substance use, and developmental disability services for Durham County neighbors.</p>
+            <a href="https://www.alliancehealthplan.org/" class="resource-card-btn" target="_blank" rel="noopener">Find Services</a>
+          </div>
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">🏥</div>
+            <p class="resource-card-name">Durham County Behavioral Health</p>
+            <p class="resource-card-desc">Durham County's Department of Health and Human Services provides mental health referrals and crisis services for county neighbors.</p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/public-health" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 7: Emergency & Utility ── -->
+      <section class="resource-category" id="emergency">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">⚡ Emergency &amp; Utility Assistance</h2>
+          <p class="resource-category-intro">Facing a financial emergency? These programs can help Durham neighbors with rent, utilities, and essential needs.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">🆘</div>
+            <p class="resource-card-name">Durham County DSS Emergency Assistance</p>
+            <p class="resource-card-desc">Short-term help with rent, utilities, and other essentials for qualifying households facing a crisis.</p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/social-services" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+          <div class="resource-card resource-card--state">
+            <div class="resource-card-icon">📞</div>
+            <p class="resource-card-name">NC 211</p>
+            <p class="resource-card-desc">Dial 2-1-1 anytime to find emergency assistance, utility help, food, shelter, and more in Durham.</p>
+            <a href="https://nc211.org/" class="resource-card-btn" target="_blank" rel="noopener">Visit NC 211</a>
+          </div>
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">⚡</div>
+            <p class="resource-card-name">Durham Community Action</p>
+            <p class="resource-card-desc">Community Action Agency serving Durham with energy assistance (LIHEAP), emergency aid, and workforce support programs.</p>
+            <a href="https://www.dconc.gov/county-departments/departments-h-z/social-services" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
+          </div>
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">💡</div>
+            <p class="resource-card-name">Duke Energy Share</p>
+            <p class="resource-card-desc">Duke Energy's bill assistance program for customers who are struggling to pay their electric bill.</p>
+            <a href="https://www.duke-energy.com/home/products/share" class="resource-card-btn" target="_blank" rel="noopener">Apply for Help</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CATEGORY 8: Legal ── -->
+      <section class="resource-category" id="legal">
+        <div class="resource-category-header">
+          <h2 class="resource-category-title">⚖️ Legal Help</h2>
+          <p class="resource-category-intro">Free and low-cost legal help for Durham neighbors -- housing, family, immigration, benefits, and more.</p>
+        </div>
+        <div class="resource-grid">
+
+          <div class="resource-card resource-card--nonprofit">
+            <div class="resource-card-icon">⚖️</div>
+            <p class="resource-card-name">Legal Aid of NC</p>
+            <p class="resource-card-desc">Free civil legal help for low-income North Carolinians: housing, family law, immigration, benefits, and more.</p>
+            <a href="https://legalaidnc.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Legal Help</a>
+          </div>
+
+          <div class="resource-card resource-card--state">
+            <div class="resource-card-icon">💬</div>
+            <p class="resource-card-name">NC Free Legal Answers</p>
+            <p class="resource-card-desc">Submit civil legal questions online and get free answers from volunteer NC attorneys. Easy and confidential.</p>
+            <a href="https://nc.freelegalanswers.org/" class="resource-card-btn" target="_blank" rel="noopener">Ask a Question</a>
+          </div>
+
+          <div class="resource-card resource-card--county">
+            <div class="resource-card-icon">📚</div>
+            <p class="resource-card-name">Durham County Courthouse Law Library</p>
+            <p class="resource-card-desc">Free public access to legal research resources at the Durham County Courthouse.</p>
+            <a href="https://www.nccourts.gov/locations/durham-county-courthouse" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Bottom Note ── -->
+      <div class="resources-bottom-note">
+        This page links to official city, county, and reputable nonprofit resources. Durham Civic Hub does not provide services directly. If you need help finding a resource not listed here, dial <strong>2-1-1</strong> or <a href="connect.html">reach out to Commissioner Allam</a>.
+      </div>
+
+    </div><!-- /.resources-main -->
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bull">🐂</span>
+        <span>Durham Civic Hub</span>
+      </div>
+      <p class="footer-note">Created by Durham County Commissioner <strong style="color:#fff;">Nida Allam</strong> as a community resource. Not an official government website. All links go to official sources.</p>
+      <p class="footer-note" style="margin-top:.5rem;">Inspired by Apex Town Councilmember Terry Mahaffey's <a href="https://peaknewsnetwork.org/" target="_blank" rel="noopener" style="color:var(--peach);">Peak News Network</a>.</p>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="meetings.html">Meetings</a>
+        <a href="budget.html">Budget</a>
+        <a href="voting.html">Voting</a>
+        <a href="resources.html">Resources</a>
+        <a href="connect.html">Connect</a>
+        <a href="https://www.dconc.gov" target="_blank" rel="noopener">Durham County</a>
+        <a href="https://www.durhamnc.gov" target="_blank" rel="noopener">City of Durham</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
