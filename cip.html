@@ -903,7 +903,7 @@
                 </div>
                 <p class="cip-desc">${p.description}</p>
                 <div class="cip-card-footer">
-                  <span class="cip-year-label">${p.year}</span>
+                  <span class="cip-year-label">${p.year}${p.estimatedCompletion ? ' · Est. ' + p.estimatedCompletion : ''}</span>
                   <a class="cip-source-link" href="${p.sourceUrl}" target="_blank" rel="noopener">Source →</a>
                 </div>
               </div>`).join('');
@@ -1004,7 +1004,8 @@
                 <span style="font-size:.72rem;font-weight:700;padding:.18rem .45rem;border-radius:8px;${statusStyle(p.status)}">${p.status}</span>
               </div>
               <p style="font-size:.82rem;color:#4b5563;line-height:1.5;margin:.35rem 0 .5rem;">${p.description}</p>
-              <div style="font-size:.76rem;color:#9ca3af;margin-bottom:.5rem;">${p.year}${p.locationNote ? ' · ' + p.locationNote : ''}</div>
+              <div style="font-size:.76rem;color:#9ca3af;margin-bottom:.3rem;">${p.year}${p.locationNote ? ' · ' + p.locationNote : ''}</div>
+              ${p.estimatedCompletion ? `<div style="font-size:.76rem;color:#6b7280;margin-bottom:.5rem;"><span style="font-weight:700;color:#374151;">Est. completion:</span> ${p.estimatedCompletion}</div>` : ''}
               <a href="${p.sourceUrl}" target="_blank" rel="noopener noreferrer" style="font-size:.8rem;font-weight:700;color:#207C91;text-decoration:none;">View source →</a>
             </div>
           `, { maxWidth: 280, minWidth: 260 });
