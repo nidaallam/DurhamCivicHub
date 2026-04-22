@@ -223,8 +223,75 @@
       text-decoration: underline;
     }
 
+    /* ── Urgent / Pinned Section ── */
+    .urgent-section {
+      background: #fff7f7;
+      border: 2px solid #fca5a5;
+      border-top: 4px solid #dc2626;
+      border-radius: 10px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .urgent-section-title {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #dc2626;
+      margin-bottom: 1rem;
+    }
+    .urgent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .urgent-card {
+      background: #fff;
+      border: 1.5px solid #fca5a5;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .urgent-card-name {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+    .urgent-card-phone {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #dc2626;
+    }
+    .urgent-card-phone a { color: #dc2626; text-decoration: none; }
+    .urgent-card-phone a:hover { text-decoration: underline; }
+    .urgent-card-desc {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .82rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    /* ── Tags: language, map ── */
+    .resource-tag-bar { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .15rem; }
+    .resource-tag {
+      font-size: .72rem;
+      font-weight: 700;
+      padding: .12rem .45rem;
+      border-radius: 4px;
+      letter-spacing: .04em;
+      display: inline-block;
+    }
+    .resource-tag--es { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
+    .resource-tag--map { background: #f0f9ff; color: #0c4a6e; border: 1px solid #7dd3fc; }
+
     @media (max-width: 600px) {
       .resource-grid { grid-template-columns: 1fr; }
+      .urgent-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -267,6 +334,7 @@
   <div class="jump-bar">
     <div class="jump-bar-inner">
       <span class="jump-bar-label">Jump to:</span>
+      <a href="#urgent" class="jump-link" style="border-color:#fca5a5;color:#dc2626;"><i data-lucide="alert-circle" aria-hidden="true" class="lucide-wrap"></i> Most Urgent</a>
       <a href="#housing" class="jump-link"><i data-lucide="home" aria-hidden="true" class="lucide-wrap"></i> Housing</a>
       <a href="#food" class="jump-link"><i data-lucide="leaf" aria-hidden="true" class="lucide-wrap"></i> Food</a>
       <a href="#pregnancy" class="jump-link"><i data-lucide="baby" aria-hidden="true" class="lucide-wrap"></i> New Parents</a>
@@ -298,6 +366,43 @@
 
       <div id="resourcesContainer">
         <!-- Rendered by app.js from data/resources.json -->
+
+      <!-- ── PINNED: Most Urgent ── -->
+      <section class="urgent-section" id="urgent">
+        <div class="urgent-section-title"><i data-lucide="alert-circle" aria-hidden="true" class="lucide-wrap"></i> Most Urgent — call right now if you need help</div>
+        <div class="urgent-grid">
+          <div class="urgent-card">
+            <div class="urgent-card-name">Mental Health Crisis</div>
+            <div class="urgent-card-phone">Call or text <a href="tel:988">988</a></div>
+            <div class="urgent-card-desc">Free, confidential, 24/7 crisis counseling. Also available en Español.</div>
+          </div>
+          <div class="urgent-card">
+            <div class="urgent-card-name">Life-Threatening Emergency</div>
+            <div class="urgent-card-phone">Call <a href="tel:911">911</a></div>
+            <div class="urgent-card-desc">Police, fire, or medical emergency. Durham also has the HEART program for mental health calls.</div>
+          </div>
+          <div class="urgent-card">
+            <div class="urgent-card-name">Durham Crisis Response Center</div>
+            <div class="urgent-card-phone">24/7: <a href="tel:9194036562">(919) 403-6562</a></div>
+            <div class="urgent-card-desc">Domestic violence crisis line, emergency shelter, and advocacy. Free and confidential.</div>
+          </div>
+          <div class="urgent-card">
+            <div class="urgent-card-name">Siembra NC Hotline</div>
+            <div class="urgent-card-phone">Call/text: <a href="tel:3365430353">(336) 543-0353</a></div>
+            <div class="urgent-card-desc">Report ICE activity or get know-your-rights help. All immigration statuses welcome. Bilingual.</div>
+          </div>
+          <div class="urgent-card">
+            <div class="urgent-card-name">HEART Mental Health Response</div>
+            <div class="urgent-card-phone">Non-emergency: <a href="tel:9195604600">(919) 560-4600</a></div>
+            <div class="urgent-card-desc">Request HEART (not police) for non-violent behavioral health calls in Durham City. Also available via 911.</div>
+          </div>
+          <div class="urgent-card">
+            <div class="urgent-card-name">Durham Shelter / Food</div>
+            <div class="urgent-card-phone">Dial <a href="tel:211">2-1-1</a></div>
+            <div class="urgent-card-desc">Free connection to shelter, food, and emergency help 24/7 across Durham County.</div>
+          </div>
+        </div>
+      </section>
 
       <!-- ── CATEGORY 1: Housing ── -->
       <section class="resource-category" id="housing">
@@ -426,6 +531,7 @@
             <div class="resource-card-icon"><i data-lucide="star" aria-hidden="true" class="lucide-wrap"></i></div>
             <p class="resource-card-name">El Centro Hispano</p>
             <p class="resource-card-desc">Bilingual support for Latino families including health navigation, parenting programs, and community resources.</p>
+            <div class="resource-tag-bar"><span class="resource-tag resource-tag--es">Español disponible</span></div>
             <a href="https://www.elcentrohispano.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Support</a>
           </div>
 
@@ -433,6 +539,9 @@
             <div class="resource-card-icon"><i data-lucide="shirt" aria-hidden="true" class="lucide-wrap"></i></div>
             <p class="resource-card-name">Durham Cooperative Extension Giving Closet</p>
             <p class="resource-card-desc">Free infant, toddler, and children's clothing (ages 0–5), maternity clothing, baby equipment, and diapers based on availability. 721 Foster St, Durham. Mon–Thu 9am–4:30pm.</p>
+            <div class="resource-tag-bar">
+              <a href="https://maps.google.com/?q=721+Foster+St+Durham+NC" target="_blank" rel="noopener" class="resource-tag resource-tag--map"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> Map</a>
+            </div>
             <a href="https://www.welcomebaby.org/giving-closet" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
           </div>
 
@@ -452,6 +561,10 @@
             <p class="resource-card-name">Planned Parenthood Durham Health Center</p>
             <p class="resource-card-desc">Licensed health center offering birth control, STI testing, abortion care, pregnancy testing, and sexual health services. 105 Newsom St, Durham.</p>
             <p class="resource-card-phone"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> <a href="tel:9192862872">(919) 286-2872</a></p>
+            <div class="resource-tag-bar">
+              <span class="resource-tag resource-tag--es">Español disponible</span>
+              <a href="https://maps.google.com/?q=105+Newsom+St+Durham+NC" target="_blank" rel="noopener" class="resource-tag resource-tag--map"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> Map</a>
+            </div>
             <a href="https://www.plannedparenthood.org/health-center/north-carolina/durham/27704/durham-health-center-4171-90860" class="resource-card-btn" target="_blank" rel="noopener">Make Appointment</a>
           </div>
 
@@ -476,6 +589,7 @@
             <p class="resource-card-name">National Abortion Federation Hotline</p>
             <p class="resource-card-desc">Free, confidential referrals to quality abortion providers and financial assistance for anyone in the US. English and Spanish. Call 1-800-772-9100.</p>
             <p class="resource-card-phone"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> <a href="tel:18007729100">1-800-772-9100</a></p>
+            <div class="resource-tag-bar"><span class="resource-tag resource-tag--es">Español disponible</span></div>
             <a href="https://prochoice.org/patients/naf-hotline/" class="resource-card-btn" target="_blank" rel="noopener">Learn More</a>
           </div>
 
@@ -510,6 +624,7 @@
             <p class="resource-card-name">National Domestic Violence Hotline</p>
             <p class="resource-card-desc">Free, confidential, 24/7 support for anyone experiencing domestic violence. Call 1-800-799-7233 or text START to 88788.</p>
             <p class="resource-card-phone"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> <a href="tel:18007997233">1-800-799-7233</a></p>
+            <div class="resource-tag-bar"><span class="resource-tag resource-tag--es">Español disponible</span></div>
             <a href="https://www.thehotline.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
           </div>
 
@@ -524,6 +639,7 @@
             <div class="resource-card-icon"><i data-lucide="star" aria-hidden="true" class="lucide-wrap"></i></div>
             <p class="resource-card-name">El Centro Hispano</p>
             <p class="resource-card-desc">Bilingual services and advocacy for Spanish-speaking survivors of domestic violence in Durham.</p>
+            <div class="resource-tag-bar"><span class="resource-tag resource-tag--es">Español disponible</span></div>
             <a href="https://www.elcentrohispano.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Support</a>
           </div>
 
@@ -544,6 +660,7 @@
             <p class="resource-card-desc">Durham-based immigrant rights organization offering know-your-rights training, rapid response, and community organizing.</p>
             <p class="resource-card-desc" style="margin-top:.5rem;font-weight:600;"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> Hotline: <a href="tel:3365430353" style="color:inherit;">336-543-0353</a></p>
             <p class="resource-card-desc" style="margin-top:.2rem;font-size:.85rem;">Call or text to report ICE activity in your area or workplace wage theft. Available regardless of immigration status.</p>
+            <div class="resource-tag-bar"><span class="resource-tag resource-tag--es">Español disponible</span></div>
             <a href="https://siembranc.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Involved</a>
           </div>
 
@@ -551,6 +668,7 @@
             <div class="resource-card-icon"><i data-lucide="star" aria-hidden="true" class="lucide-wrap"></i></div>
             <p class="resource-card-name">El Centro Hispano</p>
             <p class="resource-card-desc">Immigration assistance, legal referrals, ESL classes, and community services for Durham's Latino community.</p>
+            <div class="resource-tag-bar"><span class="resource-tag resource-tag--es">Español disponible</span></div>
             <a href="https://www.elcentrohispano.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Support</a>
           </div>
 
@@ -618,6 +736,9 @@
             <p class="resource-card-name">Urban Ministries of Durham</p>
             <p class="resource-card-desc">Emergency shelter for adults, 3 free meals per day, food pantry, clothing closet, and case management. 410 Liberty St, Durham. Open 365 days a year.</p>
             <p class="resource-card-phone"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> <a href="tel:9196820538">(919) 682-0538</a></p>
+            <div class="resource-tag-bar">
+              <a href="https://maps.google.com/?q=410+Liberty+St+Durham+NC" target="_blank" rel="noopener" class="resource-tag resource-tag--map"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> Map</a>
+            </div>
             <a href="https://umdurham.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Help</a>
           </div>
 
@@ -673,6 +794,10 @@
             <p class="resource-card-name">Lincoln Community Health Center</p>
             <p class="resource-card-desc">Federally Qualified Health Center serving Durham since 1971. Primary care, dental, behavioral health, and pediatrics on a sliding-fee scale. 1301 Fayetteville St, Durham.</p>
             <p class="resource-card-phone"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> <a href="tel:9199564540">(919) 956-4540</a></p>
+            <div class="resource-tag-bar">
+              <span class="resource-tag resource-tag--es">Español disponible</span>
+              <a href="https://maps.google.com/?q=1301+Fayetteville+St+Durham+NC" target="_blank" rel="noopener" class="resource-tag resource-tag--map"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> Map</a>
+            </div>
             <a href="https://lincolnchc.org/" class="resource-card-btn" target="_blank" rel="noopener">Get Care</a>
           </div>
 
@@ -830,6 +955,9 @@
             <div class="resource-card-icon"><i data-lucide="landmark" aria-hidden="true" class="lucide-wrap"></i></div>
             <p class="resource-card-name">Main Library</p>
             <p class="resource-card-desc">Durham County's flagship library. 300 N Roxboro St, Durham. Books, computers, meeting rooms, and the largest collection in the system.</p>
+            <div class="resource-tag-bar">
+              <a href="https://maps.google.com/?q=300+N+Roxboro+St+Durham+NC" target="_blank" rel="noopener" class="resource-tag resource-tag--map"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> Map</a>
+            </div>
             <a href="https://www.durhamcountylibrary.org/locations/main-library/" class="resource-card-btn" target="_blank" rel="noopener">Hours &amp; Info</a>
           </div>
 
@@ -837,6 +965,10 @@
             <div class="resource-card-icon"><i data-lucide="book-open" aria-hidden="true" class="lucide-wrap"></i></div>
             <p class="resource-card-name">South Regional Library</p>
             <p class="resource-card-desc">Serving south Durham. 4505 S Alston Ave, Durham. Full library services, community meeting space, and Spanish-language materials.</p>
+            <div class="resource-tag-bar">
+              <span class="resource-tag resource-tag--es">Español disponible</span>
+              <a href="https://maps.google.com/?q=4505+S+Alston+Ave+Durham+NC" target="_blank" rel="noopener" class="resource-tag resource-tag--map"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> Map</a>
+            </div>
             <a href="https://www.durhamcountylibrary.org/locations/south-regional-library/" class="resource-card-btn" target="_blank" rel="noopener">Hours &amp; Info</a>
           </div>
 
