@@ -72,11 +72,13 @@ function buildNavDropdowns() {
       { label: 'DPS Budget',               url: 'budget-schools.html'           },
       { label: 'Capital Projects (CIP)',   url: 'cip.html'                      },
     ],
-    'voting.html': [
-      { label: 'Voting & Officials',       url: 'voting.html',                    header: true },
-      { label: 'Register to Vote',         url: 'https://www.ncsbe.gov/registering/how-register', external: true },
-      { label: 'Check Registration',       url: 'https://vt.ncsbe.gov/RegLkup/',  external: true },
-      { label: 'Find Polling Place',       url: 'https://vt.ncsbe.gov/PPLkup/',   external: true },
+    'my-durham.html': [
+      { label: 'My Durham',                url: 'my-durham.html',                  header: true },
+      { label: 'Neighborhood Lookup',      url: 'my-durham.html'                },
+      { divider: true },
+      { label: 'Resources & Services',     url: 'resources.html'                },
+      { label: 'Voting & Officials',       url: 'voting.html'                   },
+      { label: 'Transit',                  url: 'transit.html'                  },
     ],
   };
 
@@ -120,6 +122,18 @@ function buildNavDropdowns() {
       }
     });
   });
+
+  // Mark parent dropdown as active when on a sub-page
+  const page = window.location.pathname.split('/').pop() || 'index.html';
+  const SUB_PAGE_PARENTS = {
+    'resources.html': 'my-durham.html',
+    'voting.html':    'my-durham.html',
+    'transit.html':   'my-durham.html',
+  };
+  if (SUB_PAGE_PARENTS[page]) {
+    const parentLink = nav.querySelector(`a[href="${SUB_PAGE_PARENTS[page]}"]`);
+    if (parentLink) parentLink.classList.add('active');
+  }
 
   // Close dropdowns when clicking outside
   document.addEventListener('click', function(e) {
@@ -423,7 +437,7 @@ function renderMeetings(data, container) {
           <p style="font-size:.875rem;color:#374151;margin:0;">Durham residents can apply to serve on advisory boards, commissions, and task forces. Your voice matters in shaping local policy!</p>
         </div>
         <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
-          <a href="https://www.dconc.gov/government/boards-and-commissions/apply-to-serve" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;background:#262E4F;color:#fff;font-size:.875rem;font-weight:700;padding:.5rem 1rem;border-radius:6px;text-decoration:none;">Apply — Durham County →</a>
+          <a href="https://www.dconc.gov/government/boards-and-commissions" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;background:#262E4F;color:#fff;font-size:.875rem;font-weight:700;padding:.5rem 1rem;border-radius:6px;text-decoration:none;">Apply — Durham County →</a>
           <a href="https://www.durhamnc.gov/311/Boards-Commissions" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;background:#207C91;color:#fff;font-size:.875rem;font-weight:700;padding:.5rem 1rem;border-radius:6px;text-decoration:none;">Apply — City of Durham →</a>
         </div>
       </div>

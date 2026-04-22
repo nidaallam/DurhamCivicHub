@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com https://translate.googleapis.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self' https://translate.googleapis.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com https://translate.googleapis.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com https://realtimemap.gotriangle.org; img-src 'self' data: https:; connect-src 'self' https://translate.googleapis.com;" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Transit – Durham Civic Hub</title>
   <meta name="description" content="Durham transit resources: real-time GoDurham bus arrivals, trip planning, routes and schedules, GoTriangle regional service, GoPass, and the Durham Transit Plan." />
@@ -16,7 +16,7 @@
 
     /* ── Transit Main Layout ── */
     .transit-main {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 2.5rem 1.25rem 3.5rem;
     }
@@ -288,6 +288,7 @@
         <a href="news.html" class="nav-link">News</a>
         <a href="meetings.html" class="nav-link">Meetings</a>
         <a href="budget.html" class="nav-link">Budget</a>
+        <a href="my-durham.html" class="nav-link">My Durham</a>
         <a href="connect.html" class="nav-link">Connect</a>
       </nav>
     </div>
@@ -306,18 +307,17 @@
   <main>
     <div class="transit-main">
 
-      <!-- ── Featured: transit.triangle.rip ── -->
+      <!-- ── Featured: Real-Time Tracker ── -->
       <div class="transit-featured">
-        <p class="transit-featured-label">⭐ Community Favorite</p>
-        <h2 class="transit-featured-title">
-          <a href="https://transit.triangle.rip" target="_blank" rel="noopener">
-            Real-Time Arrivals &amp; Trip Planner (transit.triangle.rip)
-          </a>
-        </h2>
+        <p class="transit-featured-label">⭐ Real-Time Bus Tracking</p>
+        <h2 class="transit-featured-title">Live Vehicle Map — GoTriangle</h2>
         <p class="transit-featured-desc">
-          Track live GoDurham bus arrivals, plan trips, and see real-time vehicle locations. Built by local transit advocates for the Triangle. Faster and more accurate than the official apps for checking when your bus is actually showing up.
+          See exactly where GoDurham and GoTriangle buses are right now. The official real-time vehicle map shows live positions, next arrivals at your stop, and service alerts. Use the Transit app on your phone for step-by-step navigation with live arrivals on the go!
         </p>
-        <a href="https://transit.triangle.rip" class="transit-featured-btn" target="_blank" rel="noopener">Open transit.triangle.rip ↗</a>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.25rem;">
+          <a href="https://realtimemap.gotriangle.org/" class="transit-featured-btn" target="_blank" rel="noopener">Open Live Map ↗</a>
+          <a href="https://www.godurhamtransit.org/rider-info/real-time-bus-tracking" class="transit-featured-btn" target="_blank" rel="noopener" style="background:var(--navy,#262E4F);">GoDurham Real-Time ↗</a>
+        </div>
       </div>
 
       <!-- ── GoDurham + GoTriangle Resources ── -->
@@ -366,6 +366,59 @@
         </div>
       </section>
 
+      <!-- ── Accessible & Specialized Transit ── -->
+      <section class="transit-section" id="accessible-transit">
+        <div class="transit-section-header">
+          <h2 class="transit-section-title">♿ Accessible &amp; Specialized Transit</h2>
+          <p class="transit-section-intro">Durham offers paratransit, senior transportation, and other specialized services for riders who need additional support. All services below are separate from the fixed-route bus system.</p>
+        </div>
+        <div class="link-card-grid">
+
+          <a href="https://www.godurhamtransit.org/accessibility/godurham-access" class="link-card" target="_blank" rel="noopener">
+            <div class="link-card-icon">♿</div>
+            <p class="link-card-name">GoDurham ACCESS — Paratransit</p>
+            <p class="link-card-desc">Curb-to-curb paratransit service for riders with disabilities who cannot use fixed-route buses. ADA-mandated, serves the same area as GoDurham routes. Advance reservation required — call at least 1 day ahead. Fare: $2.50/trip.</p>
+            <p class="link-card-url">Reserve: (919) 485-7433 · godurhamtransit.org/accessibility</p>
+          </a>
+
+          <a href="https://www.dconc.gov/county-departments/departments-a-e/aging-services/transportation" class="link-card" target="_blank" rel="noopener">
+            <div class="link-card-icon">🧓</div>
+            <p class="link-card-name">Senior Transportation — Durham County</p>
+            <p class="link-card-desc">Free or low-cost rides for Durham County residents 60 and older. Includes the SHIFT senior shuttle program for medical appointments, shopping, and other trips. Income eligibility may apply for some programs.</p>
+            <p class="link-card-url">dconc.gov · Aging Services Transportation</p>
+          </a>
+
+          <a href="https://www.gotriangle.org/accessibility" class="link-card" target="_blank" rel="noopener">
+            <div class="link-card-icon">🚐</div>
+            <p class="link-card-name">GoTriangle Accessibility Services</p>
+            <p class="link-card-desc">GoTriangle's regional paratransit and accessibility programs for riders with disabilities on regional routes connecting Durham to Raleigh, Chapel Hill, and RTP. Includes regional ADA paratransit scheduling.</p>
+            <p class="link-card-url">gotriangle.org/accessibility</p>
+          </a>
+
+          <a href="https://www.ncdhhs.gov/assistance/low-income-services/community-transportation" class="link-card" target="_blank" rel="noopener">
+            <div class="link-card-icon">🏥</div>
+            <p class="link-card-name">Medicaid Non-Emergency Medical Transport</p>
+            <p class="link-card-desc">NC Medicaid covers free rides to medical appointments for eligible enrollees. Managed by LogistiCare (now Modivcare). Call at least 3 business days before your appointment to schedule a ride.</p>
+            <p class="link-card-url">Call: 1-866-368-9025 · ncdhhs.gov</p>
+          </a>
+
+          <a href="https://rideshare.gotriangle.org/" class="link-card" target="_blank" rel="noopener">
+            <div class="link-card-icon">🚗</div>
+            <p class="link-card-name">GoTriangle Rideshare — Carpool &amp; Vanpool</p>
+            <p class="link-card-desc">Match with carpoolers and vanpools for commutes across the Triangle. Vanpool groups share a GoTriangle van at a low monthly cost — often cheaper than driving solo. Great for commuters to RTP, downtown Raleigh, or UNC.</p>
+            <p class="link-card-url">rideshare.gotriangle.org</p>
+          </a>
+
+          <a href="https://www.godurhamtransit.org/routes-and-schedules/bull-city-connector" class="link-card" target="_blank" rel="noopener">
+            <div class="link-card-icon">🏙️</div>
+            <p class="link-card-name">Bull City Connector — Free Downtown Circulator</p>
+            <p class="link-card-desc">Free bus circulating through downtown Durham: Durham Station, Brightleaf Square, Duke University, and points in between. No fare required — just hop on! Runs Monday–Saturday.</p>
+            <p class="link-card-url">godurhamtransit.org · Bull City Connector</p>
+          </a>
+
+        </div>
+      </section>
+
       <!-- ── About Durham Transit ── -->
       <section class="transit-section" id="about">
         <div class="transit-section-header">
@@ -400,7 +453,7 @@
 
           <li class="how-to-ride-item">
             <p class="how-to-ride-step">Step 1 — Plan Your Trip</p>
-            <p class="how-to-ride-tip">Use <strong>transit.triangle.rip</strong> or the GoTriangle Trip Planner to find your route and see real-time arrivals. GoDurham buses can run a few minutes early or late — always check live tracking before you leave.</p>
+            <p class="how-to-ride-tip">Use the <strong>GoTriangle Live Map</strong> or the <strong>Transit app</strong> to find your route and see real-time arrivals. GoDurham buses can run a few minutes early or late — always check live tracking before you leave.</p>
           </li>
 
           <li class="how-to-ride-item">
@@ -423,7 +476,7 @@
 
       <!-- ── Bottom Note ── -->
       <div class="transit-bottom-note">
-        Schedule and fare information on this page may change. Always verify current routes, times, and fares at <a href="https://godurhamtransit.org/" target="_blank" rel="noopener">godurhamtransit.org</a> or <a href="https://gotriangle.org/" target="_blank" rel="noopener">gotriangle.org</a>. For service alerts and real-time updates, use <a href="https://transit.triangle.rip" target="_blank" rel="noopener">transit.triangle.rip</a>. GoDurham ACCESS paratransit reservations: <strong>(919) 485-7433</strong>.
+        Schedule and fare information on this page may change. Always verify current routes, times, and fares at <a href="https://godurhamtransit.org/" target="_blank" rel="noopener">godurhamtransit.org</a> or <a href="https://gotriangle.org/" target="_blank" rel="noopener">gotriangle.org</a>. For live vehicle locations and service alerts, use the <a href="https://realtimemap.gotriangle.org/" target="_blank" rel="noopener">GoTriangle Live Map</a>. GoDurham ACCESS paratransit reservations: <strong>(919) 485-7433</strong>. Senior transportation (Durham County Aging Services): <strong>(919) 560-6880</strong>.
       </div>
 
     </div>
