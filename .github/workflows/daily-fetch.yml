@@ -25,8 +25,26 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       # ── Fetch news from Durham RSS feeds ──────────────────────────
+      # Exit 0 = auto-merge (<10 new stories)
+      # Exit 2 = HOLD (10+ new stories — review before merge, but file is written)
+      # Exit 1 = BLOCK (all stories vanished — scraper failure, file not updated)
       - name: Fetch news
-        run: python scripts/fetch_news.py
+        id: fetch_news
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set +e
+          python scripts/fetch_news.py
+          EXIT=$?
+          echo "exit_code=$EXIT" >> $GITHUB_OUTPUT
+          if [ $EXIT -eq 1 ]; then
+            echo "::error::fetch_news.py BLOCK: all stories disappeared — possible scraper failure"
+            exit 1
+          fi
+          if [ $EXIT -eq 2 ]; then
+            echo "::warning::fetch_news.py HOLD: 10+ new stories — review news.json before next deploy"
+          fi
+          exit 0
 
       # ── Update meetings, polling places, ward boundaries, legislators, budget
       - name: Update civic data
@@ -122,6 +140,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ news.json meetings.json calendar.json budget-data.json 2>/dev/null; true
+          git add data/ news.json meetings.json meetings.ics calendar.json budget-data.json 2>/dev/null; true
           git diff --staged --quiet || git commit -m "chore: daily data fetch $(date +%Y-%m-%d)"
           git push

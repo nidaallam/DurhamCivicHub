@@ -290,15 +290,25 @@ def load_existing_news() -> dict:
 
 
 def main():
+    import sys
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
     print("Fetching news feeds…")
-    existing = load_existing_news()
-    fresh = fetch_all()
+    existing     = load_existing_news()
+    existing_stories = existing.get("stories", [])
+    existing_by_link = {s["link"]: s for s in existing_stories}
+    fresh        = fetch_all()
     print(f"  Found {len(fresh)} fresh stories")
 
+    # ── Guardrail: block if all stories disappeared (scraper failure) ──────────
+    if existing_stories and not fresh:
+        print("  GUARDRAIL BLOCK: All stories disappeared - likely scraper failure.")
+        print("  Keeping existing news.json unchanged.")
+        sys.exit(1)
+
     if not fresh:
-        # Keep existing stories — just refresh og:images on any that are missing them
-        print("  No fresh stories from feeds — keeping existing news.json unchanged")
-        stories = existing.get("stories", [])
+        # No existing data and no fresh: refresh og:images on any missing
+        print("  No fresh stories from feeds - keeping existing news.json unchanged")
+        stories  = existing_stories
         enriched = False
         for s in stories:
             if not s.get("image"):
@@ -318,10 +328,31 @@ def main():
         }
     else:
         # Merge: fresh stories win; keep any existing stories not replaced
-        by_link = {s["link"]: s for s in existing.get("stories", [])}
+        by_link = dict(existing_by_link)
         for s in fresh:
             by_link[s["link"]] = s
         stories = sorted(by_link.values(), key=lambda x: x["date"], reverse=True)[:MAX_STORIES]
+
+        # ── Guardrail: hold for approval if many new stories ──────────────────
+        n_changed = count_changed(fresh, existing_stories)
+        if n_changed >= GUARDRAIL_HOLD:
+            print(f"  GUARDRAIL HOLD: {n_changed} new stories (threshold {GUARDRAIL_HOLD}).")
+            print("  Writing news.json but marking exit code 2 for workflow review.")
+            # Write so content isn't lost, but signal the CI workflow to hold
+            payload = {
+                "updated":  date.today().strftime("%Y-%m-%d"),
+                "count":    len(stories),
+                "stories":  stories,
+                "_guardrail": f"HOLD: {n_changed} new items - review before merge",
+            }
+            with open("news.json", "w", encoding="utf-8") as f:
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+            print("  Wrote news.json (held)")
+            sys.exit(2)
+
+        # ── Enrich with Claude "what this means for you" summaries ────────────
+        enrich_with_meanings(stories, existing_by_link, api_key)
+
         payload = {
             "updated": date.today().strftime("%Y-%m-%d"),
             "count":   len(stories),

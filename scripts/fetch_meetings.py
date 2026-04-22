@@ -375,6 +375,71 @@ FETCHERS = {
 
 # ── Main ──────────────────────────────────────────────────────────────────
 
+ICS_PATH = Path(__file__).parent.parent / "meetings.ics"
+
+
+def fmt_ics_dt(date_str: str, time_str: str = "18:00") -> str:
+    """Return a DTSTART/DTEND value like 20260422T180000."""
+    try:
+        d = date.fromisoformat(date_str)
+        h, m = (int(x) for x in time_str.split(":"))
+        return f"{d.strftime('%Y%m%d')}T{h:02d}{m:02d}00"
+    except Exception:
+        return ""
+
+
+def write_ics(data: dict) -> None:
+    """Generate a static meetings.ics from the updated meetings.json."""
+    vevents: list[str] = []
+    for body in data.get("bodies", []):
+        body_name = body.get("name", "Durham Meeting")
+        for m in body.get("meetings", []):
+            if m.get("status") != "upcoming":
+                continue
+            dt_start = fmt_ics_dt(m["date"], m.get("time", "18:00"))
+            dt_end   = fmt_ics_dt(m["date"], m.get("timeEnd", "19:30"))
+            if not dt_start:
+                continue
+
+            # Primary link or first link as URL
+            url = ""
+            for lnk in m.get("links", []):
+                if lnk.get("primary"):
+                    url = lnk.get("url", "")
+                    break
+            if not url and m.get("links"):
+                url = m["links"][0].get("url", "")
+
+            summary = f"{body_name}: {m.get('type', 'Meeting')}"
+            location = m.get("location", "Durham, NC")
+
+            lines = [
+                "BEGIN:VEVENT",
+                f"UID:{m['date']}-{body.get('id','mtg')}@durhamcivichub",
+                f"DTSTART;TZID=America/New_York:{dt_start}",
+                f"DTEND;TZID=America/New_York:{dt_end}",
+                f"SUMMARY:{summary}",
+                f"LOCATION:{location}",
+            ]
+            if url:
+                lines.append(f"URL:{url}")
+            lines.append("END:VEVENT")
+            vevents.append("\r\n".join(lines))
+
+    ics_lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Durham Civic Hub//Durham Meetings//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "X-WR-CALNAME:Durham Civic Hub Meetings",
+        "X-WR-TIMEZONE:America/New_York",
+    ] + vevents + ["END:VCALENDAR"]
+
+    ICS_PATH.write_text("\r\n".join(ics_lines), encoding="utf-8")
+    print(f"✓ Wrote {ICS_PATH} ({len(vevents)} upcoming events)")
+
+
 def main():
     print("Updating meetings.json…")
     data = load_existing()
@@ -385,7 +450,7 @@ def main():
         fetcher = FETCHERS.get(body_id)
 
         if not fetcher:
-            print(f"  — '{body_id}': no fetcher, refreshing statuses only")
+            print(f"  '{body_id}': no fetcher, refreshing statuses only")
             body["meetings"] = refresh_statuses(body.get("meetings", []))
             continue
 
@@ -403,6 +468,8 @@ def main():
     data["updated"] = str(TODAY)
     OUT_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     print(f"✓ Wrote {OUT_PATH}")
+
+    write_ics(data)
 
 
 if __name__ == "__main__":
