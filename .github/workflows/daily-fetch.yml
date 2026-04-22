@@ -98,6 +98,25 @@ jobs:
           print(f"Updated meta.json → {today}")
           EOF
 
+      # ── Update changelog.json (Part 5.9) ─────────────────────────
+      - name: Update changelog
+        run: |
+          python3 - <<'EOF'
+          import json, datetime
+          from pathlib import Path
+
+          log_path = Path("data/changelog.json")
+          try:
+              log = json.loads(log_path.read_text())
+          except Exception:
+              log = {"lastRun": None, "runs": []}
+
+          run = {"date": datetime.date.today().isoformat(), "workflow": "daily-fetch"}
+          log["lastRun"] = run["date"]
+          log["runs"] = ([run] + log.get("runs", []))[:30]  # keep last 30 runs
+          log_path.write_text(json.dumps(log, indent=2))
+          EOF
+
       # ── Commit all changed data files ─────────────────────────────
       - name: Commit updated data
         run: |
