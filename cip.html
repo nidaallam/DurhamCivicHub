@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https:; connect-src 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; frame-src https://app.powerbigov.us https://app.powerbi.com https://www.youtube.com https://data-dconc.org https://go.boarddocs.com; img-src 'self' data: https: https://*.tile.openstreetmap.org; connect-src 'self';" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Capital Improvement Projects – Durham Civic Hub</title>
   <meta name="description" content="Durham City and County Capital Improvement Projects — official adopted budget figures for water, transit, housing, schools, streets, and more." />
@@ -12,6 +12,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=margin@700,800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" />
   <style>
     /* ── CIP Summary Stats ── */
     .cip-stats {
@@ -307,6 +308,22 @@
         </div>
       </div>
 
+      <!-- Interactive Map -->
+      <div id="cipMap" style="width:100%;height:420px;border-radius:12px;overflow:hidden;border:1.5px solid #e5e0d8;margin-bottom:2rem;"></div>
+      <!-- Map Legend -->
+      <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:1.75rem;flex-wrap:wrap;">
+        <span style="font-family:'Libre Franklin',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6b7280;">Map legend</span>
+        <span style="display:flex;align-items:center;gap:.4rem;font-family:'Libre Franklin',sans-serif;font-size:.82rem;color:#374151;">
+          <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#207C91" stroke="#fff" stroke-width="2"/></svg>
+          City of Durham
+        </span>
+        <span style="display:flex;align-items:center;gap:.4rem;font-family:'Libre Franklin',sans-serif;font-size:.82rem;color:#374151;">
+          <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#262E4F" stroke="#fff" stroke-width="2"/></svg>
+          Durham County
+        </span>
+        <span style="font-family:'Libre Franklin',sans-serif;font-size:.72rem;color:#9ca3af;font-style:italic;">Click a marker to highlight the project card below</span>
+      </div>
+
       <!-- Filters -->
       <div class="cip-filters">
         <div class="cip-filter-row">
@@ -355,6 +372,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
   <script src="app.js"></script>
   <script>
     (function () {
@@ -399,7 +417,7 @@
         }
 
         grid.innerHTML = filtered.map(p => `
-          <div class="cip-card">
+          <div class="cip-card" id="project-${p.id}">
             <div class="cip-card-header">
               <span class="cip-entity-badge cip-entity-badge--${p.entity}">${p.entityLabel}</span>
               <span class="cip-category-tag">${p.category}</span>
@@ -463,6 +481,43 @@
         renderProjects();
       };
 
+      function initMap(projects) {
+        const map = L.map('cipMap').setView([35.9940, -78.8986], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: 18
+        }).addTo(map);
+
+        // Color markers by entity
+        projects.forEach(p => {
+          if (!p.lat || !p.lng) return;
+          const color = p.entity === 'city' ? '#207C91' : '#262E4F';
+          const marker = L.circleMarker([p.lat, p.lng], {
+            radius: 10,
+            fillColor: color,
+            color: '#fff',
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.85
+          }).addTo(map);
+          marker.bindPopup(`
+            <strong style="font-family:sans-serif;font-size:.9rem;">${p.title}</strong><br>
+            <span style="font-family:sans-serif;font-size:.8rem;color:#666;">${p.entityLabel} · ${p.category}</span><br>
+            <strong style="font-family:sans-serif;color:#207C91;">$${(p.amount/1e6).toFixed(1)}M</strong>
+            ${p.locationNote ? `<br><em style="font-size:.72rem;color:#999;">${p.locationNote}</em>` : ''}
+          `);
+          // Clicking marker highlights the project card
+          marker.on('click', () => {
+            const card = document.getElementById('project-' + p.id);
+            if (card) {
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              card.style.outline = '3px solid #E97221';
+              setTimeout(() => card.style.outline = '', 2000);
+            }
+          });
+        });
+      }
+
       document.addEventListener('DOMContentLoaded', function () {
         fetch('cip-data.json')
           .then(r => r.json())
@@ -470,6 +525,7 @@
             allProjects = data.projects || [];
             buildCategoryFilters(allProjects);
             renderProjects();
+            initMap(allProjects);
           })
           .catch(err => {
             console.error('Failed to load CIP data:', err);

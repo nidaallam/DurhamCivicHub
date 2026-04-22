@@ -18,7 +18,10 @@
       "status": "Ongoing",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 36.0500,
+      "lng": -78.8300,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "godurham-transit",
@@ -31,7 +34,10 @@
       "status": "Planning",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 35.9988,
+      "lng": -78.9019,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "stormwater",
@@ -44,7 +50,10 @@
       "status": "Ongoing",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 35.9850,
+      "lng": -78.9100,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "street-repaving",
@@ -57,7 +66,10 @@
       "status": "Ongoing",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 35.9900,
+      "lng": -78.9150,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "parks-lead-soil",
@@ -70,7 +82,10 @@
       "status": "Active",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 35.9792,
+      "lng": -78.8678,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "sidewalk-access",
@@ -83,7 +98,10 @@
       "status": "Ongoing",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 35.9930,
+      "lng": -78.9000,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "other-capital",
@@ -96,7 +114,10 @@
       "status": "Various",
       "year": "FY2025-26",
       "sourceUrl": "https://www.durhamnc.gov/456/Finance",
-      "sourceLabel": "City of Durham FY2025-26 Adopted Budget"
+      "sourceLabel": "City of Durham FY2025-26 Adopted Budget",
+      "lat": 35.9996,
+      "lng": -78.8986,
+      "locationNote": "Program-level estimate — projects occur throughout City of Durham"
     },
     {
       "id": "affordable-housing-bond",
@@ -109,7 +130,10 @@
       "status": "Active",
       "year": "2022 Bond",
       "sourceUrl": "https://www.dconc.gov/Departments/County-Manager/Housing-Affordability-Initiative",
-      "sourceLabel": "Durham County Housing Affordability Initiative"
+      "sourceLabel": "Durham County Housing Affordability Initiative",
+      "lat": 35.9970,
+      "lng": -78.8990,
+      "locationNote": "Program-level estimate — projects occur throughout Durham County"
     },
     {
       "id": "dps-capital",
@@ -122,7 +146,10 @@
       "status": "Ongoing",
       "year": "FY2025-26",
       "sourceUrl": "https://www.dconc.gov/Budget-and-Management-Services",
-      "sourceLabel": "Durham County FY2025-26 Adopted Budget"
+      "sourceLabel": "Durham County FY2025-26 Adopted Budget",
+      "lat": 35.9808,
+      "lng": -78.9230,
+      "locationNote": "Program-level estimate — projects occur throughout Durham County"
     }
   ]
 }

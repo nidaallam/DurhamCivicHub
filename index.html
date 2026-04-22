@@ -168,6 +168,81 @@
     }
     .home-highlight-link:hover { text-decoration: underline; }
 
+    /* ── Commissioner Message ── */
+    .nida-message {
+      background: var(--cream, #FAF6EE);
+      border-top: 3px solid var(--orange, #E97221);
+      padding: 2.5rem 1.5rem;
+    }
+    .nida-message-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .nida-message-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50%;
+      border: 3px solid var(--teal, #207C91);
+      flex-shrink: 0;
+    }
+    .nida-message-photo-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--navy, #262E4F);
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 3px solid var(--teal, #207C91);
+    }
+    .nida-message-text {
+      flex: 1;
+    }
+    .nida-message-eyebrow {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal, #207C91);
+      margin-bottom: .35rem;
+    }
+    .nida-message-heading {
+      font-family: 'Margin', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--navy, #262E4F);
+      margin: 0 0 .75rem;
+    }
+    .nida-message-body {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .92rem;
+      color: #374151;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .nida-message-sig {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--navy, #262E4F);
+      margin-top: .75rem;
+    }
+    @media (max-width: 640px) {
+      .nida-message-inner { flex-direction: column; align-items: center; text-align: center; }
+    }
+
     @media (max-width: 760px) {
       .home-highlights { grid-template-columns: 1fr; }
       .home-nav-grid { grid-template-columns: repeat(3, 1fr); }
@@ -208,6 +283,23 @@
       Created by Durham County Commissioner <strong>Nida Allam</strong> · Not an official government website<br>
       Inspired by Apex Town Councilmember Terry Mahaffey's <a href="https://peaknewsnetwork.org/" target="_blank" rel="noopener">Peak News Network</a>
     </p>
+  </section>
+
+  <!-- ── Message from Commissioner Allam ── -->
+  <section class="nida-message">
+    <div class="nida-message-inner">
+      <img class="nida-message-photo"
+           src="https://www.dconc.gov/home/showpublishedimage/16012/638069226904630000"
+           alt="Commissioner Nida Allam"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nida-message-photo-placeholder" style="display:none;">NA</div>
+      <div class="nida-message-text">
+        <p class="nida-message-eyebrow">Message from Commissioner Allam</p>
+        <h2 class="nida-message-heading">Durham, Explained</h2>
+        <p class="nida-message-body">Durham is a complex place to navigate — dozens of boards, multiple budgets, overlapping jurisdictions. I built this site so every resident can find what they need in minutes, for free. Local government works best when residents show up, ask questions, and hold us accountable. This is my contribution to making that easier.</p>
+        <p class="nida-message-sig">— Commissioner Nida Allam, Durham County District 2</p>
+      </div>
+    </div>
   </section>
 
   <!-- ── Section Navigator ── -->
