@@ -3,7 +3,7 @@ name: Update Civic Data
 on:
   schedule:
     - cron: '0 12 * * *'   # Daily 7:00 AM ET (noon UTC)
-    - cron: '0 12 15 6 *'  # June 15 — budget adoption check
+    - cron: '0 12 1-30 6 *' # Daily in June — catches budget doc whenever posted
   workflow_dispatch:
 
 jobs:

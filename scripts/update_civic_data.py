@@ -277,6 +277,7 @@ def update_meetings():
         print("  Saved meetings.json")
     else:
         print("  meetings.json already current")
+    return data
 
 def _update_bocc(body, today_str):
     print("  Scraping BOCC from Granicus...")
@@ -404,12 +405,13 @@ _BOCC_TIMES = {
     "Special Session":        "TBD",
 }
 
-def update_calendar():
+def update_calendar(meetings=None):
     print("Updating calendar.json...")
     with open(CALENDAR_FILE) as f:
         cal = json.load(f)
-    with open(MEETINGS_FILE) as f:
-        meetings = json.load(f)
+    if meetings is None:
+        with open(MEETINGS_FILE) as f:
+            meetings = json.load(f)
 
     today_str = date.today().isoformat()
     cutoff = (date.today() - timedelta(days=14)).isoformat()  # keep last 2 weeks of past
@@ -629,7 +631,7 @@ if __name__ == "__main__":
     update_polling_places()
     update_council_wards()
     update_legislators()
-    update_meetings()
-    update_calendar()
+    meetings_data = update_meetings()
+    update_calendar(meetings_data)
     update_budget()
     print("\nAll data files updated successfully.")
