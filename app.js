@@ -278,7 +278,7 @@ let sortNewestFirst = true;
 async function loadNews() {
   const upd  = document.getElementById('newsUpdated');
   try {
-    const res = await fetch('news.json');
+    const res = await fetch('data/news.json');
     newsData  = await res.json();
     allStories = newsData.stories || [];
     if (upd && newsData.updated) {
@@ -376,7 +376,7 @@ async function loadMeetings() {
   const container = document.getElementById('meetingsContainer');
   if (!container) return;
   try {
-    const res    = await fetch('meetings.json');
+    const res    = await fetch('data/meetings.json');
     meetingsData = await res.json();
     renderMeetings(meetingsData, container);
   } catch {
@@ -525,7 +525,7 @@ async function loadCalendar() {
   const container = document.getElementById('calendarContainer');
   if (!container) return;
   try {
-    const res  = await fetch('calendar.json');
+    const res  = await fetch('data/calendar.json');
     calendarData = await res.json();
     // Default to current month
     const now = new Date();

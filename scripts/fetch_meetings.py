@@ -39,7 +39,7 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/json,*/*;q=0.9",
 }
 
-OUT_PATH = Path(__file__).parent.parent / "meetings.json"
+OUT_PATH = Path(__file__).parent.parent / "data/meetings.json"
 
 # ── Helpers ───────────────────────────────────────────────────────────────
 

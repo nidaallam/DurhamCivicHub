@@ -1411,7 +1411,7 @@
   // ── Load & init ─────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', async () => {
     try {
-      const res  = await fetch('budget-data.json');
+      const res  = await fetch('data/budget-data.json');
       budgetData = await res.json();
       // Honor URL hash (e.g. budget-explorer.html#city)
       const hashId = window.location.hash.replace('#', '').toLowerCase();

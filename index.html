@@ -670,7 +670,7 @@
       fetch('https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWGS84Current/MapServer/10/query?where=STATE+%3D+%2737%27+AND+COUNTY+%3D+%27063%27&outFields=NAME&f=geojson&outSR=4326')
         .then(r => r.json()).then(g => L.geoJSON(g, { style: { color: '#E97221', weight: 2, fillOpacity: 0 } }).addTo(map))
         .catch(() => {});
-      fetch('cip-data.json')
+      fetch('data/cip-data.json')
         .then(r => r.json())
         .then(data => {
           (data.projects || []).forEach(p => {

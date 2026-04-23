@@ -13,8 +13,8 @@ import urllib.request
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
 DATA_DIR.mkdir(exist_ok=True)
-MEETINGS_FILE = ROOT / "meetings.json"
-CALENDAR_FILE = ROOT / "calendar.json"
+MEETINGS_FILE = ROOT / "data" / "data/meetings.json"
+CALENDAR_FILE = ROOT / "data" / "calendar.json"
 
 def fetch(url, binary=False):
     req = urllib.request.Request(url, headers={"User-Agent": "Durham-Civic-Hub/1.0"})
@@ -492,7 +492,7 @@ def update_calendar(meetings=None):
 
 # ── Budget ────────────────────────────────────────────────────────────────────
 
-BUDGET_FILE = ROOT / "budget-data.json"
+BUDGET_FILE = ROOT / "data" / "budget-data.json"
 
 def _current_fiscal_year():
     """Return the fiscal year label for the current budget cycle.

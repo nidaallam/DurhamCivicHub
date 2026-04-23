@@ -280,7 +280,7 @@ def count_changed(fresh: list[dict], existing: list[dict]) -> int:
 
 def load_existing_news() -> dict:
     import os
-    path = "news.json"
+    path = "data/news.json"
     if os.path.exists(path):
         try:
             return json.loads(open(path).read())
@@ -345,7 +345,7 @@ def main():
                 "stories":  stories,
                 "_guardrail": f"HOLD: {n_changed} new items - review before merge",
             }
-            with open("news.json", "w", encoding="utf-8") as f:
+            with open("data/news.json", "w", encoding="utf-8") as f:
                 json.dump(payload, f, indent=2, ensure_ascii=False)
             print("  Wrote news.json (held)")
             sys.exit(2)
@@ -359,7 +359,7 @@ def main():
             "stories": stories,
         }
 
-    with open("news.json", "w", encoding="utf-8") as f:
+    with open("data/news.json", "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
     print("  Wrote news.json")

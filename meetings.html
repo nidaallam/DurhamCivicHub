@@ -314,7 +314,7 @@
     async function downloadMeetingsCal() {
       let events = [];
       try {
-        const res = await fetch('calendar.json');
+        const res = await fetch('data/calendar.json');
         const cal  = await res.json();
         const today = new Date().toISOString().slice(0, 10);
         events = (cal.events || []).filter(e => e.date >= today);
