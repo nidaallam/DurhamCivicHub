@@ -490,6 +490,103 @@ def update_calendar(meetings=None):
         json.dump(cal, f, indent=2)
     print(f"  Saved calendar.json ({len(all_events)} events)")
 
+# ── Elections Calendar ────────────────────────────────────────────────────────
+
+ELECTIONS_FILE = ROOT / "data" / "elections.json"
+
+def update_elections():
+    """Fetch upcoming election dates from NCSBE and update elections.json.
+    Uses best-effort scraping with graceful fallback to preserve existing data."""
+    print("Updating elections from NCSBE...")
+    try:
+        existing = json.loads(ELECTIONS_FILE.read_text())
+    except Exception:
+        existing = {"lastUpdated": str(date.today()), "source": "https://www.ncsbe.gov/voting/upcoming-election"}
+
+    try:
+        html = fetch("https://www.ncsbe.gov/voting/upcoming-election")
+    except Exception as e:
+        print(f"  NCSBE fetch failed: {e} — keeping existing elections.json")
+        return
+
+    changed = False
+
+    # Look for date patterns like "November 3, 2026" or "2026-11-03"
+    # Try to find the next election row in the page
+    # NCSBE pages often list elections in a table with date, type, etc.
+    date_re = re.compile(
+        r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+'
+        r'(\d{1,2}),?\s+(\d{4})',
+        re.IGNORECASE,
+    )
+    months = {
+        'january': 1, 'february': 2, 'march': 3, 'april': 4,
+        'may': 5, 'june': 6, 'july': 7, 'august': 8,
+        'september': 9, 'october': 10, 'november': 11, 'december': 12,
+    }
+
+    today = date.today()
+    found_elections = []
+    for m in date_re.finditer(html):
+        month_name, day, year = m.group(1), int(m.group(2)), int(m.group(3))
+        mn = months[month_name.lower()]
+        try:
+            d = date(year, mn, int(day))
+        except ValueError:
+            continue
+        if d > today:
+            # Get surrounding text for election type
+            start = max(0, m.start() - 200)
+            end = min(len(html), m.end() + 200)
+            context = clean_text(html[start:end])
+            found_elections.append({
+                "date": d.isoformat(),
+                "label": f"{month_name} {day}, {year}",
+                "context": context[:120],
+            })
+
+    if not found_elections:
+        print("  No future election dates found on NCSBE page — keeping existing data")
+        return
+
+    # Use the soonest future election
+    found_elections.sort(key=lambda e: e["date"])
+    next_el = found_elections[0]
+
+    # Determine election type from context
+    ctx = next_el["context"].lower()
+    if "primary" in ctx:
+        el_type = "Primary Election"
+    elif "general" in ctx:
+        el_type = "General Election"
+    elif "municipal" in ctx:
+        el_type = "Municipal Election"
+    elif "runoff" in ctx:
+        el_type = "Runoff Election"
+    else:
+        el_type = "Election"
+
+    new_next = {
+        "date": next_el["date"],
+        "label": next_el["label"],
+        "type": el_type,
+        "color": "orange",
+    }
+
+    if existing.get("nextElection", {}).get("date") != new_next["date"]:
+        existing["nextElection"] = new_next
+        changed = True
+        print(f"  Updated nextElection: {new_next['date']} — {el_type}")
+
+    if changed:
+        existing["lastUpdated"] = str(today)
+        existing["source"] = "https://www.ncsbe.gov/voting/upcoming-election"
+        ELECTIONS_FILE.write_text(json.dumps(existing, indent=2))
+        print("  Saved elections.json")
+    else:
+        print("  elections.json already current")
+
+
 # ── Budget ────────────────────────────────────────────────────────────────────
 
 BUDGET_FILE = ROOT / "data" / "budget-data.json"
@@ -634,4 +731,5 @@ if __name__ == "__main__":
     meetings_data = update_meetings()
     update_calendar(meetings_data)
     update_budget()
+    update_elections()
     print("\nAll data files updated successfully.")
