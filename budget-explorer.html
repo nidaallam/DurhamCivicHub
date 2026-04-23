@@ -1142,7 +1142,7 @@
   // ── Render funding sources bar chart ────────────────────────────────────
   function buildFundingSources(e) {
     const isDPS = e.id === 'dps';
-    // DPS: funding sources are already the "areas" in sources view — skip this panel
+    // DPS: funding sources are already the "areas" in sources view - skip this panel
     if (isDPS) return '';
     const sources = e.fundingSources;
     if (!sources || !sources.length) return '';
