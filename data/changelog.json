@@ -200,6 +200,56 @@
       "new_value": "https://www.durhamnc.gov/238/Police-Department",
       "reason": "Old URL returns 404. Replaced with verified DPD main page.",
       "source": "https://www.durhamnc.gov/238/Police-Department"
+    },
+    {
+      "timestamp": "2026-04-22T01:00:00-04:00",
+      "type": "removal",
+      "file": "data/meetings.json + data/calendar.json + news.html",
+      "field": "Apr 28 BOCC Budget Work Session",
+      "old_value": "meetings.json upcoming entry 2026-04-28 Budget Work Session; calendar.json id:19; news.html sidebar li",
+      "new_value": "Removed from all three locations. Entry added to data/blocklist.json.",
+      "reason": "Fabricated entry. Flagged across three separate audit rounds. No such meeting appears in official DCONC agenda archive.",
+      "source": "Commissioner Allam audit 2026-04-22"
+    },
+    {
+      "timestamp": "2026-04-22T01:00:00-04:00",
+      "type": "fact-correction",
+      "file": "data/resources.json + resources.html",
+      "field": "Library section — East Regional address, Southwest name, missing branches, phone numbers",
+      "old_value": "East Regional: '211 W Woodcroft Pkwy'; Southwest Branch Library (wrong name); Stanford L. Warren and Bragtown missing from JSON; no phone numbers; no source/verified_at fields",
+      "new_value": "East Regional: 211 Lick Creek Lane, Durham, NC 27703; Southwest Regional Library (correct name); Stanford L. Warren and Bragtown added to JSON; all 7 branches have phone numbers in HTML and JSON; source + verified_at added to all JSON cards",
+      "reason": "resources.json was out of sync with correct static HTML. All 7 branch records rebuilt from authoritative durhamcountylibrary.org/hours-and-locations/.",
+      "source": "https://durhamcountylibrary.org/hours-and-locations/"
+    },
+    {
+      "timestamp": "2026-04-22T01:00:00-04:00",
+      "type": "fact-correction",
+      "file": "app.js",
+      "field": "Translation disclaimer text",
+      "old_value": "This page is auto-translated. For the most accurate help, please call the organization directly.",
+      "new_value": "This page is auto-translated. I apologize in advance for any mistakes.",
+      "reason": "Updated per Commissioner Allam's direction.",
+      "source": "Commissioner Allam (2026-04-22)"
+    },
+    {
+      "timestamp": "2026-04-22T01:00:00-04:00",
+      "type": "fact-correction",
+      "file": "app.js",
+      "field": "Google Translate change event",
+      "old_value": "new Event('change')",
+      "new_value": "new Event('change', { bubbles: true })",
+      "reason": "Google Translate widget requires bubbling change event to process language selection.",
+      "source": "Google Translate Element API"
+    },
+    {
+      "timestamp": "2026-04-22T01:00:00-04:00",
+      "type": "removal",
+      "file": "news.html",
+      "field": "RSS button and <link rel=alternate>",
+      "old_value": "RSS button linking to news.xml; <link rel=alternate> in <head>",
+      "new_value": "Removed entirely.",
+      "reason": "RSS feed not functional. Removed per Commissioner Allam's direction.",
+      "source": "Commissioner Allam (2026-04-22)"
     }
   ]
 }

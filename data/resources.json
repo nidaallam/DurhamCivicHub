@@ -554,43 +554,73 @@
         {
           "icon": "landmark",
           "name": "Main Library",
-          "desc": "Durham County's flagship library. 300 N Roxboro St, Durham. Books, computers, meeting rooms, and the largest collection in the system.",
+          "desc": "Durham County's flagship library. 300 N. Roxboro St., Durham, NC 27701. (919) 560-0100. Books, computers, meeting rooms, and the largest collection in the system.",
           "type": "county",
-          "url": "https://www.durhamcountylibrary.org/location/main-library/",
-          "btnLabel": "Hours & Info"
+          "url": "https://durhamcountylibrary.org/location/main-library/",
+          "btnLabel": "Hours & Info",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
         },
         {
           "icon": "book-open",
           "name": "South Regional Library",
-          "desc": "Serving south Durham. 4505 S Alston Ave, Durham. Full library services, community meeting space, and Spanish-language materials.",
+          "desc": "Serving south Durham. 4505 S. Alston Avenue, Durham, NC 27713. (919) 560-7409. Full library services, community meeting space, and Spanish-language materials.",
           "type": "county",
-          "url": "https://www.durhamcountylibrary.org/location/south-regional-library/",
+          "url": "https://durhamcountylibrary.org/location/south-regional-library/",
           "btnLabel": "Hours & Info",
-          "hasSpanish": true
+          "hasSpanish": true,
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
         },
         {
           "icon": "book-open",
           "name": "East Regional Library",
-          "desc": "Serving east Durham. 211 W Woodcroft Pkwy, Durham. Full library services with community programs.",
+          "desc": "Serving east Durham. 211 Lick Creek Lane, Durham, NC 27703. (919) 560-0862. Full library services with community programs.",
           "type": "county",
-          "url": "https://www.durhamcountylibrary.org/location/east-regional-library/",
-          "btnLabel": "Hours & Info"
-        },
-        {
-          "icon": "book-open",
-          "name": "Southwest Branch Library",
-          "desc": "Serving southwest Durham. 3605 Shannon Rd, Durham. Neighborhood branch with full library services.",
-          "type": "county",
-          "url": "https://www.durhamcountylibrary.org/location/southwest-regional-library/",
-          "btnLabel": "Hours & Info"
+          "url": "https://durhamcountylibrary.org/location/east-regional-library/",
+          "btnLabel": "Hours & Info",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
         },
         {
           "icon": "book-open",
           "name": "North Regional Library",
-          "desc": "Serving north Durham. 221 Milton Rd, Durham. Full library services and community programs.",
+          "desc": "Serving north Durham. 221 Milton Road, Durham, NC 27712. (919) 560-0236. Full library services and community programs.",
           "type": "county",
-          "url": "https://www.durhamcountylibrary.org/location/north-regional-library/",
-          "btnLabel": "Hours & Info"
+          "url": "https://durhamcountylibrary.org/location/north-regional-library/",
+          "btnLabel": "Hours & Info",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
+        },
+        {
+          "icon": "book-open",
+          "name": "Southwest Regional Library",
+          "desc": "Serving southwest Durham. 3605 Shannon Road, Durham, NC 27707. (919) 560-8593. Full library services with community programs.",
+          "type": "county",
+          "url": "https://durhamcountylibrary.org/location/southwest-regional-library/",
+          "btnLabel": "Hours & Info",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
+        },
+        {
+          "icon": "book-open",
+          "name": "Stanford L. Warren Branch Library",
+          "desc": "Serving the Hayti/Fayetteville Street corridor. 1201 Fayetteville Street, Durham, NC 27707. (919) 560-0270. Full library services and community programs.",
+          "type": "county",
+          "url": "https://durhamcountylibrary.org/location/stanford-l-warren-branch-library/",
+          "btnLabel": "Hours & Info",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
+        },
+        {
+          "icon": "book-open",
+          "name": "Bragtown Branch Library",
+          "desc": "Serving north Durham's Bragtown neighborhood. 3200 Dearborn Drive, Durham, NC 27704. (919) 560-0210. Full library services and community programs.",
+          "type": "county",
+          "url": "https://durhamcountylibrary.org/location/bragtown-branch-library/",
+          "btnLabel": "Hours & Info",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
         },
         {
           "icon": "laptop",
@@ -598,7 +628,9 @@
           "desc": "Free e-books, audiobooks, digital magazines, and online databases available 24/7 with your free library card. Access from home on any device.",
           "type": "county",
           "url": "https://www.durhamcountylibrary.org/ebooks/",
-          "btnLabel": "Digital Library"
+          "btnLabel": "Digital Library",
+          "source": "https://durhamcountylibrary.org/hours-and-locations/",
+          "verified_at": "2026-04-22"
         }
       ]
     }
