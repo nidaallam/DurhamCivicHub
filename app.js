@@ -1217,3 +1217,46 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }
+
+// ── Universal "last updated" footer note ────────────────────────────────────
+(function injectLastUpdated() {
+  const PAGE_SOURCES = {
+    'news.html':            { file: 'data/news.json',     key: 'updated',     label: 'Durham County government sources',        url: 'https://www.dconc.gov/' },
+    'meetings.html':        { file: 'data/meetings.json', key: 'lastFetched', label: 'dconc.gov, durhamnc.gov, dpsnc.net',       url: 'https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library' },
+    'budget-explorer.html': { file: 'data/budget-data.json', key: 'note',    label: 'Durham County Budget & Management Services', url: 'https://www.dconc.gov/Budget-and-Management-Services' },
+    'budget-county.html':   { file: 'data/budget-data.json', key: 'note',    label: 'Durham County Budget & Management Services', url: 'https://www.dconc.gov/Budget-and-Management-Services' },
+    'budget-city.html':     { file: 'data/budget-data.json', key: 'note',    label: 'City of Durham Finance Department',          url: 'https://www.durhamnc.gov/456/Finance' },
+    'budget-schools.html':  { file: 'data/budget-data.json', key: 'note',    label: 'Durham Public Schools Finance',              url: 'https://www.dpsnc.net/Page/3507' },
+    'resources.html':       { file: 'data/resources.json', key: 'lastUpdated', label: 'Official program websites',               url: 'https://www.dconc.gov/' },
+    'voting.html':          { file: 'data/officials.json',  key: 'lastFetched', label: 'NC State Board of Elections',             url: 'https://www.ncsbe.gov/' },
+    'my-durham.html':       { file: 'data/officials.json',  key: 'lastFetched', label: 'Durham County & NC election data',        url: 'https://www.dconc.gov/' },
+    'cip.html':             { file: 'data/cip-data.json',   key: 'lastUpdated', label: 'Durham County CIP documents',             url: 'https://www.dconc.gov/Budget-and-Management-Services' },
+  };
+
+  const page = window.location.pathname.split('/').pop() || 'index.html';
+  const cfg  = PAGE_SOURCES[page];
+  if (!cfg) return;
+
+  const footer = document.querySelector('.site-footer .footer-inner');
+  if (!footer) return;
+
+  fetch(cfg.file)
+    .then(r => r.json())
+    .then(data => {
+      const ts = data[cfg.key];
+      if (!ts || typeof ts !== 'string') return;
+      // Try to parse as ISO date; fall back to raw string
+      let display = ts;
+      try {
+        const d = new Date(ts);
+        if (!isNaN(d)) {
+          display = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' });
+        }
+      } catch (_) {}
+      const el = document.createElement('p');
+      el.className = 'footer-note footer-last-updated';
+      el.innerHTML = `Data last updated: ${display} &middot; Source: <a href="${cfg.url}" target="_blank" rel="noopener" style="color:var(--peach)">${cfg.label}</a>`;
+      footer.appendChild(el);
+    })
+    .catch(() => {});
+})();
