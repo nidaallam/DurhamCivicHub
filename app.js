@@ -236,7 +236,7 @@ function injectSearchUI() {
         <input id="siteSearchInput" class="search-modal-input"
                type="search" placeholder="Search news, meetings, budget, voting…"
                autocomplete="off" />
-        <button class="search-modal-close" onclick="closeSearch()" aria-label="Close search">✕</button>
+        <button class="search-modal-close" onclick="closeSearch()" aria-label="Close search"><i data-lucide="x" aria-hidden="true" class="lucide-wrap"></i></button>
       </div>
       <div id="siteSearchResults" class="search-modal-results"></div>
     </div>
@@ -417,8 +417,8 @@ function renderBodyCard(body) {
         </div>
       </div>
       <div class="meeting-body-meta">
-        <span>📅 ${esc(body.schedule)}</span>
-        <span>📍 ${esc(body.location)}</span>
+        <span><i data-lucide="calendar" aria-hidden="true" class="lucide-wrap"></i> ${esc(body.schedule)}</span>
+        <span><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> ${esc(body.location)}</span>
       </div>
       <div>
         ${(body.meetings || []).map(m => renderMeetingRow(m)).join('')}
@@ -453,7 +453,7 @@ function renderMeetings(data, container) {
       <div style="background:#e0f3f6;border-left:4px solid #207C91;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 2rem;">
         <div>
           <p style="font-size:.95rem;font-weight:700;color:#262E4F;margin:0 0 .2rem;">Want to serve on a board or commission?</p>
-          <p style="font-size:.875rem;color:#374151;margin:0;">Durham residents can apply to serve on advisory boards, commissions, and task forces. Your voice matters in shaping local policy!</p>
+          <p style="font-size:.875rem;color:#374151;margin:0;">Durham neighbors can apply to serve on advisory boards, commissions, and task forces. Your voice matters in shaping local policy!</p>
         </div>
         <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
           <a href="https://durhamcounty.granicus.com/boards" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;background:#262E4F;color:#fff;font-size:.875rem;font-weight:700;padding:.5rem 1rem;border-radius:6px;text-decoration:none;">Apply - Durham County →</a>
@@ -697,8 +697,8 @@ function showDayDetail(dateStr, cell) {
           <div class="cal-detail-info">
             <div class="cal-detail-name">${esc(ev.title)}</div>
             <div class="cal-detail-meta">
-              ${ev.time ? `🕐 ${esc(ev.time)}` : ''}
-              ${ev.location ? ` · 📍 ${esc(ev.location)}` : ''}
+              ${ev.time ? `<i data-lucide="clock" aria-hidden="true" class="lucide-wrap"></i> ${esc(ev.time)}` : ''}
+              ${ev.location ? ` · <i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> ${esc(ev.location)}` : ''}
             </div>
             ${links ? `<div class="cal-detail-links">${links}</div>` : ''}
           </div>
@@ -751,8 +751,8 @@ function renderCalendarList(data, container) {
               <div class="cal-event-body">
                 ${ev.category ? `<div class="cal-event-cat">${esc(ev.category)}</div>` : ''}
                 <div class="cal-event-title">${esc(ev.title)}</div>
-                ${ev.time     ? `<div class="cal-event-time">🕐 ${esc(ev.time)}</div>` : ''}
-                ${ev.location ? `<div class="cal-event-loc">📍 ${esc(ev.location)}</div>` : ''}
+                ${ev.time     ? `<div class="cal-event-time"><i data-lucide="clock" aria-hidden="true" class="lucide-wrap"></i> ${esc(ev.time)}</div>` : ''}
+                ${ev.location ? `<div class="cal-event-loc"><i data-lucide="map-pin" aria-hidden="true" class="lucide-wrap"></i> ${esc(ev.location)}</div>` : ''}
                 ${rel         ? `<div class="cal-event-rel">${esc(rel)}</div>` : ''}
                 ${links}
               </div>
@@ -1007,7 +1007,7 @@ function renderResources(data, container) {
   const crisisSection = crisisCards.length ? `
     <section class="resource-category" id="crisis-pinned" style="background:#7B1A1A;border-radius:12px;padding:1.5rem 1.5rem 1.75rem;margin-bottom:2.5rem;">
       <div class="resource-category-header">
-        <h2 class="resource-category-title" style="color:#fff;border-bottom-color:rgba(255,255,255,.4);">🚨 Most Urgent</h2>
+        <h2 class="resource-category-title" style="color:#fff;border-bottom-color:rgba(255,255,255,.4);"><i data-lucide="alert-circle" aria-hidden="true" class="lucide-wrap"></i> Most Urgent</h2>
         <p class="resource-category-intro" style="color:rgba(255,255,255,.85);">In a life-threatening emergency, call <strong>911</strong>. Crisis lines available 24/7.</p>
       </div>
       <div class="resource-grid">
@@ -1022,7 +1022,7 @@ function renderResources(data, container) {
     return `
       <section class="resource-category" id="${esc(cat.id)}">
         <div class="resource-category-header">
-          <h2 class="resource-category-title">${cat.icon} ${esc(cat.title)}</h2>
+          <h2 class="resource-category-title"><i data-lucide="${esc(cat.icon || 'circle')}" aria-hidden="true" class="lucide-wrap"></i> ${esc(cat.title)}</h2>
           ${cat.intro ? `<p class="resource-category-intro">${esc(cat.intro)}</p>` : ''}
           ${noteHtml}
         </div>
@@ -1034,11 +1034,12 @@ function renderResources(data, container) {
 
   container.innerHTML = crisisSection + categories;
   if (window._twParse) window._twParse(container);
+  if (window.lucide) lucide.createIcons();
 }
 
 function renderResourceCard(c, dark) {
   const phoneHtml = c.phone
-    ? `<p class="resource-card-phone">📞 <a href="${esc(c.phoneHref)}">${esc(c.phone)}</a></p>`
+    ? `<p class="resource-card-phone"><i data-lucide="phone" aria-hidden="true" class="lucide-wrap"></i> <a href="${esc(c.phoneHref)}">${esc(c.phone)}</a></p>`
     : '';
   const spanishBadge = c.hasSpanish
     ? `<span style="font-size:.7rem;font-weight:700;background:#16a34a;color:#fff;padding:.1rem .4rem;border-radius:3px;margin-left:.25rem;">Español</span>`
@@ -1049,7 +1050,7 @@ function renderResourceCard(c, dark) {
 
   return `
     <div class="resource-card resource-card--${esc(c.type || 'nonprofit')}" style="${cardStyle}">
-      <div class="resource-card-icon">${c.icon}</div>
+      <div class="resource-card-icon"><i data-lucide="${esc(c.icon || 'circle')}" aria-hidden="true" class="lucide-wrap"></i></div>
       <p class="resource-card-name" style="${nameStyle}">${esc(c.name)}${spanishBadge}</p>
       <p class="resource-card-desc" style="${descStyle}">${esc(c.desc)}</p>
       ${phoneHtml}
@@ -1137,7 +1138,7 @@ async function fetchWeatherAlerts() {
     const eventText = esc(a.event || 'Weather Alert');
     const headline = a.headline ? ': ' + esc(a.headline.replace(/\.\s*$/, '')) : '';
     const url = a.url || 'https://alerts.weather.gov/search?zone=NCC063';
-    banner.innerHTML = `<span>⚠️ <strong>${eventText}</strong>${headline}</span>`
+    banner.innerHTML = `<span><i data-lucide="alert-triangle" aria-hidden="true" class="lucide-wrap"></i> <strong>${eventText}</strong>${headline}</span>`
       + `<a href="${esc(url)}" target="_blank" rel="noopener"`
       + ` style="color:#ffc8a0;font-weight:700;white-space:nowrap;text-decoration:underline;">Full alert →</a>`;
 

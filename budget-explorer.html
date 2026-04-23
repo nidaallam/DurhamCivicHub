@@ -864,6 +864,12 @@
   let activeYear    = null;
   let viewMode      = 'sources'; // 'sources' | 'spending' (DPS only: sources=funding sources, spending=expenditures)
 
+  // ── Icon helper ─────────────────────────────────────────────────────────
+  function luIcon(name, fallback) {
+    const n = name || fallback || 'circle';
+    return `<i data-lucide="${n}" aria-hidden="true" class="lucide-wrap"></i>`;
+  }
+
   // ── Formatters ──────────────────────────────────────────────────────────
   function fmtDollars(n) {
     if (n == null) return 'N/A';
@@ -1004,7 +1010,7 @@
         <div class="exp-area expandable" id="area-${idx}">
           <div class="exp-area-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleArea(${idx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleArea(${idx})}">
             <div class="exp-area-info">
-              <div class="exp-area-name"><span class="exp-area-icon">${a.icon || '<i data-lucide="bar-chart-2" aria-hidden="true" class="lucide-wrap"></i>'}</span>${a.name}</div>
+              <div class="exp-area-name"><span class="exp-area-icon">${luIcon(a.icon, 'bar-chart-2')}</span>${a.name}</div>
               ${a.description ? `<div class="exp-area-desc">${a.description}</div>` : ''}
             </div>
             <div class="exp-area-right">
@@ -1124,7 +1130,7 @@
 
     const rateRows = sorted_rate.map(c => `
       <div class="exp-cmp-row">
-        <span class="exp-cmp-name${c.highlight ? ' highlight' : ''}">${c.highlight ? '★ ' : ''}${c.name}</span>
+        <span class="exp-cmp-name${c.highlight ? ' highlight' : ''}">${c.highlight ? '<i data-lucide="star" aria-hidden="true" class="lucide-wrap" style="width:12px;height:12px;vertical-align:middle;margin-right:3px;"></i>' : ''}${c.name}</span>
         <div class="exp-cmp-bar-wrap">
           <div class="exp-cmp-bar-fill" style="width:${(c.rate/maxRate*100).toFixed(1)}%;background:${c.highlight ? '#E97221' : '#207C91'}"></div>
         </div>
@@ -1133,7 +1139,7 @@
 
     const pcRows = sorted_pc.map(c => `
       <div class="exp-cmp-row">
-        <span class="exp-cmp-name${c.highlight ? ' highlight' : ''}">${c.highlight ? '★ ' : ''}${c.name}</span>
+        <span class="exp-cmp-name${c.highlight ? ' highlight' : ''}">${c.highlight ? '<i data-lucide="star" aria-hidden="true" class="lucide-wrap" style="width:12px;height:12px;vertical-align:middle;margin-right:3px;"></i>' : ''}${c.name}</span>
         <div class="exp-cmp-bar-wrap">
           <div class="exp-cmp-bar-fill" style="width:${(c.perCapita/maxPc*100).toFixed(1)}%;background:${c.highlight ? '#E97221' : '#6E9D97'}"></div>
         </div>
@@ -1173,7 +1179,7 @@
 
     const rows = sources.map(s => `
       <div class="exp-funding-row">
-        <span class="exp-funding-icon">${s.icon}</span>
+        <span class="exp-funding-icon">${luIcon(s.icon, 'circle')}</span>
         <span class="exp-funding-label">${s.name}</span>
         <div class="exp-funding-bar-wrap">
           <div class="exp-funding-bar-fill" style="width:${s.pct}%;background:${s.color}"></div>
@@ -1318,12 +1324,12 @@
           .filter(d => d.amounts?.[yr])
           .map(d => ({ name: d.name, icon: '<i data-lucide="bar-chart-2" aria-hidden="true" class="lucide-wrap"></i>', amount: d.amounts[yr] }));
       } else if (cityOps) {
-        receiptItems = [{ name: cityOps.name, icon: cityOps.icon || '<i data-lucide="building-2" aria-hidden="true" class="lucide-wrap"></i>', amount: cityOps.amounts?.[yr] }];
+        receiptItems = [{ name: cityOps.name, icon: cityOps.icon || 'building-2', amount: cityOps.amounts?.[yr] }];
       }
     } else {
       receiptItems = (e.areas || [])
         .filter(a => a.amounts?.[yr])
-        .map(a => ({ name: a.name, icon: a.icon || '<i data-lucide="bar-chart-2" aria-hidden="true" class="lucide-wrap"></i>', amount: a.amounts[yr] }));
+        .map(a => ({ name: a.name, icon: a.icon || 'bar-chart-2', amount: a.amounts[yr] }));
     }
 
     const areaTotal = receiptItems.reduce((sum, a) => sum + (a.amount ?? 0), 0);
@@ -1337,7 +1343,7 @@
           const dollarAmt = annualTax * areaPct;
           return `
             <div class="exp-receipt-row">
-              <span class="exp-receipt-row-icon">${a.icon}</span>
+              <span class="exp-receipt-row-icon">${luIcon(a.icon, 'bar-chart-2')}</span>
               <span class="exp-receipt-row-name">${a.name}</span>
               <span class="exp-receipt-row-amt">$${dollarAmt.toFixed(2)}<span style="font-size:.82rem;font-weight:500;color:#999;">/yr</span></span>
             </div>`;
@@ -1381,7 +1387,7 @@
       ${cityNote ? `<div class="exp-receipt-combined-note">${cityNote}</div>` : ''}
       <div class="exp-receipt-combined-note">${combinedNote}</div>
       <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;padding:.85rem 1.1rem;margin-top:.85rem;font-family:'Libre Franklin',sans-serif;">
-        <div style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#166534;margin-bottom:.35rem;">Estimated Total Annual Tax Bill (if ${entityId === 'county' ? 'Durham city' : 'Durham County'} resident)</div>
+        <div style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#166534;margin-bottom:.35rem;">Estimated Total Annual Tax Bill (if ${entityId === 'county' ? 'Durham city' : 'Durham County'} neighbor)</div>
         <div style="display:flex;gap:1.5rem;align-items:baseline;flex-wrap:wrap;">
           <span style="font-size:1.55rem;font-weight:800;color:#14532d;">$${combined.toFixed(2)}<span style="font-size:.82rem;font-weight:600;color:#166534;">/yr</span></span>
           <span style="font-size:1rem;font-weight:700;color:#166534;">$${(combined/12).toFixed(2)}/mo</span>

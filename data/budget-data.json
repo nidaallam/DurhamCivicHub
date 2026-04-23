@@ -34,7 +34,7 @@
       "fundingSources": [
         {
           "name": "Property Tax",
-          "icon": "🏠",
+          "icon": "home",
           "amount": 416000000,
           "pct": 60.3,
           "note": "Ad valorem tax at 55.42¢ per $100 assessed value: Durham County's primary revenue source",
@@ -42,7 +42,7 @@
         },
         {
           "name": "Sales & Use Tax",
-          "icon": "🛒",
+          "icon": "shopping-cart",
           "amount": 103000000,
           "pct": 14.9,
           "note": "County share of NC sales taxes (Articles 39, 40, 42, 43, and 46) distributed by the state",
@@ -50,7 +50,7 @@
         },
         {
           "name": "State & Federal Revenue",
-          "icon": "🏛️",
+          "icon": "landmark",
           "amount": 90000000,
           "pct": 13.0,
           "note": "State-shared revenues, Medicaid reimbursements, federal program grants, and 911 fees",
@@ -58,7 +58,7 @@
         },
         {
           "name": "Charges for Services",
-          "icon": "💳",
+          "icon": "credit-card",
           "amount": 55000000,
           "pct": 8.0,
           "note": "Register of Deeds fees, health department charges, parks and recreation fees, permits",
@@ -66,7 +66,7 @@
         },
         {
           "name": "Other Revenue",
-          "icon": "📋",
+          "icon": "clipboard-list",
           "amount": 25700000,
           "pct": 3.8,
           "note": "Investment earnings, appropriated fund balance, miscellaneous receipts",
@@ -78,7 +78,7 @@
         {
           "id": "education",
           "name": "Education",
-          "icon": "🎓",
+          "icon": "graduation-cap",
           "description": "County funding passed through to Durham Public Schools and Durham Technical Community College. Includes current expense, capital outlay, debt service, and ARPA support.",
           "amounts": {
             "FY2025-26": 248100000,
@@ -131,7 +131,7 @@
         {
           "id": "administration",
           "name": "Administration",
-          "icon": "🏛️",
+          "icon": "landmark",
           "description": "County management, finance, human resources, information technology, legal, and general government operations.",
           "amounts": {
             "FY2025-26": 193500000,
@@ -186,7 +186,7 @@
         {
           "id": "human-services",
           "name": "Human Services",
-          "icon": "🤝",
+          "icon": "handshake",
           "description": "Social services, public health, mental health, child welfare, aging services, and community assistance programs.",
           "amounts": {
             "FY2025-26": 114800000,
@@ -234,7 +234,7 @@
         {
           "id": "public-safety",
           "name": "Public Safety",
-          "icon": "🛡️",
+          "icon": "shield",
           "description": "Sheriff's Office, Emergency Medical Services, Emergency Management, and Animal Control.",
           "amounts": {
             "FY2025-26": 95100000,
@@ -275,7 +275,7 @@
         {
           "id": "debt-service",
           "name": "Debt Service",
-          "icon": "📄",
+          "icon": "file-text",
           "description": "Principal and interest payments on bonds and loans, including DPS school construction debt, DTCC debt, and county facilities debt.",
           "amounts": {
             "FY2025-26": 116589842,
@@ -320,7 +320,7 @@
         {
           "id": "capital",
           "name": "Capital Projects",
-          "icon": "🏗️",
+          "icon": "hard-hat",
           "description": "Capital Finance Plan Fund: major facility construction, renovation, and infrastructure improvements funded by bonds and pay-as-you-go capital.",
           "amounts": {
             "FY2025-26": 126101344,
@@ -361,7 +361,7 @@
         {
           "id": "culture-rec",
           "name": "Culture & Recreation",
-          "icon": "📚",
+          "icon": "book-open",
           "description": "Durham County Public Library system, parks, and recreation facilities.",
           "amounts": {
             "FY2025-26": 17300000,
@@ -388,7 +388,7 @@
         {
           "id": "economic-dev",
           "name": "Economic Development",
-          "icon": "📈",
+          "icon": "trending-up",
           "description": "Economic and physical development, planning, and community development initiatives.",
           "amounts": {
             "FY2025-26": 10400000,
@@ -422,7 +422,7 @@
         {
           "id": "environment",
           "name": "Environmental Protection",
-          "icon": "🌿",
+          "icon": "leaf",
           "description": "Soil & Water Conservation, environmental health, and related natural resource programs.",
           "amounts": {
             "FY2025-26": 7900000,
@@ -456,7 +456,7 @@
         {
           "id": "transportation",
           "name": "Transportation",
-          "icon": "🚌",
+          "icon": "bus",
           "description": "County contribution to public transit and transportation services.",
           "amounts": {
             "FY2025-26": 4500000,
@@ -466,7 +466,7 @@
           "departments": [
             {
               "name": "GoDurham / GoTriangle Transit",
-              "description": "County funding support for GoDurham bus service and GoTriangle regional transit, connecting residents to jobs, healthcare, and services.",
+              "description": "County funding support for GoDurham bus service and GoTriangle regional transit, connecting neighbors to jobs, healthcare, and services.",
               "amounts": {
                 "FY2025-26": null
               }
@@ -499,7 +499,7 @@
       "fundingSources": [
         {
           "name": "Property Tax",
-          "icon": "🏠",
+          "icon": "home",
           "amount": 130000000,
           "pct": 55.6,
           "note": "Ad valorem tax at 43.71¢ per $100 assessed value: the city's largest general fund revenue source",
@@ -507,7 +507,7 @@
         },
         {
           "name": "Charges & Fees",
-          "icon": "💳",
+          "icon": "credit-card",
           "amount": 34000000,
           "pct": 14.5,
           "note": "Parks and recreation fees, planning permits, development review charges, and other service fees",
@@ -515,7 +515,7 @@
         },
         {
           "name": "Sales & Use Tax",
-          "icon": "🛒",
+          "icon": "shopping-cart",
           "amount": 28000000,
           "pct": 12.0,
           "note": "City share of NC sales taxes (Article 46 and local option sales tax allocations)",
@@ -523,7 +523,7 @@
         },
         {
           "name": "State & Federal Grants",
-          "icon": "🏛️",
+          "icon": "landmark",
           "amount": 26000000,
           "pct": 11.1,
           "note": "Powell Bill road maintenance funds, federal public safety grants, community development block grants",
@@ -531,7 +531,7 @@
         },
         {
           "name": "Other Revenue",
-          "icon": "📋",
+          "icon": "clipboard-list",
           "amount": 16400000,
           "pct": 6.8,
           "note": "Investment income, fines and forfeitures, utility franchise fees, and miscellaneous receipts",
@@ -543,7 +543,7 @@
         {
           "id": "capital-improvement",
           "name": "Capital Improvement Plan",
-          "icon": "🏗️",
+          "icon": "hard-hat",
           "description": "Five-year capital plan for major infrastructure, facilities, and equipment investments. Funded through bonds, grants, and capital reserves: not property taxes.",
           "amounts": {
             "FY2025-26": 537600000
@@ -604,7 +604,7 @@
         {
           "id": "city-operations",
           "name": "City Operations (General Fund)",
-          "icon": "🏙️",
+          "icon": "building",
           "description": "Day-to-day city government operations funded by property taxes, sales taxes, and fees. Covers police, fire, public works, parks, planning, transit support, and general government.",
           "amounts": {
             "FY2025-26": 234400000
@@ -682,7 +682,7 @@
         {
           "id": "funding-state",
           "name": "State Funding",
-          "icon": "🏛️",
+          "icon": "landmark",
           "description": "North Carolina state appropriations for public school operations, including teacher salary allotments and categorical program funding.",
           "amounts": {
             "FY2025-26": 244368313
@@ -724,7 +724,7 @@
         {
           "id": "funding-local",
           "name": "Local (County) Funding",
-          "icon": "🏠",
+          "icon": "home",
           "description": "Durham County direct appropriation for school operations: current expense, capital outlay, and ARPA Title I. The county also pays $61.8M in DPS-related debt service separately.",
           "amounts": {
             "FY2025-26": 225252288
@@ -757,7 +757,7 @@
         {
           "id": "funding-capital",
           "name": "Capital Outlay",
-          "icon": "🏗️",
+          "icon": "hard-hat",
           "description": "Funding for school construction, renovations, and major equipment, primarily from county bonds.",
           "amounts": {
             "FY2025-26": 161600679
@@ -793,7 +793,7 @@
         {
           "id": "funding-federal",
           "name": "Federal Funding",
-          "icon": "🇺🇸",
+          "icon": "flag",
           "description": "Federal grants including Title I (low-income students), Title II (teacher quality), IDEA (special education), and other federal programs.",
           "amounts": {
             "FY2025-26": 43015320
@@ -835,7 +835,7 @@
         {
           "id": "funding-nutrition",
           "name": "Child Nutrition",
-          "icon": "🍎",
+          "icon": "apple",
           "description": "Federal and state funding for school meal programs, including free and reduced-price lunch for eligible students.",
           "amounts": {
             "FY2025-26": 19745762
@@ -865,7 +865,7 @@
         {
           "id": "funding-grants",
           "name": "Grants & Other",
-          "icon": "📋",
+          "icon": "clipboard-list",
           "description": "Competitive grants, special revenue, and other non-recurring funding sources.",
           "amounts": {
             "FY2025-26": 31728717
@@ -902,7 +902,7 @@
       "expenditures": [
         {
           "id": "instruction",
-          "icon": "📚",
+          "icon": "book-open",
           "name": "Instructional Services",
           "amounts": {
             "FY2025-26": 364119863
@@ -934,7 +934,7 @@
         },
         {
           "id": "capital",
-          "icon": "🏗️",
+          "icon": "hard-hat",
           "name": "Capital Outlay",
           "amounts": {
             "FY2025-26": 161600679
@@ -969,7 +969,7 @@
         },
         {
           "id": "support",
-          "icon": "🏢",
+          "icon": "building-2",
           "name": "Systemwide Support Services",
           "amounts": {
             "FY2025-26": 95054780
@@ -1008,7 +1008,7 @@
         },
         {
           "id": "non-prog",
-          "icon": "📋",
+          "icon": "clipboard-list",
           "name": "Non-Programmed Services",
           "amounts": {
             "FY2025-26": 60632894
@@ -1043,7 +1043,7 @@
         },
         {
           "id": "ancillary",
-          "icon": "🍎",
+          "icon": "apple",
           "name": "Ancillary Services",
           "amounts": {
             "FY2025-26": 26651907

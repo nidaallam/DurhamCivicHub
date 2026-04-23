@@ -3,12 +3,12 @@
   "categories": [
     {
       "id": "housing",
-      "icon": "🏠",
+      "icon": "home",
       "title": "Housing Help",
       "intro": "Rent help, home repair grants, and paths to ownership for Durham neighbors.",
       "cards": [
         {
-          "icon": "🔨",
+          "icon": "hammer",
           "name": "City of Durham Home Repair Program",
           "desc": "Income-eligible homeowners can get grants or loans for critical home repairs through the City's Neighborhood Improvement Services.",
           "type": "city",
@@ -16,7 +16,7 @@
           "btnLabel": "Learn More"
         },
         {
-          "icon": "🏘",
+          "icon": "home",
           "name": "Durham County Emergency Rental Assistance",
           "desc": "Durham County DSS offers short-term emergency assistance for rent and utilities to qualified households.",
           "type": "county",
@@ -24,7 +24,7 @@
           "btnLabel": "Get Help"
         },
         {
-          "icon": "🏡",
+          "icon": "home",
           "name": "Durham Community Land Trustees (DCLT)",
           "desc": "Permanently affordable homeownership for Durham neighbors with low to moderate incomes. ADA accessible homes throughout Durham.",
           "type": "nonprofit",
@@ -32,7 +32,7 @@
           "btnLabel": "Learn More"
         },
         {
-          "icon": "📞",
+          "icon": "phone",
           "name": "NC 211",
           "desc": "Dial 2-1-1 or visit nc211.org to be connected to housing resources, emergency assistance, and more across North Carolina.",
           "type": "state",
@@ -43,12 +43,12 @@
     },
     {
       "id": "food",
-      "icon": "🥦",
+      "icon": "leaf",
       "title": "Food & Nutrition",
       "intro": "SNAP, food pantries, and hot meals for Durham neighbors facing food insecurity.",
       "cards": [
         {
-          "icon": "🛒",
+          "icon": "shopping-cart",
           "name": "SNAP (Food Stamps)",
           "desc": "Apply for Food and Nutrition Services (SNAP) through Durham County Department of Social Services.",
           "type": "county",
@@ -56,7 +56,7 @@
           "btnLabel": "Apply Now"
         },
         {
-          "icon": "🏦",
+          "icon": "landmark",
           "name": "Food Bank of Central & Eastern NC",
           "desc": "Provides food through partner pantries throughout Durham and across central and eastern North Carolina.",
           "type": "nonprofit",
@@ -64,7 +64,7 @@
           "btnLabel": "Find a Pantry"
         },
         {
-          "icon": "🚐",
+          "icon": "bus",
           "name": "Inter-Faith Food Shuttle",
           "desc": "Mobile and fixed-site food access across the Triangle, including Durham neighborhoods.",
           "type": "nonprofit",
@@ -72,7 +72,7 @@
           "btnLabel": "Get Food"
         },
         {
-          "icon": "🗺",
+          "icon": "map",
           "name": "Durham County Community Food Resources",
           "desc": "Durham County's directory of local food pantries, hot meal sites, and nutrition programs. Find what's near you.",
           "type": "county",
@@ -80,7 +80,7 @@
           "btnLabel": "Find Food Near You"
         },
         {
-          "icon": "🍽",
+          "icon": "utensils",
           "name": "Durham Rescue Mission",
           "desc": "Provides hot meals and groceries to neighbors experiencing food insecurity in Durham.",
           "type": "nonprofit",
@@ -91,12 +91,12 @@
     },
     {
       "id": "pregnancy",
-      "icon": "👶",
+      "icon": "baby",
       "title": "Pregnancy & New Parents",
       "intro": "Nutrition support, home visiting programs, and childcare resources for expecting and new parents in Durham.",
       "cards": [
         {
-          "icon": "🍎",
+          "icon": "apple",
           "name": "WIC: Durham County Health Dept",
           "desc": "Free nutrition support, healthy food, breastfeeding help, and health referrals for pregnant women, new moms, and kids under 5.",
           "type": "county",
@@ -106,7 +106,7 @@
           "btnLabel": "Get Help"
         },
         {
-          "icon": "🧸",
+          "icon": "package",
           "name": "Durham's Partnership for Children",
           "desc": "Smart Start programs for early childhood development, parenting support, and childcare help for Durham families.",
           "type": "nonprofit",
@@ -114,7 +114,7 @@
           "btnLabel": "Learn More"
         },
         {
-          "icon": "👩‍⚕️",
+          "icon": "stethoscope",
           "name": "Nurse-Family Partnership",
           "desc": "Free home-visiting program pairing first-time moms with a registered nurse from pregnancy through the child's second birthday.",
           "type": "county",
@@ -124,7 +124,7 @@
           "btnLabel": "Learn More"
         },
         {
-          "icon": "🧷",
+          "icon": "paperclip",
           "name": "Diaper Bank of NC",
           "desc": "Free diapers and period supplies for Durham families in need. Durham distribution at Urban Ministries (410 Liberty St).",
           "type": "nonprofit",
@@ -132,7 +132,7 @@
           "btnLabel": "Get Diapers"
         },
         {
-          "icon": "🌟",
+          "icon": "star",
           "name": "El Centro Hispano",
           "desc": "Bilingual support for Latino families including health navigation, parenting programs, and community resources.",
           "type": "nonprofit",
@@ -141,7 +141,7 @@
           "hasSpanish": true
         },
         {
-          "icon": "👕",
+          "icon": "shirt",
           "name": "Durham Cooperative Extension Giving Closet",
           "desc": "Free infant, toddler, and children's clothing (ages 0–5), maternity clothing, baby equipment, and diapers based on availability. 721 Foster St, Durham. Mon–Thu 9am–4:30pm.",
           "type": "county",
@@ -152,12 +152,12 @@
     },
     {
       "id": "reproductive",
-      "icon": "🩺",
+      "icon": "stethoscope",
       "title": "Reproductive Health",
       "intro": "Licensed medical providers offering reproductive health care in Durham, including contraception, abortion services, fertility care, and STI testing.",
       "cards": [
         {
-          "icon": "🌸",
+          "icon": "flower-2",
           "name": "Planned Parenthood Durham Health Center",
           "desc": "Licensed health center offering birth control, STI testing, abortion care, pregnancy testing, and sexual health services. 105 Newsom St, Durham.",
           "type": "nonprofit",
@@ -167,7 +167,7 @@
           "btnLabel": "Make Appointment"
         },
         {
-          "icon": "🩻",
+          "icon": "scan",
           "name": "Durham County Health: Family Planning",
           "desc": "Low-cost and sliding-scale reproductive health services including contraception, STI testing, and pregnancy testing through the county health department (Title X funded).",
           "type": "county",
@@ -177,7 +177,7 @@
           "btnLabel": "Get Services"
         },
         {
-          "icon": "💛",
+          "icon": "heart",
           "name": "Carolina Abortion Fund",
           "desc": "Confidential financial assistance and practical support for NC and SC neighbors seeking abortion care. Call to request funding.",
           "type": "nonprofit",
@@ -187,7 +187,7 @@
           "btnLabel": "Request Funding"
         },
         {
-          "icon": "📞",
+          "icon": "phone",
           "name": "National Abortion Federation Hotline",
           "desc": "Free, confidential referrals to quality abortion providers and financial assistance for anyone in the US. English and Spanish. Call 1-800-772-9100.",
           "type": "state",
@@ -198,7 +198,7 @@
           "hasSpanish": true
         },
         {
-          "icon": "🔬",
+          "icon": "microscope",
           "name": "Duke Fertility Center",
           "desc": "Comprehensive fertility evaluation and treatment including IVF, IUI, egg freezing, and reproductive endocrinology for Durham area neighbors.",
           "type": "nonprofit",
@@ -209,12 +209,12 @@
     },
     {
       "id": "dv",
-      "icon": "🛡",
+      "icon": "shield",
       "title": "Domestic Violence & Safety",
       "note": "You are not alone. These organizations offer confidential support.",
       "cards": [
         {
-          "icon": "🏠",
+          "icon": "home",
           "name": "Durham Crisis Response Center",
           "desc": "Durham's primary domestic violence resource. 24/7 crisis line, emergency shelter, counseling, court advocacy, and safety planning.",
           "type": "nonprofit",
@@ -225,7 +225,7 @@
           "isCrisis": true
         },
         {
-          "icon": "💜",
+          "icon": "heart",
           "name": "National Domestic Violence Hotline",
           "desc": "Free, confidential, 24/7 support for anyone experiencing domestic violence. Call 1-800-799-7233 or text START to 88788.",
           "type": "nonprofit",
@@ -236,7 +236,7 @@
           "isCrisis": true
         },
         {
-          "icon": "⚖️",
+          "icon": "scale",
           "name": "Legal Aid of NC",
           "desc": "Free legal help for domestic violence survivors including protective orders, divorce, and custody matters.",
           "type": "nonprofit",
@@ -244,7 +244,7 @@
           "btnLabel": "Get Legal Help"
         },
         {
-          "icon": "🌟",
+          "icon": "star",
           "name": "El Centro Hispano",
           "desc": "Bilingual services and advocacy for Spanish-speaking survivors of domestic violence in Durham.",
           "type": "nonprofit",
@@ -256,12 +256,12 @@
     },
     {
       "id": "immigration",
-      "icon": "🌎",
+      "icon": "globe",
       "title": "Immigration Support",
       "note": "Know your rights. All organizations listed provide confidential support regardless of immigration status.",
       "cards": [
         {
-          "icon": "✊",
+          "icon": "hand",
           "name": "Siembra NC",
           "desc": "Durham-based immigrant rights organization offering know-your-rights training, rapid response, and community organizing. Call or text to report ICE activity in your area or workplace wage theft. Available regardless of immigration status.",
           "type": "nonprofit",
@@ -272,7 +272,7 @@
           "hasSpanish": true
         },
         {
-          "icon": "🌟",
+          "icon": "star",
           "name": "El Centro Hispano",
           "desc": "Immigration assistance, legal referrals, ESL classes, and community services for Durham's Latino community.",
           "type": "nonprofit",
@@ -281,7 +281,7 @@
           "hasSpanish": true
         },
         {
-          "icon": "⚖️",
+          "icon": "scale",
           "name": "Legal Aid of NC: Immigration",
           "desc": "Free immigration legal help for qualifying low-income people in NC, including DACA, visas, and more.",
           "type": "nonprofit",
@@ -292,12 +292,12 @@
     },
     {
       "id": "mentalhealth",
-      "icon": "💚",
+      "icon": "heart",
       "title": "Mental Health & Crisis Response",
       "intro": "Help is here. These Durham programs offer crisis lines, counseling, and mental health services for neighbors in need.",
       "cards": [
         {
-          "icon": "💙",
+          "icon": "heart",
           "name": "HEART Program",
           "desc": "Durham's Holistic Empathetic Assistance and Response Team sends mental health clinicians (not police) to non-violent behavioral health calls. Call 911 or the non-emergency line and ask for HEART.",
           "type": "city",
@@ -306,7 +306,7 @@
           "isCrisis": true
         },
         {
-          "icon": "💚",
+          "icon": "heart",
           "name": "988 Suicide & Crisis Lifeline",
           "desc": "Free, confidential crisis support 24/7. Call or text 988 to reach a trained counselor.",
           "type": "state",
@@ -317,7 +317,7 @@
           "isCrisis": true
         },
         {
-          "icon": "🧠",
+          "icon": "brain",
           "name": "Alliance Health",
           "desc": "Manages mental health, substance use, and developmental disability services for Durham County neighbors.",
           "type": "nonprofit",
@@ -325,7 +325,7 @@
           "btnLabel": "Find Services"
         },
         {
-          "icon": "🏥",
+          "icon": "cross",
           "name": "Durham County Behavioral Health Services",
           "desc": "Durham County's Department of Health and Human Services provides mental health referrals and crisis services for county neighbors.",
           "type": "county",
@@ -336,14 +336,14 @@
     },
     {
       "id": "unhoused",
-      "icon": "🏠",
+      "icon": "home",
       "title": "Shelter & Unhoused Support",
       "intro": "Emergency shelter, warming and cooling centers, and support services for Durham neighbors who are unhoused or at risk.",
       "note": "For the most current shelter availability, call Durham Entry Point: 984-287-8313 or dial 2-1-1.",
       "notePhone": "tel:9842878313",
       "cards": [
         {
-          "icon": "🏠",
+          "icon": "home",
           "name": "Urban Ministries of Durham",
           "desc": "Emergency shelter for adults, 3 free meals per day, food pantry, clothing closet, and case management. 410 Liberty St, Durham. Open 365 days a year.",
           "type": "nonprofit",
@@ -353,7 +353,7 @@
           "btnLabel": "Get Help"
         },
         {
-          "icon": "🛏",
+          "icon": "bed",
           "name": "Durham Rescue Mission",
           "desc": "Emergency shelter for adult men, hot meals, and recovery programs. 1201 E. Main St, Durham. Also operates Operation RESCUE warm shelter during cold weather.",
           "type": "nonprofit",
@@ -361,7 +361,7 @@
           "btnLabel": "Get Help"
         },
         {
-          "icon": "❄️",
+          "icon": "snowflake",
           "name": "Durham Winter Shelters",
           "desc": "City-coordinated warming shelters activate when temperatures drop to 32°F (or 35°F with precipitation), Nov 1–Mar 31. Includes family shelters and adult-only locations. Call 984-287-8313 for locations.",
           "type": "city",
@@ -371,7 +371,7 @@
           "btnLabel": "See Locations"
         },
         {
-          "icon": "☀️",
+          "icon": "sun",
           "name": "Durham Cooling Centers (Summer)",
           "desc": "During heat emergencies the City opens cooling centers including libraries, rec centers, and community spaces. Check the City's website or call 919-560-1200 during summer heat events.",
           "type": "city",
@@ -379,7 +379,7 @@
           "btnLabel": "City of Durham"
         },
         {
-          "icon": "👨‍👩‍👧",
+          "icon": "users",
           "name": "Families Moving Forward Durham",
           "desc": "Emergency family shelter for families with children experiencing homelessness in Durham.",
           "type": "nonprofit",
@@ -387,7 +387,7 @@
           "btnLabel": "Learn More"
         },
         {
-          "icon": "📞",
+          "icon": "phone",
           "name": "NC 211",
           "desc": "Dial 2-1-1 anytime for up-to-date shelter availability across Durham, or search online at nc211.org.",
           "type": "state",
@@ -398,12 +398,12 @@
     },
     {
       "id": "clinics",
-      "icon": "🏥",
+      "icon": "cross",
       "title": "Free & Low-Cost Clinics",
       "intro": "These Durham clinics offer sliding-scale and free care regardless of insurance status or ability to pay.",
       "cards": [
         {
-          "icon": "⚕️",
+          "icon": "stethoscope",
           "name": "Lincoln Community Health Center",
           "desc": "Federally Qualified Health Center serving Durham since 1971. Primary care, dental, behavioral health, and pediatrics on a sliding-fee scale. 1301 Fayetteville St, Durham.",
           "type": "nonprofit",
@@ -413,7 +413,7 @@
           "btnLabel": "Get Care"
         },
         {
-          "icon": "🩺",
+          "icon": "stethoscope",
           "name": "Durham County Health Department",
           "desc": "Sliding-scale clinical services including immunizations, STI testing, family planning, WIC, and communicable disease care. No one turned away for inability to pay.",
           "type": "county",
@@ -423,7 +423,7 @@
           "btnLabel": "Get Care"
         },
         {
-          "icon": "🩺",
+          "icon": "stethoscope",
           "name": "NC Medicaid Enrollment",
           "desc": "See if you qualify for free or low-cost health coverage through NC Medicaid or NC Health Choice. Apply through Durham County DSS or online.",
           "type": "state",
@@ -431,7 +431,7 @@
           "btnLabel": "Check Eligibility"
         },
         {
-          "icon": "📞",
+          "icon": "phone",
           "name": "NC 211",
           "desc": "Call 2-1-1 to be connected to free and sliding-scale health clinics near you in Durham County.",
           "type": "state",
@@ -442,7 +442,7 @@
     },
     {
       "id": "emergency",
-      "icon": "⚡",
+      "icon": "zap",
       "title": "Emergency & Utility Assistance",
       "intro": "Short-term help with rent, utilities, and other essentials for Durham neighbors in a financial crisis.",
       "cards": [
@@ -455,7 +455,7 @@
           "btnLabel": "Get Help"
         },
         {
-          "icon": "📞",
+          "icon": "phone",
           "name": "NC 211",
           "desc": "Dial 2-1-1 anytime to find emergency assistance, utility help, food, shelter, and more in Durham.",
           "type": "state",
@@ -463,7 +463,7 @@
           "btnLabel": "Visit NC 211"
         },
         {
-          "icon": "⚡",
+          "icon": "zap",
           "name": "Durham Community Action",
           "desc": "Community Action Agency serving Durham with energy assistance (LIHEAP), emergency aid, and workforce support programs.",
           "type": "county",
@@ -471,7 +471,7 @@
           "btnLabel": "Get Help"
         },
         {
-          "icon": "💡",
+          "icon": "lightbulb",
           "name": "Duke Energy Share",
           "desc": "Duke Energy's bill assistance program for customers who are struggling to pay their electric bill.",
           "type": "nonprofit",
@@ -482,12 +482,12 @@
     },
     {
       "id": "legal",
-      "icon": "⚖️",
+      "icon": "scale",
       "title": "Legal Help",
       "intro": "Free and low-cost legal help for Durham neighbors: housing, family law, immigration, benefits, and more.",
       "cards": [
         {
-          "icon": "⚖️",
+          "icon": "scale",
           "name": "Legal Aid of NC",
           "desc": "Free civil legal help for low-income North Carolinians: housing, family law, immigration, benefits, and more.",
           "type": "nonprofit",
@@ -495,7 +495,7 @@
           "btnLabel": "Get Legal Help"
         },
         {
-          "icon": "💬",
+          "icon": "message-circle",
           "name": "NC Free Legal Answers",
           "desc": "Submit civil legal questions online and get free answers from volunteer NC attorneys. Easy and confidential.",
           "type": "state",
@@ -503,7 +503,7 @@
           "btnLabel": "Ask a Question"
         },
         {
-          "icon": "📚",
+          "icon": "book-open",
           "name": "Durham County Courthouse Law Library",
           "desc": "Free public access to legal research resources at the Durham County Courthouse.",
           "type": "county",
@@ -514,12 +514,12 @@
     },
     {
       "id": "parks",
-      "icon": "🌳",
+      "icon": "tree-pine",
       "title": "Parks & Greenways",
       "intro": "Durham has over 70 parks, dozens of miles of greenways, and free recreation centers across the county and city. Get outside!",
       "cards": [
         {
-          "icon": "🏞",
+          "icon": "tree-pine",
           "name": "Durham Parks, Recreation & Open Space",
           "desc": "Parks, greenways, nature programs, recreation centers, pools, and open space across Durham. Includes Eno River access, Little River Regional Park, and more.",
           "type": "county",
@@ -527,7 +527,7 @@
           "btnLabel": "Explore Parks"
         },
         {
-          "icon": "🌿",
+          "icon": "leaf",
           "name": "City of Durham Parks & Recreation",
           "desc": "City-operated parks, recreation centers, pools, athletic fields, playgrounds, and programs across Durham neighborhoods.",
           "type": "city",
@@ -535,7 +535,7 @@
           "btnLabel": "City Parks & Rec"
         },
         {
-          "icon": "🚶",
+          "icon": "user",
           "name": "Durham Greenway Trails",
           "desc": "Durham's greenway network connects neighborhoods, parks, and downtown with paved trails open to walkers, joggers, and cyclists. Find trail maps and access points on the City's site.",
           "type": "city",
@@ -543,7 +543,7 @@
           "btnLabel": "Greenway Maps"
         },
         {
-          "icon": "🦅",
+          "icon": "bird",
           "name": "Eno River State Park",
           "desc": "A beloved Durham-area state park with hiking, swimming, and paddling along the Eno River. Free to enter. Multiple access points throughout Durham and Orange counties.",
           "type": "nonprofit",
@@ -551,9 +551,9 @@
           "btnLabel": "Park Info & Maps"
         },
         {
-          "icon": "🎾",
+          "icon": "dumbbell",
           "name": "Durham Recreation Centers",
-          "desc": "Durham's recreation centers offer fitness equipment, classes, and programs at low or no cost. Financial assistance is available for residents who need it.",
+          "desc": "Durham's recreation centers offer fitness equipment, classes, and programs at low or no cost. Financial assistance is available for neighbors who need it.",
           "type": "city",
           "url": "https://www.dprplaymore.org/facilities",
           "btnLabel": "Find a Rec Center"
@@ -562,12 +562,12 @@
     },
     {
       "id": "libraries",
-      "icon": "📚",
+      "icon": "book-open",
       "title": "Public Libraries",
-      "intro": "Durham County Library branches are free for all Durham County residents! Get a library card with any proof of Durham County address. All branches offer books, e-books, computers, Wi-Fi, and community programs.",
+      "intro": "Durham County Library branches are free for all Durham County neighbors! Get a library card with any proof of Durham County address. All branches offer books, e-books, computers, Wi-Fi, and community programs.",
       "cards": [
         {
-          "icon": "🏛",
+          "icon": "landmark",
           "name": "Main Library",
           "desc": "Durham County's flagship library. 300 N Roxboro St, Durham. Books, computers, meeting rooms, and the largest collection in the system.",
           "type": "county",
@@ -575,7 +575,7 @@
           "btnLabel": "Hours & Info"
         },
         {
-          "icon": "📖",
+          "icon": "book-open",
           "name": "South Regional Library",
           "desc": "Serving south Durham. 4505 S Alston Ave, Durham. Full library services, community meeting space, and Spanish-language materials.",
           "type": "county",
@@ -584,7 +584,7 @@
           "hasSpanish": true
         },
         {
-          "icon": "📖",
+          "icon": "book-open",
           "name": "East Regional Library",
           "desc": "Serving east Durham. 211 W Woodcroft Pkwy, Durham. Full library services with community programs.",
           "type": "county",
@@ -592,7 +592,7 @@
           "btnLabel": "Hours & Info"
         },
         {
-          "icon": "📖",
+          "icon": "book-open",
           "name": "Southwest Branch Library",
           "desc": "Serving southwest Durham. 3605 Shannon Rd, Durham. Neighborhood branch with full library services.",
           "type": "county",
@@ -600,7 +600,7 @@
           "btnLabel": "Hours & Info"
         },
         {
-          "icon": "📖",
+          "icon": "book-open",
           "name": "North Regional Library",
           "desc": "Serving north Durham. 221 Milton Rd, Durham. Full library services and community programs.",
           "type": "county",
@@ -608,7 +608,7 @@
           "btnLabel": "Hours & Info"
         },
         {
-          "icon": "💻",
+          "icon": "laptop",
           "name": "Durham County Library: Digital Resources",
           "desc": "Free e-books, audiobooks, digital magazines, and online databases available 24/7 with your free library card. Access from home on any device.",
           "type": "county",
