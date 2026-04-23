@@ -372,8 +372,12 @@
     }
 
     let _speakData = null;
+    let _meetingsData = null;
     let _speakBodyId = 'bocc';
     let _speakOpen = false;
+
+    // Map speak-tab IDs to meetings.json body IDs
+    const _speakToMeetingsId = { 'bocc': 'commissioners', 'city-council': 'city-council', 'dps': 'dps' };
 
     function toggleSpeak() {
       _speakOpen = !_speakOpen;
@@ -384,10 +388,28 @@
 
     async function loadSpeakRules() {
       try {
-        const res = await fetch('data/speaking-rules.json');
-        _speakData = await res.json();
+        const [rulesRes, meetingsRes] = await Promise.all([
+          fetch('data/speaking-rules.json'),
+          fetch('data/meetings.json')
+        ]);
+        _speakData    = await rulesRes.json();
+        _meetingsData = await meetingsRes.json();
         renderSpeakRules(_speakBodyId);
       } catch {}
+    }
+
+    function getNextMeetingDate(speakId) {
+      if (!_meetingsData) return '';
+      const mId = _speakToMeetingsId[speakId] || speakId;
+      const body = (_meetingsData.bodies || []).find(b => b.id === mId);
+      if (!body) return '';
+      const today = new Date().toISOString().slice(0, 10);
+      const next = (body.meetings || [])
+        .filter(m => m.date >= today && m.status !== 'cancelled')
+        .sort((a, b) => a.date.localeCompare(b.date))[0];
+      if (!next) return '';
+      const d = new Date(next.date + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     }
 
     function selectSpeakBody(id, btn) {
@@ -449,8 +471,9 @@
       const emailBtn = document.getElementById('emailClerkDraftBtn');
       if (emailBtn) {
         emailBtn.style.display = 'inline-flex';
-        emailBtn.dataset.clerkEmail = b.clerkEmail;
-        emailBtn.dataset.bodyName   = b.name;
+        emailBtn.dataset.clerkEmail  = b.clerkEmail;
+        emailBtn.dataset.bodyName    = b.name;
+        emailBtn.dataset.meetingDate = getNextMeetingDate(_speakBodyId);
       }
     }
 
@@ -458,11 +481,17 @@
       const btn  = document.getElementById('emailClerkDraftBtn');
       const draft = document.getElementById('draftText')?.textContent?.trim() || '';
       const email = btn?.dataset.clerkEmail || '';
-      const bodyName = btn?.dataset.bodyName || 'the board';
+      const bodyName    = btn?.dataset.bodyName    || 'the board';
+      const meetingDate = btn?.dataset.meetingDate || '';
       if (!email) return;
-      const subject = encodeURIComponent(`Public Comment – ${bodyName}`);
-      const body    = encodeURIComponent(
-        `Good ${new Date().getHours() < 12 ? 'morning' : 'afternoon'},\n\nI would like to submit the following public comment for ${bodyName}:\n\n${draft}\n\nThank you.`
+      const subjectText = meetingDate
+        ? `Public Comment for ${bodyName} on ${meetingDate}`
+        : `Public Comment for ${bodyName}`;
+      const subject = encodeURIComponent(subjectText);
+      const hr = new Date().getHours();
+      const greeting = hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening';
+      const body = encodeURIComponent(
+        `${greeting},\n\nI would like to submit the following public comment for ${bodyName}${meetingDate ? ' on ' + meetingDate : ''}:\n\n${draft}\n\nThank you.`
       );
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }

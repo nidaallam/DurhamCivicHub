@@ -114,6 +114,36 @@
     {
       "timestamp": "2026-04-22T00:00:00-04:00",
       "type": "fact-correction",
+      "file": "data/meetings.json",
+      "field": "Alliance Health Board Details link",
+      "old_value": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
+      "new_value": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions",
+      "reason": "Old URL returns 404. Standardized to verified canonical Boards and Commissions URL.",
+      "source": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions"
+    },
+    {
+      "timestamp": "2026-04-22T00:00:00-04:00",
+      "type": "fact-correction",
+      "file": "data/calendar.json",
+      "field": "Boards and Commissions calendar URL",
+      "old_value": "https://www.dconc.gov/Board-of-Commissioners/Boards-and-Commissions",
+      "new_value": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions",
+      "reason": "Old URL returns 404. Standardized to verified canonical Boards and Commissions URL.",
+      "source": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions"
+    },
+    {
+      "timestamp": "2026-04-22T00:00:00-04:00",
+      "type": "fact-correction",
+      "file": "data/officials.json + data/meetings.json",
+      "field": "Non-www dconc.gov URLs",
+      "old_value": "https://dconc.gov/Images/... and https://dconc.gov/Social-Services/...",
+      "new_value": "https://www.dconc.gov/Images/... and https://www.dconc.gov/Social-Services/...",
+      "reason": "Standardized all dconc.gov URLs to www.dconc.gov canonical form per 3.3.",
+      "source": "https://www.dconc.gov/"
+    },
+    {
+      "timestamp": "2026-04-22T00:00:00-04:00",
+      "type": "fact-correction",
       "file": "my-durham.html",
       "field": "Police districts link",
       "old_value": "https://www.durhamnc.gov/2575/Districts-and-Beats",

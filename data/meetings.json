@@ -345,7 +345,7 @@
           "links": [
             {
               "label": "Details",
-              "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
+              "url": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions",
               "primary": true
             }
           ]
@@ -357,7 +357,7 @@
           "links": [
             {
               "label": "Details",
-              "url": "https://www.dconc.gov/Government/Boards-Commissions-Committees",
+              "url": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions",
               "primary": true
             }
           ]
@@ -485,7 +485,7 @@
       "description": "Responsible for Durham County social services administration, including selecting the DSS Director and setting policy.",
       "schedule": "4th Wednesday, 10:30 AM",
       "location": "Hybrid",
-      "archiveUrl": "https://dconc.gov/Social-Services/Contact-DSS/DSS-Board-Minutes",
+      "archiveUrl": "https://www.dconc.gov/Social-Services/Contact-DSS/DSS-Board-Minutes",
       "group": "advisory",
       "meetings": []
     },
