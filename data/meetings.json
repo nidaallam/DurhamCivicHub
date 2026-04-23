@@ -6,7 +6,7 @@
       "id": "commissioners",
       "name": "Board of Commissioners",
       "description": "Durham County's five elected commissioners set the county property tax rate and adopt the county's annual operating budget. (The City of Durham sets a separate city tax rate independently.)",
-      "schedule": "2nd & 4th Monday, 7:00 PM (regular) \u00b7 1st Monday, 9:00 AM (work session)",
+      "schedule": "2nd & 4th Monday, 7:00 PM (regular) · 1st Monday, 9:00 AM (work session)",
       "location": "200 E. Main St., Durham, Commissioners Chambers, Room 2A",
       "archiveUrl": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/BOCC-Agendas-and-Video-Library",
       "group": "elected",
@@ -661,6 +661,534 @@
       "archiveUrl": "https://www.durhamnc.gov/1323/City-Council",
       "group": "elected",
       "meetings": [
+        {
+          "date": "2026-12-21",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-12-10",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-12-07",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-22",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-05",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-08",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-20",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-17",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-06",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-03",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-03",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-15",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-04",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-28",
+          "type": "Budget Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Budget Info",
+              "url": "https://www.durhamnc.gov/204/Budget-Development-Process"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-27",
+          "type": "Budget Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Budget Info",
+              "url": "https://www.durhamnc.gov/204/Budget-Development-Process"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-21",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-07",
+          "type": "Work Session",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-04",
+          "type": "Regular Meeting",
+          "status": "upcoming",
+          "links": [
+            {
+              "label": "Agenda Center",
+              "url": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+              "primary": true
+            },
+            {
+              "label": "Live Stream",
+              "url": "https://www.youtube.com/@CityofDurhamNC"
+            },
+            {
+              "label": "Public Comment",
+              "url": "https://www.durhamnc.gov/1338/City-Council"
+            }
+          ]
+        },
         {
           "date": "2026-04-23",
           "type": "Work Session",
