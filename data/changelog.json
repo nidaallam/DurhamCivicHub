@@ -250,6 +250,26 @@
       "new_value": "Removed entirely.",
       "reason": "RSS feed not functional. Removed per Commissioner Allam's direction.",
       "source": "Commissioner Allam (2026-04-22)"
+    },
+    {
+      "timestamp": "2026-04-22T02:00:00-04:00",
+      "type": "bugfix",
+      "file": "data/resources.json",
+      "field": "Trailing comma in food category cards array",
+      "old_value": "Trailing comma after last card object on line 82 (before closing ]) caused JSON.parse to throw SyntaxError, breaking renderResources() entirely.",
+      "new_value": "Removed trailing comma. File is now valid JSON.",
+      "reason": "Invalid JSON caused resources page to silently fall back to static HTML; dynamic rendering (search, crisis cards, etc.) was broken.",
+      "source": "Full audit 2026-04-22"
+    },
+    {
+      "timestamp": "2026-04-22T02:00:00-04:00",
+      "type": "fact-correction",
+      "file": "data/news.json",
+      "field": "Advisory Boards story link URL",
+      "old_value": "https://durhamcounty.granicus.com/boards",
+      "new_value": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions",
+      "reason": "granicus.com/boards is an internal CMS URL, not a public boards listing page. Correct page verified at dconc.gov.",
+      "source": "https://www.dconc.gov/clerk-to-the-board/boards-and-commissions"
     }
   ]
 }
