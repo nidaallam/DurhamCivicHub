@@ -2,6 +2,8 @@
   "updated": "2026-04-23",
   "note": "Edit this file to add or update events. Categories: announcement, government, budget, schools, hearing, community, health. Date format: YYYY-MM-DD.",
   "bocc_schedule_source": "https://www.dconc.gov/Board-of-Commissioners/Meetings-and-Announcements/Meeting-Schedule",
+  "city_council_schedule_source": "https://www.durhamnc.gov/AgendaCenter/City-Council-4",
+  "dps_board_schedule_source": "https://www.dpsnc.net/o/dps/page/board-meetings",
   "events": [
     {
       "id": 1,
@@ -100,24 +102,6 @@
         {
           "label": "Video Recording",
           "url": "https://durhamcounty.granicus.com/MediaPlayer.php?view_id=2&clip_id=1535"
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "date": "2026-04-17",
-      "title": "Durham Public Schools Board of Education",
-      "time": "Thursday \u00b7 5:30 PM",
-      "location": "511 Cleveland St., Durham",
-      "category": "schools",
-      "links": [
-        {
-          "label": "Agenda",
-          "url": "https://www.dpsnc.net/page/board-of-education"
-        },
-        {
-          "label": "Watch Online",
-          "url": "https://www.dpsnc.net/page/board-of-education"
         }
       ]
     },
@@ -299,24 +283,6 @@
       ]
     },
     {
-      "id": 24,
-      "date": "2026-05-04",
-      "title": "Durham City Council \u2013 Regular Meeting",
-      "time": "Monday \u00b7 7:00 PM",
-      "location": "101 City Hall Plaza, Durham",
-      "category": "government",
-      "links": [
-        {
-          "label": "Agenda Center",
-          "url": "https://www.durhamnc.gov/AgendaCenter"
-        },
-        {
-          "label": "Public Comment",
-          "url": "https://www.durhamnc.gov/1338/City-Council"
-        }
-      ]
-    },
-    {
       "id": 26,
       "date": "2026-05-07",
       "title": "Hayti Dialogues: In Conversation with Brit Bennett",
@@ -345,34 +311,6 @@
         {
           "label": "Budget Docs",
           "url": "https://www.dconc.gov/Budget-and-Management-Services"
-        }
-      ]
-    },
-    {
-      "id": 29,
-      "date": "2026-05-14",
-      "title": "Durham Public Schools Board of Education",
-      "time": "Thursday \u00b7 5:30 PM",
-      "location": "511 Cleveland St., Durham",
-      "category": "schools",
-      "links": [
-        {
-          "label": "Agenda",
-          "url": "https://www.dpsnc.net/page/board-of-education"
-        }
-      ]
-    },
-    {
-      "id": 31,
-      "date": "2026-05-18",
-      "title": "Durham City Council \u2013 Regular Meeting",
-      "time": "Monday \u00b7 7:00 PM",
-      "location": "101 City Hall Plaza, Durham",
-      "category": "government",
-      "links": [
-        {
-          "label": "Agenda Center",
-          "url": "https://www.durhamnc.gov/AgendaCenter"
         }
       ]
     },

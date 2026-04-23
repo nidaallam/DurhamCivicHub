@@ -5,6 +5,16 @@
       "timestamp": "2026-04-23T00:00:00-04:00",
       "type": "removal",
       "file": "data/calendar.json",
+      "field": "DPS Board and City Council unverified entries (id=8, id=24, id=29, id=31)",
+      "old_value": "id=8 DPS Board Apr 17 (day label wrong — Apr 17 is Friday not Thursday); id=29 DPS Board May 14; id=24 City Council Regular Meeting May 4; id=31 City Council Regular Meeting May 18",
+      "new_value": "All removed. DPS board schedule not accessible via dpsnc.net (JS-rendered). City Council May entries not yet posted to official Agenda Center. Added official source URL fields for both bodies.",
+      "reason": "Per Commissioner Allam directive: BOE and City Council meetings must only be added from their official pages. Do not add future meetings until they appear on the official Agenda Center or dpsnc.net board schedule.",
+      "source": "https://www.durhamnc.gov/AgendaCenter/City-Council-4 + https://www.dpsnc.net/o/dps/page/board-meetings"
+    },
+    {
+      "timestamp": "2026-04-23T00:00:00-04:00",
+      "type": "removal",
+      "file": "data/calendar.json",
       "field": "9 unverified entries removed",
       "old_value": "id=10 State of the City Apr 21; id=11 Housing Authority Board Apr 22; id=12 Civilian Police Review Board Apr 22; id=17 Composting Class Apr 25; id=25 Mental Health Advisory Board May 5; id=33 Beechwood Cemetery Dedication May 20; id=37 City Council Budget Work Session May 27; id=39 City Council Budget Work Session May 28; id=44 Health Dept Vaccination Clinic Jun 9",
       "new_value": "All removed. Each linked only to a general calendar page (durhamnc.gov/calendar.aspx, dconc.gov homepage) with no specific event URL — cannot be verified against official sources.",
