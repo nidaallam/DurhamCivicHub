@@ -1,9 +1,9 @@
 {
-  "updated": "2026-04-23",
-  "count": 17,
+  "updated": "2026-04-24",
+  "count": 18,
   "stories": [
     {
-      "title": "NC Central leadership responds after fatal shooting at party attended by students",
+      "title": "Large outdoor party ends with 5 shot, 1 dead. Who is to blame?",
       "excerpt": "Social media posts describing a Zebulon party where five people were shot suggested it was for North Carolina Central University students to celebrate the end of the semester.",
       "link": "https://www.wral.com/news/local/nc-central-accountability-zebulon-shooting-april-2026/",
       "source": "WRAL News",
@@ -33,6 +33,16 @@
       "image": "https://i0.wp.com/indyweek.com/wp-content/uploads/2026/04/MMNT_20260320_132144526-scaled.jpg?fit=2560%2C1920&ssl=1"
     },
     {
+      "title": "Housing, Eviction Diversion, Small Businesses: How Durham Has Allocated Pandemic Relief Money",
+      "excerpt": "The City of Durham has allocated more than $70 million in American Rescue Plan Act money.",
+      "link": "https://indyweek.com/news/housing-eviction-diversion-small-businesses-how-durham-has-allocated-pandemic-relief-money/",
+      "source": "Indy Week",
+      "date": "2026-04-23",
+      "displayDate": "April 23, 2026",
+      "tag": "Housing",
+      "image": "https://indyweek.com/wp-content/uploads/2025/04/2025-04-18-durham-reorg-city-hall-cityofdurham.webp"
+    },
+    {
       "title": "County Manager to Present FY2026-27 Budget on May 11",
       "link": "https://www.dconc.gov/Budget-and-Management-Services",
       "source": "Durham County",
@@ -55,7 +65,7 @@
     },
     {
       "title": "Feds Fine Durham-Based Energy Efficiency Company $722 Million",
-      "excerpt": "American Efficient says it was incentivizing energy savings at major companies. One Federal Energy Regulatory Commission member claims “their entire business is a scam.”",
+      "excerpt": "American Efficient says it incentivizes energy savings. One FERC commissioner claims “their entire business is a scam.”",
       "link": "https://indyweek.com/news/business/american-efficient-ferc-durham-fine/",
       "source": "Indy Week",
       "date": "2026-04-22",
