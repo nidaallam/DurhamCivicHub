@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-27",
+  "updated": "2026-04-28",
   "note": "Edit this file to add or update meetings. Status values: upcoming, minutes, cancelled.",
   "bodies": [
     {
@@ -536,7 +536,7 @@
         {
           "date": "2026-04-27",
           "type": "Regular Meeting",
-          "status": "upcoming",
+          "status": "minutes",
           "links": [
             {
               "label": "Agenda",
@@ -1703,13 +1703,25 @@
           ]
         },
         {
+          "date": "2026-04-27",
+          "type": "Regular Meeting",
+          "status": "minutes",
+          "links": [
+            {
+              "label": "Archive",
+              "url": "https://www.dconc.gov/county-departments/departments-a-e/board-of-commissioners/boards-and-commissions",
+              "primary": true
+            }
+          ]
+        },
+        {
           "date": "2026-04-24",
           "type": "Regular Meeting",
           "status": "minutes",
           "links": [
             {
-              "label": "From the Desk of the County Manager, April 24, 2026",
-              "url": "https://www.dconc.gov/DurhamCo-News/From-the-Desk-of-the-County-Manager-April-24-2026.htm",
+              "label": "veteranservices@dconc.gov",
+              "url": "mailto:veteranservices@dconc.gov",
               "primary": true
             }
           ]
@@ -1720,8 +1732,8 @@
           "status": "minutes",
           "links": [
             {
-              "label": "Archive",
-              "url": "https://www.dconc.gov/county-departments/departments-a-e/board-of-commissioners/boards-and-commissions",
+              "label": "here",
+              "url": "https://www.dconc.gov/Board-of-Commissioners1/Documents/Statement-of-Disclosure.pdf",
               "primary": true
             }
           ]

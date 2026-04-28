@@ -1,7 +1,36 @@
 {
-  "updated": "2026-04-27",
-  "count": 21,
+  "updated": "2026-04-28",
+  "count": 25,
   "stories": [
+    {
+      "title": "NC man charged with felony child abuse, warrants describe malnutrition, developmental delays",
+      "excerpt": "The Durham County Sheriff's Office has charged a man with four counts of felony child abuse.",
+      "link": "https://www.wral.com/news/local/nc-man-charged-felony-child-abuse-durham-alamance-counties-april-2026/",
+      "source": "WRAL News",
+      "date": "2026-04-28",
+      "displayDate": "April 28, 2026",
+      "tag": "Transit",
+      "image": "https://images.wral.com/a50f8489-7285-48b7-ac54-031afa8c76d7?w=1200&h=630"
+    },
+    {
+      "title": "Man killed along American Tobacco Trail in Durham, investigation underway",
+      "excerpt": "A man who was found critically injured Monday evening near the American Tobacco Trail has died, Durham police said. A homicide investigation is underway.",
+      "link": "https://www.wral.com/news/local/man-killed-durham-police-investigate-fayetteville-street-april-2026/",
+      "source": "WRAL News",
+      "date": "2026-04-28",
+      "displayDate": "April 28, 2026",
+      "tag": "Transit",
+      "image": "https://images.wral.com/asset/news/local/2026/04/28/22352605/Image__6_-DMID1-6at3u95gw-4032x3024.jpg?w=1200&h=630&height=630"
+    },
+    {
+      "title": "Attempts to lower the rate of Black maternal deaths in NC face new challenges",
+      "excerpt": "The path leading to the track at a Durham middle school on Saturday was marked with signs bearing the names of Black women who died from pregnancy-related causes.  Walkers and runners participating in a fundraiser for MAAME, or a Durham nonprofit that offers doula care, walked past the signs,…",
+      "link": "https://ncnewsline.com/2026/04/28/attempts-to-lower-the-rate-of-black-maternal-deaths-in-nc-face-new-challenges/",
+      "source": "NC Newsline",
+      "date": "2026-04-28",
+      "displayDate": "April 28, 2026",
+      "tag": "Schools"
+    },
     {
       "title": "Record Numbers of Durham High Schoolers are Missing School",
       "excerpt": "Over half of Durham Public Schools high schoolers were chronically absent in the first six months of the current school year.",
@@ -11,6 +40,16 @@
       "displayDate": "April 27, 2026",
       "tag": "Housing",
       "image": "https://indyweek.com/wp-content/uploads/2026/04/20250409_AE_INDY_DPS_selects_009-scaled.jpg"
+    },
+    {
+      "title": "Former Durham City Council member’s lawsuit moves forward",
+      "excerpt": "A lawsuit filed by former Durham City Council Member Monique Holsey-Hyman is moving forward after an opinion by a state appellate court. The judges unanimously ruled to dismiss the appeal that cited legislative immunity for the former City Council members named in the suit.",
+      "link": "https://www.wral.com/news/local/monique-holsey-hyman-lawsuit-moves-forward-after-appeal-april-2026/",
+      "source": "WRAL News",
+      "date": "2026-04-27",
+      "displayDate": "April 27, 2026",
+      "tag": "County",
+      "image": "https://images.wral.com/asset/news/local/2024/03/08/21319566/3246884-monica-DMID1-627c3x449-1280x720.jpg?w=1200&h=630&height=630"
     },
     {
       "title": "Fake federal court warrant nearly costs Durham resident $30K, sheriff warns",
